@@ -1,7 +1,25 @@
 [build]
   publish = "."
 
-# Every other domain goes to the main address, liminalcx.com
+# Every other domain goes to the main address, liminalcx.com (http and https)
+[[redirects]]
+  from = "http://www.liminalcx.com/*"
+  to = "https://liminalcx.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://liminalcx.co.uk/*"
+  to = "https://liminalcx.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.liminalcx.co.uk/*"
+  to = "https://liminalcx.com/:splat"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "https://www.liminalcx.com/*"
   to = "https://liminalcx.com/:splat"
