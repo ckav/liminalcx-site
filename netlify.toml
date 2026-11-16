@@ -29,7 +29,7 @@
 
 [[redirects]]
   from = "/book-power-hour"
-  to = "https://calendar.app.google/tah8WL2MhAwcRbJw9"   # TEMPORARY: intro call. Replace with the paid Power Hour booking link
+  to = "https://calendar.app.google/2rpX1P7QXTqV8ZBv9"   # Power Hour (paid when booking)
   status = 302
 
 # Old Webflow page
