@@ -21,16 +21,15 @@
   force = true
 
 # Booking links. Every "Book" button on the site points to /book or /book-power-hour.
-# When the Google Calendar booking pages exist, replace the two "to" values
-# with the real links (and change status to 302 so you can change them again later).
+# To change a booking page, edit its "to" value and redeploy. Kept as 302 so browsers don't cache it.
 [[redirects]]
   from = "/book"
-  to = "/#contact"   # [INTRO CALL LINK]
+  to = "https://calendar.app.google/tah8WL2MhAwcRbJw9"   # 15-minute intro call (free)
   status = 302
 
 [[redirects]]
   from = "/book-power-hour"
-  to = "/#contact"   # [POWER HOUR LINK], or the intro call link until the paid page is live
+  to = "https://calendar.app.google/tah8WL2MhAwcRbJw9"   # TEMPORARY: intro call. Replace with the paid Power Hour booking link
   status = 302
 
 # Old Webflow page
