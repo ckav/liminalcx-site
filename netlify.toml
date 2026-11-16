@@ -1,0 +1,46 @@
+[build]
+  publish = "."
+
+# Every other domain goes to the main address, liminalcx.com
+[[redirects]]
+  from = "https://www.liminalcx.com/*"
+  to = "https://liminalcx.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://liminalcx.co.uk/*"
+  to = "https://liminalcx.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.liminalcx.co.uk/*"
+  to = "https://liminalcx.com/:splat"
+  status = 301
+  force = true
+
+# Booking links. Every "Book" button on the site points to /book or /book-power-hour.
+# When the Google Calendar booking pages exist, replace the two "to" values
+# with the real links (and change status to 302 so you can change them again later).
+[[redirects]]
+  from = "/book"
+  to = "/#contact"   # [INTRO CALL LINK]
+  status = 302
+
+[[redirects]]
+  from = "/book-power-hour"
+  to = "/#contact"   # [POWER HOUR LINK], or the intro call link until the paid page is live
+  status = 302
+
+# Old Webflow page
+[[redirects]]
+  from = "/services"
+  to = "/workshops/"
+  status = 301
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
