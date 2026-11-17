@@ -61,3 +61,13 @@
   [headers.values]
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[redirects]]
+  from = "/focus-first/*"
+  to = "/ai-audit/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/focus-first"
+  to = "/ai-audit/"
+  status = 301
