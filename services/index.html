@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="/assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rtimel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&amp;family=Rubik:wght@300;400;500;600;700&amp;display=swap">
 <link rel="stylesheet" href="/assets/site.css">
 </head>
@@ -98,7 +98,7 @@
     var names=['Brief','Questions','First draft','Feedback','Update'];
     var nodes=document.querySelectorAll('.loop .node'), tabs=document.querySelectorAll('.loop-steps button');
     var who=document.querySelector('.loop-who'), say=document.querySelector('.loop-say');
-    var cur=0, timer=null, fig=document.querySelector('.loop');
+    var cur=0, timer=null, pinned=false, fig=document.querySelector('.loop');
     function show(i){
       cur=i;
       nodes.forEach(function(n){n.classList.toggle('on',+n.dataset.i===i)});
@@ -106,10 +106,10 @@
       who.textContent=(i+1)+' · '+names[i]+' · '+steps[i][0];
       say.textContent='"'+steps[i][1]+'"';
     }
-    function start(){ if(!timer && !matchMedia('(prefers-reduced-motion: reduce)').matches) timer=setInterval(function(){show((cur+1)%5)},4500) }
+    function start(){ if(!timer && !pinned && !matchMedia('(prefers-reduced-motion: reduce)').matches) timer=setInterval(function(){show((cur+1)%5)},4500) }
     function stop(){ clearInterval(timer); timer=null }
-    tabs.forEach(function(t){t.addEventListener('click',function(){stop();show(+t.dataset.i)})});
-    nodes.forEach(function(n){n.addEventListener('click',function(){stop();show(+n.dataset.i)})});
+    tabs.forEach(function(t){t.addEventListener('click',function(){pinned=true;stop();show(+t.dataset.i)})});
+    nodes.forEach(function(n){n.addEventListener('click',function(){pinned=true;stop();show(+n.dataset.i)})});
     fig.addEventListener('mouseenter',stop); fig.addEventListener('mouseleave',start);
     show(0); start();
   })();
