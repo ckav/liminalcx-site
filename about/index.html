@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About Claire Kavanagh | Liminal CX</title>
+<meta name="description" content="Claire Kavanagh: customer experience consultant and optimisation expert. Projects, and how I use AI every day, starting with this website.">
+<link rel="canonical" href="https://liminalcx.com/about/">
+<meta property="og:title" content="About Claire Kavanagh | Liminal CX">
+<meta property="og:description" content="Projects, and how I use AI every day, starting with this website.">
+<meta property="og:url" content="https://liminalcx.com/about/">
+<meta property="og:type" content="website">
+<link rel="icon" href="/assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&amp;family=Rubik:wght@300;400;500;600;700&amp;display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+.cs{border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-top:28px}
+.cs-top{background:#000;color:#fff;padding:28px 28px 24px}
+.cs-top h3{color:var(--lime);font-size:26px;margin-top:6px}
+.cs-top p{color:#D9D9D9;margin-top:8px;max-width:720px}
+.cs-body{padding:28px;display:flex;flex-direction:column;gap:32px}
+.cs-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:20px 32px}
+.cs-facts h4{font-family:"DM Mono","Courier New",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);margin-bottom:6px;font-weight:500}
+.tag{display:inline-block;background:#000;color:var(--lime);border-radius:6px;font-size:12px;font-weight:700;padding:1px 7px;margin-right:6px}
+.flow{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap}
+.flow .node{flex:1 1 150px;border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff;position:relative}
+.flow .node b{display:block;color:#000;font-size:17px}
+.flow .node span{font-size:14px}
+.flow .node.old{background:var(--soft);color:var(--muted)} .flow .node.old b{color:var(--ink);text-decoration:line-through;text-decoration-color:var(--muted)}
+.flow .node.live{background:#000;border-color:#000} .flow .node.live b{color:var(--lime)} .flow .node.live span{color:#D9D9D9}
+.flow .arrow{align-self:center;color:var(--green);font-weight:700;font-size:22px;flex:none}
+@media (max-width:700px){.flow{flex-direction:column;gap:6px}.flow .node{flex:none}.flow .arrow{transform:rotate(90deg);align-self:center}}
+.demo{display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:32px;align-items:center}
+@media (max-width:700px){.demo{grid-template-columns:1fr;justify-items:center}}
+.phone{width:100%;max-width:300px;aspect-ratio:9/15;background:#111;border-radius:40px;padding:12px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.screen{background:#fff;border-radius:30px;height:100%;padding:34px 14px 14px;display:flex;flex-direction:column;gap:10px;overflow:hidden;position:relative}
+.screen::before{content:"";position:absolute;top:10px;left:50%;width:70px;height:6px;margin-left:-35px;background:#111;border-radius:6px}
+.msg{max-width:85%;border-radius:16px;padding:9px 12px;font-size:13px;line-height:1.35;opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s}
+.msg.on{opacity:1;transform:none}
+.msg.me{align-self:flex-end;background:var(--lime);color:#000;border-bottom-right-radius:4px}
+.msg.ai{align-self:flex-start;background:var(--soft);color:#000;border-bottom-left-radius:4px}
+.msg.ok{align-self:center;background:#000;color:var(--lime);font-weight:600;text-align:center}
+.thumb{display:block;margin-top:8px;background:#fff;border-radius:8px;height:64px;position:relative;overflow:hidden}
+.thumb i{position:absolute;top:8px;bottom:8px;background:#000;border-radius:12px}
+.thumb i::after{content:"";position:absolute;left:50%;top:50%;width:50px;height:12px;margin:-6px 0 0 -25px;background:var(--lime);border-radius:8px}
+.thumb.bad i{left:-10px;right:-10px} .thumb.good i{left:12px;right:12px}
+.demo-steps{counter-reset:s;list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px}
+.demo-steps li{position:relative;padding-left:40px;color:var(--muted);transition:color .3s}
+.demo-steps li.on{color:#000}
+.demo-steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:var(--line);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;transition:background .3s}
+.demo-steps li.on::before{background:#000;color:var(--lime)}
+.results{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:16px}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="/"><img src="/assets/logo.png" alt="" width="31" height="40">Liminal CX</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/services/">Services</a>
+        <a href="/ai-audit/">AI Audit</a>
+        <a href="/about/" aria-current="page">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+    <div class="hero">
+      <p class="eyebrow">About</p>
+      <h1>I'm not an AI expert. I'm an optimisation expert.</h1>
+      <p class="lede">AI is just the newest place time leaks. Here's who I am, the kind of work I do, and how I use AI every day, starting with this website.</p>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="wrap">
+  <div class="bio">
+    <div class="bio-text">
+      <p class="kicker">Who you'll work with</p>
+      <h2>Claire Kavanagh</h2>
+      <p class="quote">"I'm not an AI expert. I'm an optimisation expert. AI is just the newest place time leaks."</p>
+      <p class="quote-by">Claire Kavanagh, Liminal CX founder</p>
+      <p>I've spent my career in senior marketing roles, across B2B and B2C, acquisition and retention. I've launched several mobile companies, including giffgaff, the UK's first 100% online mobile network. There I set up customer service, automated communications and the community, drove 50% of all new customers through referrals, and reached 99% self-service.</p>
+      <p>As a customer experience consultant, I use Claude every day to write code, publish apps, create designs, and handle simple things, like reminding me to stop working at the end of the day. Most recently, as interim Global CMO of a new eSIM business, I used it as a sparring partner on a $100m contract, and to build prototypes showing vendors that a world-first, 100% self-service mobile company was possible.</p>
+      <p>My view: you don't need another AI course. You already have the skills and the tools. This is about putting them to work with confidence and clarity, so you get consistent results, save time and make better business decisions.</p>
+    </div>
+    <div class="bio-side">
+      <img src="/assets/claire.jpg" alt="Claire Kavanagh" width="500" height="750" loading="lazy">
+      <div class="stats">
+        <div class="stat"><b>25+ years</b><span>in marketing (B2B/B2C)</span></div>
+        <div class="stat"><b>15+ years</b><span>working with start-ups</span></div>
+        <div class="stat"><b>99%</b><span>self-service at giffgaff</span></div>
+        <div class="stat"><b>370+</b><span>women mentored since 2020</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="projects">
+  <div class="intro">
+    <p class="kicker">Projects</p>
+    <h2>Case studies</h2>
+    <p>Real projects, described by the problem and the result. Clients aren't named.</p>
+  </div>
+
+  <article class="cs" id="this-website">
+    <div class="cs-top">
+      <p class="eyebrow">Case study · Liminal CX (my own business)</p>
+      <h3>This website: from Webflow to updates from my phone</h3>
+      <p>Moving off a website builder, so changes take minutes, from anywhere, without a designer or developer.</p>
+    </div>
+    <div class="cs-body">
+
+      <div class="cs-facts">
+        <div><h4>The challenge</h4><p>The old site lived in Webflow. Every change meant sitting at a desk, logging in and finding the right setting. So small fixes waited.</p></div>
+        <div><h4>What I did</h4><p><span class="tag">E</span>Reviewed what the old site was for, and what to keep.<br><span class="tag">M</span>Rebuilt the pages around the services, keeping old links working.<br><span class="tag">D</span>Moved it to simple, fast hosting, live the same day.</p></div>
+        <div><h4>How AI helped</h4><p>Claude rebuilt the site and now makes every change. I describe what I want, often with a screenshot, check the preview and say "make it live".</p></div>
+      </div>
+
+      <div>
+        <h4 class="kicker" style="margin-bottom:14px">The move</h4>
+        <div class="flow" role="list">
+          <div class="node old" role="listitem"><b>Webflow</b><span>The old site, changed by logging in at a desk</span></div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="node" role="listitem"><b>Claude</b><span>Rebuilds the pages and copy, and keeps old links working</span></div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="node" role="listitem"><b>GitHub</b><span>Saves every change, so any of them can be undone</span></div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="node" role="listitem"><b>Netlify</b><span>Publishes each approved change in seconds</span></div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="node live" role="listitem"><b>liminalcx.com</b><span>Live</span></div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="kicker" style="margin-bottom:14px">An update, from my phone</h4>
+        <div class="demo">
+          <div class="phone" aria-hidden="true">
+            <div class="screen" id="demo-screen">
+              <div class="msg me" data-step="0">The corners on mobile don't look right, please fix<span class="thumb bad"><i></i></span></div>
+              <div class="msg ai" data-step="1">Found it: the box loses its side space on phones. Fixed. Here's the preview:<span class="thumb good"><i></i></span></div>
+              <div class="msg me" data-step="2">Looks better. Make it live</div>
+              <div class="msg ok" data-step="3">✓ Live on liminalcx.com<br>published in 6 seconds</div>
+            </div>
+          </div>
+          <ol class="demo-steps" id="demo-steps">
+            <li data-step="0"><b>Spot it.</b> I'm looking at the site on my phone and something's off. I send a screenshot and say what I want.</li>
+            <li data-step="1"><b>Fix it.</b> Claude finds the cause, makes the change and shows me a preview.</li>
+            <li data-step="2"><b>Approve it.</b> Nothing goes live until I say so.</li>
+            <li data-step="3"><b>Live.</b> The change publishes in seconds, and it's saved, so it can be undone.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="kicker" style="margin-bottom:14px">The result</h4>
+        <div class="results">
+          <div class="stat"><b>1 day</b><span>to rebuild and go live</span></div>
+          <div class="stat"><b>14 updates</b><span>in the first two days</span></div>
+          <div class="stat"><b>Seconds</b><span>from "make it live" to live</span></div>
+          <div class="stat"><b>Every change</b><span>saved, and can be undone</span></div>
+        </div>
+      </div>
+
+    </div>
+  </article>
+</section>
+
+<section id="contact" class="wrap contact">
+  <div class="contact-box">
+    <h2>Let's talk</h2>
+    <p>Got a project like these in mind, or want to see what AI could do for your team? Book a free 15-minute call, or email if you'd rather write.</p>
+    <a class="email" href="mailto:info@liminalcx.com?subject=Liminal%20CX%20enquiry">info@liminalcx.com</a>
+    <div class="btns" style="justify-content:center">
+      <a class="btn btn-lime" href="/book">Book a 15-minute call</a>
+      <a class="btn btn-line" href="https://www.linkedin.com/in/clairekav" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var msgs=[].slice.call(document.querySelectorAll('#demo-screen .msg'));
+  var steps=[].slice.call(document.querySelectorAll('#demo-steps li'));
+  function show(n){msgs.concat(steps).forEach(function(e){e.classList.toggle('on',+e.dataset.step<=n)})}
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){show(3);return}
+  var i=-1,timer=null;
+  function tick(){i=i>=5?-1:i+1;show(i);timer=setTimeout(tick,i===-1?600:2200)}
+  var el=document.getElementById('demo-screen');
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!timer){tick()}else if(!e.isIntersecting&&timer){clearTimeout(timer);timer=null}})},{threshold:.3}).observe(el)}else{tick()}
+})();
+</script>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap row">
+    <span>© 2026 Liminal CX · Claire Kavanagh</span>
+    <span><a href="/book">Book a 15-minute call</a> · <a href="mailto:info@liminalcx.com">Email</a> · <a href="https://www.linkedin.com/in/clairekav" rel="noopener">LinkedIn</a></span>
+  </div>
+</footer>
+</body>
+</html>
