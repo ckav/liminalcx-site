@@ -103,6 +103,7 @@ ul.ticks li::before{content:"";position:absolute;left:4px;top:6px;width:15px;hei
 .contact-box{background:#000;color:#fff;border-radius:20px;padding:48px 32px;text-align:center;display:flex;flex-direction:column;gap:24px;align-items:center}
 .contact-box h2{color:#fff}
 .contact-box p{max-width:680px;color:#D9D9D9;font-size:18px}
+.contact-box p.note{max-width:520px;font-size:15px;color:#A6A6A6;margin-top:-8px}
 .email{font-weight:700;font-size:22px;color:var(--lime);text-decoration:none;word-break:break-word}
 .email:hover{color:#fff}
 .site-foot{padding:40px 0 48px;font-size:14px;color:var(--muted)}
