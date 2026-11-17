@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="/assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rtimel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&amp;family=Rubik:wght@300;400;500;600;700&amp;display=swap">
 <link rel="stylesheet" href="/assets/site.css">
 </head>
@@ -51,7 +51,7 @@
     <p>In real life, that's coaching. So that's how we work: on your real tasks, with the tools you already have, until it's done your way.</p>
   </div>
   <figure class="loop" aria-labelledby="loop-cap">
-    <svg viewBox="0 0 360 360" role="img" aria-label="A loop of five steps: Brief, Questions, First draft, Feedback, Update, then back to Brief.">
+    <svg viewBox="0 0 360 360" aria-hidden="true">
       <defs>
         <marker id="arw" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#A6A6A6"/></marker>
       </defs>
@@ -62,46 +62,57 @@
         <path d="M67.4 245A130 130 0 0 1 50.7 193.6"/>
         <path d="M83.4 93A130 130 0 0 1 127.1 61.2"/>
       </g>
-      <g fill="#000"><circle cx="180" cy="50" r="42"/><circle cx="303.6" cy="139.8" r="42"/><circle cx="256.4" cy="285.2" r="42"/><circle cx="103.6" cy="285.2" r="42"/><circle cx="56.4" cy="139.8" r="42"/></g>
-      <g fill="#fff" font-size="14" font-weight="600" text-anchor="middle" font-family="Rubik, Arial, sans-serif">
-        <text x="180" y="55">Brief</text>
-        <text x="303.6" y="144.8">Questions</text>
-        <text x="256.4" y="281.2">First</text><text x="256.4" y="298.2">draft</text>
-        <text x="103.6" y="290.2" fill="#CAD400">Feedback</text>
-        <text x="56.4" y="144.8">Update</text>
+      <g font-size="14" font-weight="600" text-anchor="middle" font-family="Rubik, Arial, sans-serif">
+        <g class="node" data-i="0"><circle cx="180" cy="50" r="42"/><text x="180" y="55">Brief</text></g>
+        <g class="node" data-i="1"><circle cx="303.6" cy="139.8" r="42"/><text x="303.6" y="144.8">Questions</text></g>
+        <g class="node" data-i="2"><circle cx="256.4" cy="285.2" r="42"/><text x="256.4" y="281.2">First</text><text x="256.4" y="298.2">draft</text></g>
+        <g class="node" data-i="3"><circle cx="103.6" cy="285.2" r="42"/><text x="103.6" y="290.2">Feedback</text></g>
+        <g class="node" data-i="4"><circle cx="56.4" cy="139.8" r="42"/><text x="56.4" y="144.8">Update</text></g>
       </g>
       <g fill="#000" font-size="19" font-weight="700" text-anchor="middle" font-family="Rubik, Arial, sans-serif">
         <text x="180" y="174">"Less like that,</text><text x="180" y="198">more like this."</text>
       </g>
     </svg>
-    <div class="loop-switch" role="group" aria-label="Show the loop for">
-      <button type="button" data-who="person" aria-pressed="true">New starter</button>
-      <button type="button" data-who="ai" aria-pressed="false">AI</button>
+    <div class="loop-steps" role="tablist" aria-label="Steps">
+      <button type="button" role="tab" data-i="0">Brief</button>
+      <button type="button" role="tab" data-i="1">Questions</button>
+      <button type="button" role="tab" data-i="2">First draft</button>
+      <button type="button" role="tab" data-i="3">Feedback</button>
+      <button type="button" role="tab" data-i="4">Update</button>
     </div>
-    <ol class="loop-steps" data-who="person">
-      <li><b>Brief</b> You explain the task and what good looks like.</li>
-      <li><b>Questions</b> They ask about anything unclear before they start.</li>
-      <li><b>First draft</b> They show you what they've got.</li>
-      <li><b>Feedback</b> "Less like that, more like this."</li>
-      <li><b>Update</b> They make the changes, and remember for next time.</li>
-    </ol>
-    <ol class="loop-steps" data-who="ai" hidden>
-      <li><b>Brief</b> You give it the task, the background and an example of good.</li>
-      <li><b>Questions</b> You ask it to check anything unclear before it starts.</li>
-      <li><b>First draft</b> It shows you what it's got.</li>
-      <li><b>Feedback</b> "Less like that, more like this."</li>
-      <li><b>Update</b> You save the changes into its instructions, so it remembers next time.</li>
-    </ol>
-    <figcaption id="loop-cap">Same loop, whoever you're handing over to.</figcaption>
+    <div class="loop-card" aria-live="polite">
+      <p class="loop-who"></p>
+      <blockquote class="loop-say"></blockquote>
+    </div>
+    <figcaption id="loop-cap">One real task, start to finish</figcaption>
   </figure>
   <script>
-  document.querySelectorAll('.loop-switch button').forEach(function(b){
-    b.addEventListener('click',function(){
-      var who=b.dataset.who;
-      document.querySelectorAll('.loop-switch button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
-      document.querySelectorAll('.loop-steps').forEach(function(l){l.hidden=l.dataset.who!==who});
-    });
-  });
+  (function(){
+    var steps=[
+      ['You','As a business development manager, I need you to take the notes from this meeting and create a draft proposal.'],
+      ['You','Before you begin, interrogate me, so that you can find the correct information and examples.'],
+      ['AI','Here’s a first draft: problem definition, approach, timeline and next steps.'],
+      ['You','Problem definition and approach are good. Split the timeline: you missed the client’s hard deadline of 28 February.'],
+      ['You','Good. Update the proposal creation document so every milestone date mentioned is documented and included in the timeline section.']
+    ];
+    var names=['Brief','Questions','First draft','Feedback','Update'];
+    var nodes=document.querySelectorAll('.loop .node'), tabs=document.querySelectorAll('.loop-steps button');
+    var who=document.querySelector('.loop-who'), say=document.querySelector('.loop-say');
+    var cur=0, timer=null, fig=document.querySelector('.loop');
+    function show(i){
+      cur=i;
+      nodes.forEach(function(n){n.classList.toggle('on',+n.dataset.i===i)});
+      tabs.forEach(function(t){t.setAttribute('aria-selected',+t.dataset.i===i)});
+      who.textContent=(i+1)+' · '+names[i]+' · '+steps[i][0];
+      say.textContent='"'+steps[i][1]+'"';
+    }
+    function start(){ if(!timer && !matchMedia('(prefers-reduced-motion: reduce)').matches) timer=setInterval(function(){show((cur+1)%5)},4500) }
+    function stop(){ clearInterval(timer); timer=null }
+    tabs.forEach(function(t){t.addEventListener('click',function(){stop();show(+t.dataset.i)})});
+    nodes.forEach(function(n){n.addEventListener('click',function(){stop();show(+n.dataset.i)})});
+    fig.addEventListener('mouseenter',stop); fig.addEventListener('mouseleave',start);
+    show(0); start();
+  })();
   </script>
 </section>
 
