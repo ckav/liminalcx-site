@@ -62,6 +62,7 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
   - Services hero changed to "Make AI work harder for you". The approach story block was added, followed by the "Less like that, more like this." quote card.
   - The quote card was replaced by the feedback loop diagram (New starter / AI switch), then reworked into the cycling version with example AI prompts (described above).
   - Fixed the stray `rtimel=` on the Services page (now `rel=`). Clicking a loop stage now keeps it there: moving the mouse away no longer restarts the cycling.
+  - Loop Update prompt reworded: "Good. Update the readme doc for this client, and update the proposal creation document to always include milestone dates in the timeline section."
 
 ## Known issues
 
