@@ -50,10 +50,15 @@
   to = "https://calendar.app.google/2rpX1P7QXTqV8ZBv9"   # Power Hour (paid when booking)
   status = 302
 
-# Old Webflow page
+# Old Workshops page moved to Services
 [[redirects]]
-  from = "/services"
-  to = "/workshops/"
+  from = "/workshops/*"
+  to = "/services/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/workshops"
+  to = "/services/"
   status = 301
 
 [[headers]]
