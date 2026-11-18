@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project folders that stay tidy | Free mini course | Liminal CX</title>
+<meta name="description" content="A free mini course: set up project folders with a README your AI reads first, organise them with the PARA method, and add a daily sweep that files new documents and archives old versions.">
+<link rel="canonical" href="https://liminalcx.com/free/project-folders/">
+<meta property="og:title" content="Project folders that stay tidy | Liminal CX">
+<meta property="og:description" content="Free mini course: one sentence starts a new project with its folders and a README. A daily sweep keeps it tidy and the latest version always on top.">
+<meta property="og:url" content="https://liminalcx.com/free/project-folders/">
+<meta property="og:type" content="article">
+<link rel="icon" href="/assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&amp;family=Rubik:wght@300;400;500;600;700&amp;display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+/* "See it first" animation: a drawn folder tree and chat. Rows show between their data-in and data-out scenes. */
+.pf-demo{margin-top:28px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}
+.pf-stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+@media (max-width:820px){.pf-stage{grid-template-columns:1fr}}
+.pf-head{background:#000;color:var(--muted);font-family:"DM Mono","Courier New",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:12px 18px;display:flex;justify-content:space-between;gap:12px}
+.pf-clock{color:var(--lime);opacity:0;transition:opacity .4s}
+.pf-demo[data-s="4"] .pf-clock,.pf-demo[data-s="5"] .pf-clock{opacity:1}
+.pf-win{border-right:1px solid var(--line);min-width:0}
+@media (max-width:820px){.pf-win{border-right:0;border-bottom:1px solid var(--line)}}
+.pf-tree{list-style:none;margin:0;padding:14px 18px;height:440px;overflow:hidden;font-size:14px}
+.pf-tree li{display:flex;align-items:center;gap:8px;padding:3px 6px;border-radius:6px;color:#000;white-space:nowrap}
+.pf-tree li::before{content:"";flex:0 0 auto;width:16px;height:12px;border-radius:2px;background:#f2c94c}
+.pf-tree li.file::before{width:12px;height:15px;background:#fff;border:1.5px solid #999;border-radius:2px}
+.pf-tree li.md::before{border-color:#000;background:var(--lime)}
+.pf-tree .d1{margin-left:20px}.pf-tree .d2{margin-left:40px}.pf-tree .d3{margin-left:60px}.pf-tree .d4{margin-left:80px}
+.pf-tree li em{font-style:normal;font-family:"DM Mono","Courier New",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:1px 6px;border-radius:999px;background:var(--soft);color:#000}
+.pf-tree li em.new{background:#fce8e6;color:#b3261e}
+.pf-tree li em.arc{background:#000;color:var(--lime)}
+.js .pf-tree li[data-in]{display:none}
+.js .pf-tree li.on{display:flex;animation:pfin .5s ease}
+.pf-tree li.hot{background:var(--lime)}
+@keyframes pfin{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
+.pf-chat{padding:16px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;height:488px;overflow:hidden}
+@media (max-width:820px){.pf-chat{height:340px}}
+.pf-msg{max-width:94%;border-radius:16px;padding:10px 14px;font-size:14px;line-height:1.4;color:#000}
+.pf-ai{align-self:flex-start;background:var(--soft);border-bottom-left-radius:4px}
+.pf-me{align-self:flex-end;background:var(--lime);border-bottom-right-radius:4px}
+.pf-msg pre{font-family:"DM Mono","Courier New",monospace;font-size:11.5px;line-height:1.45;margin:6px 0 0;white-space:pre-wrap;background:#fff;border-radius:8px;padding:8px 10px}
+.js .pf-msg{display:none}
+.js .pf-msg.on{display:block;animation:pfin .4s ease}
+.pf-cap{border-top:1px solid var(--line);padding:14px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#fafafa}
+.pf-cap p{margin:0;flex:1 1 280px;font-size:15px;color:#000;min-height:2.8em;display:flex;align-items:center}
+.pf-steps{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.pf-steps button{width:30px;height:30px;border-radius:50%;border:1px solid #000;background:#fff;font:600 13px Rubik,sans-serif;cursor:pointer;color:#000}
+.pf-steps button[aria-current="step"]{background:var(--lime);border-color:var(--lime)}
+.pf-steps .pf-play{width:auto;border-radius:999px;padding:0 12px;background:#000;color:#fff}
+/* PARA cards */
+.pf-para{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:28px}
+@media (max-width:900px){.pf-para{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.pf-para{grid-template-columns:1fr}}
+.pf-para .card{display:flex;flex-direction:column;gap:8px}
+.pf-para .big{font-size:40px;font-weight:700;line-height:1;color:#000}
+.pf-para .eg{font-size:14px;color:#444;margin-top:auto}
+.pf-para .card:last-child{background:#000;color:#fff;border-color:#000}
+.pf-para .card:last-child h3,.pf-para .card:last-child .big{color:var(--lime)}
+.pf-para .card:last-child .eg{color:var(--muted)}
+.pf-credit{margin-top:16px;font-size:14px;max-width:780px}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="/"><img src="/assets/logo.png" alt="" width="31" height="40">Liminal CX</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/services/">Services</a>
+        <a href="/ai-audit/">AI Audit</a>
+        <a href="/free/" aria-current="page">Free courses</a>
+        <a href="/about/">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+    <div class="hero">
+      <p class="eyebrow"><a href="/free/" style="color:inherit">Free mini courses</a> · Files · Folders · Time to set up: 30 to 45 minutes</p>
+      <div class="course-tags course-tags-lg" aria-label="What you need"><span>AI that can open folders (paid plan likely)</span><span>Scheduled tasks for the bonus</span></div>
+      <h1>Project folders that stay tidy</h1>
+      <p class="lede">Say "start a new project" and your AI sets up the folders and a README: one short page saying what's where and which version is the latest. Then a daily sweep files anything new and archives old versions, so you and your AI always pick up the right document.</p>
+      <div class="btns"><a class="btn btn-lime" href="#course">Get the instructions</a></div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="wrap">
+  <div class="grid">
+    <div class="card">
+      <p class="kicker">You'll end up with</p>
+      <ul class="ticks">
+        <li>Four top-level folders: Projects, Areas, Resources, Archive</li>
+        <li>A "new project" recipe: one sentence creates the folders and a README</li>
+        <li>A README in every project that says what's where and what's current</li>
+        <li>Bonus: a daily sweep that files new documents and archives old versions</li>
+      </ul>
+    </div>
+    <div class="card">
+      <p class="kicker">You'll need</p>
+      <ul class="ticks">
+        <li>An AI tool that can open a folder on your computer, such as Claude's desktop app. This usually needs a paid plan, and the course checks yours.</li>
+        <li>For the bonus: scheduled tasks in the same tool. No scheduling? It becomes a one-click evening routine instead.</li>
+        <li>One real project you're starting soon</li>
+        <li>For work files: your company's OK for AI to see them</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="intro">
+    <p class="kicker">See it first</p>
+    <h2>One sentence to start. A sweep every evening.</h2>
+    <p>Here's a made-up example: a summer team away day. Watch the folders appear, then what happens when files land in the wrong place and a newer budget turns up.</p>
+  </div>
+
+  <div class="pf-demo" id="pf-demo" data-s="0">
+    <div class="pf-stage">
+      <div class="pf-win" aria-label="Example folder tree">
+        <div class="pf-head"><span>Work</span><span class="pf-clock">18:00 · Daily sweep</span></div>
+        <ul class="pf-tree" id="pf-tree">
+          <li>Work</li>
+          <li class="d1">1 Projects</li>
+          <li class="d2" data-in="1" data-out="6">Summer away day</li>
+          <li class="d3 file md" data-in="1" data-out="6" data-hot="2 5">README.md</li>
+          <li class="d3" data-in="1" data-out="6">Venue</li>
+          <li class="d4 file" data-in="4" data-out="6">oakfield-quote.pdf <em>filed</em></li>
+          <li class="d3" data-in="1" data-out="6">Budget</li>
+          <li class="d4 file" data-in="1" data-out="4">Budget v1.xlsx</li>
+          <li class="d4 file" data-in="4" data-out="6">Budget v2.xlsx <em>filed</em></li>
+          <li class="d3" data-in="1" data-out="6">Agenda and guests</li>
+          <li class="d4 file" data-in="4" data-out="6">Agenda FINAL.docx <em>filed</em></li>
+          <li class="d3" data-in="1" data-out="6">Archive</li>
+          <li class="d4 file" data-in="4" data-out="6" data-hot="4">Budget v1.xlsx <em class="arc">archived</em></li>
+          <li class="d3 file" data-in="3" data-out="4">Budget v2.xlsx <em class="new">new</em></li>
+          <li class="d3 file" data-in="3" data-out="4">oakfield-quote.pdf <em class="new">new</em></li>
+          <li class="d3 file" data-in="3" data-out="4">Agenda FINAL.docx <em class="new">new</em></li>
+          <li class="d1">2 Areas</li>
+          <li class="d1">3 Resources</li>
+          <li class="d1">4 Archive</li>
+          <li class="d2" data-in="6" data-hot="6">Summer away day <em class="arc">finished</em></li>
+        </ul>
+      </div>
+      <div class="pf-chat" id="pf-chat" aria-label="Example chat with the AI">
+        <div class="pf-msg pf-me" data-s="0">Start a new project called Summer away day. 40 people, 26 June.</div>
+        <div class="pf-msg pf-ai" data-s="1">Here's the plan: a Summer away day folder in 1 Projects, with Venue, Budget, Agenda and guests, and Archive, plus a README. OK?</div>
+        <div class="pf-msg pf-me" data-s="1">Yes</div>
+        <div class="pf-msg pf-ai" data-s="2">Done. Here's the README:<pre># Summer away day
+Goal: team away day, 40 people
+Deadline: 26 June · Status: planning
+
+## Where things are
+Venue/   quotes and contract
+Budget/  costs
+Agenda and guests/
+Archive/ older versions
+
+## Latest versions
+Budget: Budget v1.xlsx</pre></div>
+        <div class="pf-msg pf-ai" data-s="5">Daily sweep, 18:00. Filed 3 new files. Archived Budget v1 (v2 is newer). README updated: Budget v2 is now the latest. Nothing needs you.</div>
+        <div class="pf-msg pf-me" data-s="6">The away day is finished. Archive it.</div>
+        <div class="pf-msg pf-ai" data-s="6">Done. Status set to finished, final versions listed in the README, and the folder moved to 4 Archive.</div>
+      </div>
+    </div>
+    <div class="pf-cap">
+      <p id="pf-cap" aria-live="polite">One sentence starts a new project.</p>
+      <div class="pf-steps" id="pf-steps"></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="intro">
+    <p class="kicker">Why a README?</p>
+    <h2>Your AI reads one page, not every file</h2>
+    <p>A README is a short text file at the top of a folder. It says what the folder is for, what's in it, which files are the latest and what happens next. It's saved as <b>README.md</b>, plain text that any AI tool can read in an instant.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <h3>For your AI</h3>
+      <p>It reads one page instead of opening every file, so it's quicker and gets it right more often. A brand-new chat can pick up exactly where the last one left off.</p>
+    </div>
+    <div class="card">
+      <h3>For you</h3>
+      <p>The latest version of everything, key decisions and next steps, all at a glance. No more "budget FINAL v3 (2).xlsx".</p>
+    </div>
+    <div class="card">
+      <h3>For anyone covering for you</h3>
+      <p>A colleague or stand-in can find their way around the project without having to ask.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="intro">
+    <p class="kicker">Where everything goes</p>
+    <h2>Projects, Areas, Resources, Archive</h2>
+    <p>The four top-level folders come from Tiago Forte's PARA method in <i>Building a Second Brain</i>. Every file in your working life fits one of them.</p>
+  </div>
+  <div class="pf-para">
+    <div class="card"><span class="big">1</span><h3>Projects</h3><p>Short-term pieces of work with a goal and an end date.</p><p class="eg">The summer away day</p></div>
+    <div class="card"><span class="big">2</span><h3>Areas</h3><p>Parts of your work that need ongoing attention, with no end date.</p><p class="eg">Finance, team, suppliers</p></div>
+    <div class="card"><span class="big">3</span><h3>Resources</h3><p>Topics and reference material you might use.</p><p class="eg">Templates, brand guidelines, how-to guides</p></div>
+    <div class="card"><span class="big">4</span><h3>Archive</h3><p>Anything no longer active that you might want later.</p><p class="eg">Finished projects and old versions</p></div>
+  </div>
+  <p class="pf-credit">Read more on <a href="https://fortelabs.com/blog/para/" rel="noopener">Tiago Forte's PARA method</a>. Archiving is what keeps this working: old versions and finished projects move out of the way, so the latest document is always the one your AI finds first.</p>
+</section>
+
+<section class="wrap">
+  <div class="intro">
+    <p class="kicker">How it works</p>
+    <h2>Three steps</h2>
+  </div>
+  <div class="howto">
+    <div class="card"><div class="card-head"><span class="num" style="background:var(--lime)">1</span><h3>Copy</h3></div><p>Copy the instructions below, or download them as a file.</p></div>
+    <div class="card"><div class="card-head"><span class="num" style="background:var(--lime)">2</span><h3>Paste</h3></div><p>Paste them into a new chat in your AI tool. In Claude, use the desktop app's Cowork mode so it can open folders.</p></div>
+    <div class="card"><div class="card-head"><span class="num" style="background:var(--lime)">3</span><h3>Answer</h3></div><p>It takes you one step at a time: the four folders, your first project and its README, the recipe, then the daily sweep.</p></div>
+  </div>
+  <p style="margin-top:20px;max-width:780px">It only creates folders, moves files and updates READMEs. It never renames or deletes anything. Old versions go to Archive, never the bin. It leaves your existing files alone unless you ask.</p>
+</section>
+
+<section id="course" class="wrap">
+  <div class="intro">
+    <p class="kicker">The course</p>
+    <h2>Copy this into your AI chat</h2>
+  </div>
+  <div class="prompt-box">
+    <div class="prompt-bar">
+      <span class="meta">guide.md</span>
+      <div class="btns" style="align-items:center">
+        <span class="copied" id="copied" role="status" aria-live="polite"></span>
+        <button class="btn btn-lime" id="copy" type="button">Copy instructions</button>
+        <a class="btn btn-line" href="guide.md" download="project-folders.md">Download .md</a>
+      </div>
+    </div>
+    <pre class="prompt-text" id="prompt" tabindex="0">Loading… If nothing appears, use Download .md above.</pre>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="intro">
+    <p class="kicker">Official help</p>
+    <h2>Straight from the source</h2>
+    <p>Features and plans change often. These pages are always the latest version, and the course tells your AI to check them as it goes.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <h3>Claude</h3>
+      <ul class="ticks">
+        <li><a href="https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork" rel="noopener">Get started with Cowork (folders and scheduled tasks)</a></li>
+        <li><a href="https://support.claude.com/en/articles/12512180-using-skills-in-claude" rel="noopener">Use skills in Claude (saved instructions)</a></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>The PARA method</h3>
+      <ul class="ticks">
+        <li><a href="https://fortelabs.com/blog/para/" rel="noopener">The PARA Method, by Tiago Forte</a></li>
+      </ul>
+      <p style="margin-top:10px">Other AI tools: search their help pages for "work with local files", "custom instructions" and "scheduled tasks".</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="wrap contact">
+  <div class="contact-box">
+    <h2>Want more of your week back?</h2>
+    <p>Tidy folders are a start. In a Power Hour we pick the next thing eating your week and fix it together. Or book a free 15-minute call to talk it through.</p>
+    <a class="email" href="mailto:info@liminalcx.com?subject=Project%20folders%20course">info@liminalcx.com</a>
+    <div class="btns" style="justify-content:center">
+      <a class="btn btn-lime" href="/book-power-hour">Book a Power Hour</a>
+      <a class="btn btn-line" href="/book">Book a 15-minute call</a>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var pre=document.getElementById('prompt'),btn=document.getElementById('copy'),msg=document.getElementById('copied'),text='';
+  fetch('guide.md').then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){text=t;pre.textContent=t}).catch(function(){});
+  btn.addEventListener('click',function(){
+    if(!text)return;
+    function done(){msg.textContent='Copied';setTimeout(function(){msg.textContent=''},2500)}
+    if(navigator.clipboard){navigator.clipboard.writeText(text).then(done,fallback)}else{fallback()}
+    function fallback(){var r=document.createRange();r.selectNodeContents(pre);var s=getSelection();s.removeAllRanges();s.addRange(r);try{document.execCommand('copy');done()}catch(e){msg.textContent='Select the text and copy'}}
+  });
+})();
+
+// "See it first": 7 scenes. Edit captions here. Tree rows show from data-in to data-out; data-hot highlights a row in those scenes.
+(function(){
+  var scenes=[
+    'One sentence starts a new project.',
+    'It shows the plan, then creates the folders inside 1 Projects.',
+    'Every project gets a README: what’s where, and which version is the latest.',
+    'You work as normal. New files land wherever you saved them.',
+    '18:00, the daily sweep: new files go to the right folder, and Budget v1 moves to Archive because v2 is newer.',
+    'The README now points to Budget v2, so you and your AI always open the latest.',
+    'Project finished? One sentence moves the whole folder to 4 Archive.'
+  ];
+  var demo=document.getElementById('pf-demo'),cap=document.getElementById('pf-cap'),stepsBox=document.getElementById('pf-steps');
+  var rows=[].slice.call(document.querySelectorAll('#pf-tree li')),msgs=[].slice.call(document.querySelectorAll('#pf-chat .pf-msg'));
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cur=-1,timer=null,playing=!reduce,visible=false;
+  function show(n){
+    cur=n;demo.dataset.s=n;cap.textContent=scenes[n];
+    rows.forEach(function(r){
+      if(r.dataset.in!==undefined){var on=n>=+r.dataset.in&&(r.dataset.out===undefined||n<+r.dataset.out);r.classList.toggle('on',on)}
+      r.classList.toggle('hot',!!r.dataset.hot&&r.dataset.hot.split(' ').indexOf(String(n))>-1);
+    });
+    msgs.forEach(function(m){m.classList.toggle('on',+m.dataset.s<=n)});
+    [].forEach.call(stepsBox.querySelectorAll('button[data-n]'),function(b){if(+b.dataset.n===n)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current')});
+  }
+  function next(){show((cur+1)%scenes.length);schedule()}
+  function schedule(){clearTimeout(timer);timer=null;if(playing&&visible){timer=setTimeout(next,cur===scenes.length-1?6500:(cur===2||cur===4?5600:4200))}}
+  scenes.forEach(function(_,i){var b=document.createElement('button');b.type='button';b.dataset.n=i;b.textContent=i+1;b.setAttribute('aria-label','Step '+(i+1));b.addEventListener('click',function(){playing=false;play.textContent='Play';show(i);schedule()});stepsBox.appendChild(b)});
+  var play=document.createElement('button');play.type='button';play.className='pf-play';play.textContent=playing?'Pause':'Play';
+  play.addEventListener('click',function(){playing=!playing;play.textContent=playing?'Pause':'Play';if(playing)next();else schedule()});
+  stepsBox.appendChild(play);
+  show(reduce?5:0);
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){visible=e.isIntersecting;schedule()})},{threshold:.3}).observe(demo)}
+  else{visible=true;schedule()}
+})();
+</script>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap row">
+    <span>© 2026 Liminal CX · Claire Kavanagh</span>
+    <span><a href="/book">Book a 15-minute call</a> · <a href="mailto:info@liminalcx.com">Email</a> · <a href="https://www.linkedin.com/in/clairekav" rel="noopener">LinkedIn</a></span>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sort out a messy folder | Free mini course | Liminal CX</title>
+<meta name="description" content="A free mini course: have your AI tidy one messy folder safely, with a plan first and nothing deleted, then save it as a recipe you can reuse in one sentence.">
+<link rel="canonical" href="https://liminalcx.com/free/organise-a-folder/">
+<meta property="og:title" content="Sort out a messy folder | Liminal CX">
+<meta property="og:description" content="Free mini course: practise on a test folder, approve the plan, check the result, and save it so next time it's one sentence.">
+<meta property="og:url" content="https://liminalcx.com/free/organise-a-folder/">
+<meta property="og:type" content="article">
+<link rel="icon" href="/assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&amp;family=Rubik:wght@300;400;500;600;700&amp;display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+/* "See it first" animation: a drawn file window and chat. Tiles are Claire's own photos. */
+.of-demo{margin-top:28px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}
+.of-stage{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}
+@media (max-width:820px){.of-stage{grid-template-columns:1fr}}
+.of-head{background:#000;color:var(--muted);font-family:"DM Mono","Courier New",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:12px 18px}
+.of-win{border-right:1px solid var(--line);min-width:0}
+@media (max-width:820px){.of-win{border-right:0;border-bottom:1px solid var(--line)}}
+.of-crumb{font-size:13px;color:#444;padding:10px 18px;border-bottom:1px solid #eee;background:#fafafa}
+.of-body{padding:16px 18px;height:360px;position:relative;overflow:hidden}
+.of-files{display:grid;grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:12px 10px}
+.of-tile{display:flex;flex-direction:column;align-items:center;gap:4px;transform-origin:top left;will-change:transform}
+.of-tile img,.of-pdf{width:64px;height:64px;object-fit:cover;border-radius:4px;display:block;background:#eee}
+.of-pdf{display:flex;align-items:center;justify-content:center;background:#fff;border:2px solid #d93025;color:#d93025;font-weight:700;font-size:15px}
+.of-tile span{font-size:11px;line-height:1.25;color:#333;text-align:center;max-width:76px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;word-break:break-all}
+.of-folders{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.of-folder{border:1px solid var(--line);border-radius:10px;padding:8px;background:#fff;transition:box-shadow .4s,border-color .4s}
+.of-folder b{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#000;margin-bottom:6px}
+.of-folder b::before{content:"";width:16px;height:12px;border-radius:2px;background:#f2c94c;flex:0 0 auto}
+.of-in{display:flex;flex-wrap:wrap;gap:4px;min-height:36px}
+.of-in .of-tile span{display:none}
+.of-in .of-tile img,.of-in .of-pdf{width:36px;height:36px;font-size:9px;border-width:1.5px}
+.of-readme{border-style:dashed;opacity:0;transition:opacity .5s}
+.of-readme b::before{background:#ddd;width:12px;height:15px}
+.of-readme p{font-size:11px;line-height:1.3;color:#444;margin:0}
+.of-demo[data-s="6"] .of-readme{opacity:1}
+.of-demo[data-s="5"] .of-folder[data-f="kav"],.of-demo[data-s="6"] .of-folder[data-f="kav"]{border-color:var(--lime);box-shadow:0 0 0 3px var(--lime)}
+.of-demo[data-s="5"] .of-tile[data-k="jean"] img{outline:3px solid #000;outline-offset:1px}
+@media (max-width:480px){.of-folders{grid-template-columns:repeat(2,minmax(0,1fr))}.of-body{height:430px}}
+.of-chat{padding:16px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;height:400px;overflow:hidden}
+@media (max-width:820px){.of-chat{height:300px}}
+.of-msg{max-width:92%;border-radius:16px;padding:10px 14px;font-size:14px;line-height:1.4;color:#000}
+.of-ai{align-self:flex-start;background:var(--soft);border-bottom-left-radius:4px}
+.of-me{align-self:flex-end;background:var(--lime);border-bottom-right-radius:4px}
+.of-msg pre{font-family:"DM Mono","Courier New",monospace;font-size:12px;line-height:1.45;margin:6px 0 0;white-space:pre}
+.js .of-msg{display:none}
+.js .of-msg.on{display:block;animation:ofin .4s ease}
+@keyframes ofin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.of-cap{border-top:1px solid var(--line);padding:14px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#fafafa}
+.of-cap p{margin:0;flex:1 1 280px;font-size:15px;color:#000;min-height:2.8em;display:flex;align-items:center}
+.of-steps{display:flex;gap:6px;align-items:center}
+.of-steps button{width:30px;height:30px;border-radius:50%;border:1px solid #000;background:#fff;font:600 13px Rubik,sans-serif;cursor:pointer;color:#000}
+.of-steps button[aria-current="step"]{background:var(--lime);border-color:var(--lime)}
+.of-steps .of-play{width:auto;border-radius:999px;padding:0 12px;background:#000;color:#fff}
+.no-js .of-cap{display:none}
+/* Claire's own screenshots */
+.of-shots{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px;margin-top:28px;align-items:start}
+@media (max-width:820px){.of-shots{grid-template-columns:1fr}}
+.of-shots figure{margin:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}
+.of-shots img{display:block;width:100%;height:auto}
+.of-shots figcaption{padding:12px 16px;font-size:14px;color:#333;border-top:1px solid var(--line)}
+.of-shots figcaption b{color:#000}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="/"><img src="/assets/logo.png" alt="" width="31" height="40">Liminal CX</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/services/">Services</a>
+        <a href="/ai-audit/">AI Audit</a>
+        <a href="/free/" aria-current="page">Free courses</a>
+        <a href="/about/">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+    <div class="hero">
+      <p class="eyebrow"><a href="/free/" style="color:inherit">Free mini courses</a> · Files · Folders · Time to set up: 20 to 30 minutes</p>
+      <div class="course-tags course-tags-lg" aria-label="What you need"><span>AI that can open folders (paid plan likely)</span><span>Windows or Mac</span></div>
+      <h1>Sort out a messy folder</h1>
+      <p class="lede">Your AI tidies one messy folder for you, safely. It shows you the plan first, moves nothing until you say yes and deletes nothing at all. Then it saves how you like it done, so next time it's one sentence.</p>
+      <div class="btns"><a class="btn btn-lime" href="#course">Get the instructions</a></div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="wrap">
+  <div class="grid">
+    <div class="card">
+      <p class="kicker">You'll end up with</p>
+      <ul class="ticks">
+        <li>One tidy folder, sorted the way you look for things</li>
+        <li>Duplicates set aside with a note, never deleted</li>
+        <li>A short note in the folder saying what's where</li>
+        <li>A saved "folder organiser" you can use again with one sentence</li>
+      </ul>
+    </div>
+    <div class="card">
+      <p class="kicker">You'll need</p>
+      <ul class="ticks">
+        <li>10 to 20 files you don't mind practising on (you'll copy them)</li>
+        <li>An AI tool that can open a folder on your computer, such as Claude's desktop app. This usually needs a paid plan, and the course checks yours.</li>
+        <li>No folder access on your plan? The course gives you a plan to follow by hand instead.</li>
+        <li>For work files: your company's OK for AI to see them</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="intro">
+    <p class="kicker">See it first</p>
+    <h2>A plan first, then the tidy-up</h2>
+    <p>This is my own test: old family photos and a PDF, all in one folder. It showed me a plan, I changed it once, and then it did the moving.</p>
+  </div>
+
+  <div class="of-demo" id="of-demo" data-s="0">
+    <div class="of-stage">
+      <div class="of-win" aria-label="Example of a folder being organised">
+        <div class="of-head">Test Folder</div>
+        <div class="of-crumb">Documents › Test Folder</div>
+        <div class="of-body">
+          <div class="of-files" id="of-files">
+            <div class="of-tile" data-k="wed1" data-f="wed"><img src="img/wed1.jpg" alt=""><span>coral-barnett-album-57_12507571944_o.jpg</span></div>
+            <div class="of-tile" data-k="papa" data-f="kav"><img src="img/papa.jpg" alt=""><span>Papa Kavanagh.png</span></div>
+            <div class="of-tile" data-k="scan" data-f="uns"><img src="img/scan.jpg" alt=""><span>Scan_20220424.png</span></div>
+            <div class="of-tile" data-k="jack" data-f="mck"><img src="img/jack.jpg" alt=""><span>Jack McKenzie portrait.png</span></div>
+            <div class="of-tile" data-k="pdf" data-f="tree"><div class="of-pdf">PDF</div><span>William Scott family history.pdf</span></div>
+            <div class="of-tile" data-k="jean" data-f="kav"><img src="img/jean.jpg" alt=""><span>Papas Siser Jean Murray.png</span></div>
+            <div class="of-tile" data-k="greaves" data-f="gre"><img src="img/greaves.jpg" alt=""><span>Greaves Family photo Melbourne.png</span></div>
+            <div class="of-tile" data-k="wed2" data-f="wed"><img src="img/wed2.jpg" alt=""><span>coral-barnett-album-59_12507541284_o.jpg</span></div>
+            <div class="of-tile" data-k="grandma" data-f="mck"><img src="img/grandma.jpg" alt=""><span>Grandma and Papa Octogen Dunedin.png</span></div>
+            <div class="of-tile" data-k="william" data-f="kav"><img src="img/william.jpg" alt=""><span>William Kavanagh.png</span></div>
+            <div class="of-tile" data-k="group" data-f="grp"><img src="img/group.jpg" alt=""><span>Peter Edna Jean Geoff Greg.png</span></div>
+            <div class="of-tile" data-k="molly" data-f="mck"><img src="img/molly.jpg" alt=""><span>Molly Alice Hazel Fay.png</span></div>
+            <div class="of-tile" data-k="alice" data-f="kav"><img src="img/alice-robert.jpg" alt=""><span>Alice Elizabeth and Robert William Kavanagh.png</span></div>
+          </div>
+          <div class="of-folders" id="of-folders" hidden>
+            <div class="of-folder" data-f="kav"><b>Kavanagh</b><div class="of-in"></div></div>
+            <div class="of-folder" data-f="mck"><b>McKenzie</b><div class="of-in"></div></div>
+            <div class="of-folder" data-f="wed"><b>Weddings</b><div class="of-in"></div></div>
+            <div class="of-folder" data-f="grp"><b>Group Photos</b><div class="of-in"></div></div>
+            <div class="of-folder" data-f="gre"><b>Greaves</b><div class="of-in"></div></div>
+            <div class="of-folder" data-f="uns"><b>Unsorted Scans</b><div class="of-in"></div></div>
+            <div class="of-folder" data-f="tree"><b>Family Tree</b><div class="of-in"></div></div>
+            <div class="of-folder of-readme"><b>README</b><p>What's where, and what still needs you.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="of-chat" id="of-chat" aria-label="Example chat with the AI">
+        <div class="of-msg of-me" data-s="1">Help me connect to my test folder. Then create a skill to organise the folder by file type. Show me your plan before making any changes.</div>
+        <div class="of-msg of-ai" data-s="2">Here's my plan. Nothing has moved yet.<pre>Images/      12 photos
+Documents/    1 PDF</pre>OK to go ahead?</div>
+        <div class="of-msg of-me" data-s="3">Close, but sort the photos by family instead. Anything you can't place goes in Unsorted.</div>
+        <div class="of-msg of-ai" data-s="3">Updated plan:<pre>Kavanagh/  McKenzie/  Greaves/
+Weddings/  Group Photos/
+Unsorted Scans/  Family Tree/</pre></div>
+        <div class="of-msg of-me" data-s="4">Yes, go ahead.</div>
+        <div class="of-msg of-ai" data-s="6">Done. 13 files moved, nothing renamed or deleted. I've added a README and saved this as your folder organiser. Next time, just say "organise this folder".</div>
+      </div>
+    </div>
+    <div class="of-cap">
+      <p id="of-cap" aria-live="polite">Make a Test Folder and copy 10 to 20 files into it. Mine was old family photos and a PDF.</p>
+      <div class="of-steps" id="of-steps"></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="intro">
+    <p class="kicker">From my own test</p>
+    <h2>Before and after</h2>
+    <p>The real thing, from my computer. The bit that made me smile: "Papa's sister Jean Murray" ended up in the Kavanagh folder. It worked out from the file name that she belonged with Papa's side of the family.</p>
+  </div>
+  <div class="of-shots">
+    <figure>
+      <img src="img/before-folder.jpg" width="937" height="603" alt="A Windows folder of 24 old family photos with long, unhelpful file names, and one PDF" loading="lazy">
+      <figcaption><b>Before:</b> 24 files, most with names like coral-barnett-album-49_12507691564_o.jpg.</figcaption>
+    </figure>
+    <figure>
+      <img src="img/kavanagh-folder.jpg" width="800" height="295" alt="The Kavanagh folder after sorting, with four old photos including Papa's sister Jean Murray" loading="lazy">
+      <figcaption><b>After:</b> the Kavanagh folder, one of six family and photo folders. Nothing renamed, nothing deleted.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="intro">
+    <p class="kicker">How it works</p>
+    <h2>Three steps</h2>
+  </div>
+  <div class="howto">
+    <div class="card"><div class="card-head"><span class="num" style="background:var(--lime)">1</span><h3>Copy</h3></div><p>Copy the instructions below, or download them as a file.</p></div>
+    <div class="card"><div class="card-head"><span class="num" style="background:var(--lime)">2</span><h3>Paste</h3></div><p>Paste them into a new chat in your AI tool. In Claude, use the desktop app's Cowork mode so it can open folders.</p></div>
+    <div class="card"><div class="card-head"><span class="num" style="background:var(--lime)">3</span><h3>Answer</h3></div><p>It takes you one step at a time: test folder, plan, tidy-up, check, then saving your folder organiser.</p></div>
+  </div>
+  <p style="margin-top:20px;max-width:780px">You practise on copies, so your real files are never at risk. It only creates folders and moves files. It never renames or deletes anything.</p>
+</section>
+
+<section id="course" class="wrap">
+  <div class="intro">
+    <p class="kicker">The course</p>
+    <h2>Copy this into your AI chat</h2>
+  </div>
+  <div class="prompt-box">
+    <div class="prompt-bar">
+      <span class="meta">guide.md</span>
+      <div class="btns" style="align-items:center">
+        <span class="copied" id="copied" role="status" aria-live="polite"></span>
+        <button class="btn btn-lime" id="copy" type="button">Copy instructions</button>
+        <a class="btn btn-line" href="guide.md" download="organise-a-folder.md">Download .md</a>
+      </div>
+    </div>
+    <pre class="prompt-text" id="prompt" tabindex="0">Loading… If nothing appears, use Download .md above.</pre>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="intro">
+    <p class="kicker">Official help</p>
+    <h2>Straight from the AI tools</h2>
+    <p>Features and plans change often. These pages are always the latest version, and the course tells your AI to check them as it goes.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <h3>Claude</h3>
+      <ul class="ticks">
+        <li><a href="https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork" rel="noopener">Get started with Cowork (working with folders)</a></li>
+        <li><a href="https://support.claude.com/en/articles/12512180-using-skills-in-claude" rel="noopener">Use skills in Claude (saved instructions)</a></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Other AI tools</h3>
+      <p>Search your tool's help pages for "work with local files" and "custom instructions". If it can't open folders, the course still works: you paste in the file names and follow its plan by hand.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="wrap contact">
+  <div class="contact-box">
+    <h2>Want more of your week back?</h2>
+    <p>A tidy folder is a start. In a Power Hour we pick the next thing eating your week and fix it together. Or book a free 15-minute call to talk it through.</p>
+    <a class="email" href="mailto:info@liminalcx.com?subject=Folder%20course">info@liminalcx.com</a>
+    <div class="btns" style="justify-content:center">
+      <a class="btn btn-lime" href="/book-power-hour">Book a Power Hour</a>
+      <a class="btn btn-line" href="/book">Book a 15-minute call</a>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var pre=document.getElementById('prompt'),btn=document.getElementById('copy'),msg=document.getElementById('copied'),text='';
+  fetch('guide.md').then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){text=t;pre.textContent=t}).catch(function(){});
+  btn.addEventListener('click',function(){
+    if(!text)return;
+    function done(){msg.textContent='Copied';setTimeout(function(){msg.textContent=''},2500)}
+    if(navigator.clipboard){navigator.clipboard.writeText(text).then(done,fallback)}else{fallback()}
+    function fallback(){var r=document.createRange();r.selectNodeContents(pre);var s=getSelection();s.removeAllRanges();s.addRange(r);try{document.execCommand('copy');done()}catch(e){msg.textContent='Select the text and copy'}}
+  });
+})();
+
+// "See it first": 7 scenes. Edit captions here; chat bubbles show from their data-s scene onwards.
+(function(){
+  var scenes=[
+    'Make a Test Folder and copy 10 to 20 files into it. Mine was old family photos and a PDF.',
+    'Connect the folder, not the separate files, and paste one request.',
+    'It shows you a plan first. Nothing has moved yet.',
+    'Steer it to how you actually look for things. One sentence is enough.',
+    'Say yes, and it does the moving.',
+    'Check the result. Jean went in with the Kavanaghs: it worked out she was Papa’s sister.',
+    'Two things just happened: a tidy folder, and a saved folder organiser for next time.'
+  ];
+  var demo=document.getElementById('of-demo'),cap=document.getElementById('of-cap'),stepsBox=document.getElementById('of-steps');
+  var files=document.getElementById('of-files'),folders=document.getElementById('of-folders');
+  var tiles=[].slice.call(files.children),msgs=[].slice.call(document.querySelectorAll('#of-chat .of-msg'));
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cur=-1,timer=null,playing=!reduce,visible=false,sorted=false;
+
+  function arrange(toSorted,animate){
+    if(toSorted===sorted)return;
+    var first=tiles.map(function(t){return t.firstElementChild.getBoundingClientRect()});
+    if(toSorted){tiles.forEach(function(t){folders.querySelector('.of-folder[data-f="'+t.dataset.f+'"] .of-in').appendChild(t)})}
+    else{tiles.forEach(function(t){files.appendChild(t)})}
+    files.hidden=toSorted;folders.hidden=!toSorted;sorted=toSorted;
+    if(!animate||reduce)return;
+    tiles.forEach(function(t,i){
+      var a=first[i],b=t.firstElementChild.getBoundingClientRect();if(!b.width)return;
+      var s=a.width/b.width;
+      t.style.transition='none';
+      t.style.transform='translate('+(a.left-b.left)+'px,'+(a.top-b.top)+'px) scale('+s+')';
+    });
+    files.offsetWidth;
+    tiles.forEach(function(t,i){
+      t.style.transition='transform .9s cubic-bezier(.2,.7,.2,1) '+(i*45)+'ms';
+      t.style.transform='';
+    });
+  }
+  function show(n,animate){
+    cur=n;demo.dataset.s=n;cap.textContent=scenes[n];
+    msgs.forEach(function(m){m.classList.toggle('on',+m.dataset.s<=n)});
+    arrange(n>=4,animate);
+    [].forEach.call(stepsBox.querySelectorAll('button[data-n]'),function(b){if(+b.dataset.n===n)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current')});
+  }
+  function next(){show((cur+1)%scenes.length,true);schedule()}
+  function schedule(){clearTimeout(timer);timer=null;if(playing&&visible){timer=setTimeout(next,cur===scenes.length-1?6500:(cur===4?5000:4200))}}
+  scenes.forEach(function(_,i){var b=document.createElement('button');b.type='button';b.dataset.n=i;b.textContent=i+1;b.setAttribute('aria-label','Step '+(i+1));b.addEventListener('click',function(){playing=false;play.textContent='Play';show(i,true);schedule()});stepsBox.appendChild(b)});
+  var play=document.createElement('button');play.type='button';play.className='of-play';play.textContent=playing?'Pause':'Play';
+  play.addEventListener('click',function(){playing=!playing;play.textContent=playing?'Pause':'Play';if(playing)next();else schedule()});
+  stepsBox.appendChild(play);
+  show(reduce?6:0,false);
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){visible=e.isIntersecting;schedule()})},{threshold:.3}).observe(demo)}
+  else{visible=true;schedule()}
+})();
+</script>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap row">
+    <span>© 2026 Liminal CX · Claire Kavanagh</span>
+    <span><a href="/book">Book a 15-minute call</a> · <a href="mailto:info@liminalcx.com">Email</a> · <a href="https://www.linkedin.com/in/clairekav" rel="noopener">LinkedIn</a></span>
+  </div>
+</footer>
+</body>
+</html>
