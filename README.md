@@ -148,6 +148,7 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 
 - **18 Nov 2026:** Added the fourth free course, Sort out a messy folder (/free/organise-a-folder/), with an animated walk-through using Claire's own family photos, her before/after screenshots, a card on /free/ and a sitemap entry.
 - **18 Nov 2026:** Added the fifth free course, Project folders that stay tidy (/free/project-folders/): PARA folders, a README per project, a "new project" recipe and a bonus daily sweep that archives old versions. Card on /free/ and sitemap entry added.
+- **18 Nov 2026:** Project folders course: guide.md now includes a PARA cheat sheet section (four folders with examples, the "where does a file go?" questions, tips and five rules, paraphrased from Tiago Forte's cheat sheet and credited). Subfolders are only created when there is a file for them (his never-create-an-empty-folder rule). The page has a matching where-does-it-go flowchart and rules card. The animation now adds Venue, Agenda and Archive folders during the sweep. Forte's PDF is not hosted: the page links to fortelabs.com.
 
 ## Known issues
 

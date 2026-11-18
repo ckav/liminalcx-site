@@ -63,6 +63,19 @@
 .pf-para .card:last-child h3,.pf-para .card:last-child .big{color:var(--lime)}
 .pf-para .card:last-child .eg{color:var(--muted)}
 .pf-credit{margin-top:16px;font-size:14px;max-width:780px}
+.pf-where{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;margin-top:40px;padding:28px;border:1px solid var(--line);border-radius:18px;background:#fff}
+@media (max-width:820px){.pf-where{grid-template-columns:1fr;padding:20px}}
+.pf-where h3{margin:4px 0 16px}
+.pf-flow{list-style:none;margin:0;padding:0}
+.pf-flow li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0 12px 22px;position:relative;border-left:2px solid var(--line);margin-left:8px}
+.pf-flow li::before{content:"";position:absolute;left:-7px;top:50%;width:12px;height:12px;margin-top:-6px;border-radius:50%;background:#000}
+.pf-flow li:last-child{border-left-color:transparent}
+.pf-flow span{color:#000;font-size:15px;min-width:0}
+.pf-flow b{flex:0 0 auto;background:var(--lime);color:#000;border-radius:999px;padding:4px 12px;font-size:14px}
+.pf-flow b::before{content:"Yes \2192  ";font-family:"DM Mono","Courier New",monospace;font-size:11px;letter-spacing:.06em}
+.pf-flow .pf-no b{background:var(--soft)}
+.pf-flow .pf-no b::before{content:""}
+.pf-small{font-size:14px;margin-top:14px}
 </style>
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -133,14 +146,14 @@
           <li class="d1">1 Projects</li>
           <li class="d2" data-in="1" data-out="6">Summer away day</li>
           <li class="d3 file md" data-in="1" data-out="6" data-hot="2 5">README.md</li>
-          <li class="d3" data-in="1" data-out="6">Venue</li>
+          <li class="d3" data-in="4" data-out="6">Venue <em>new folder</em></li>
           <li class="d4 file" data-in="4" data-out="6">oakfield-quote.pdf <em>filed</em></li>
           <li class="d3" data-in="1" data-out="6">Budget</li>
           <li class="d4 file" data-in="1" data-out="4">Budget v1.xlsx</li>
           <li class="d4 file" data-in="4" data-out="6">Budget v2.xlsx <em>filed</em></li>
-          <li class="d3" data-in="1" data-out="6">Agenda and guests</li>
+          <li class="d3" data-in="4" data-out="6">Agenda and guests <em>new folder</em></li>
           <li class="d4 file" data-in="4" data-out="6">Agenda FINAL.docx <em>filed</em></li>
-          <li class="d3" data-in="1" data-out="6">Archive</li>
+          <li class="d3" data-in="4" data-out="6">Archive <em>new folder</em></li>
           <li class="d4 file" data-in="4" data-out="6" data-hot="4">Budget v1.xlsx <em class="arc">archived</em></li>
           <li class="d3 file" data-in="3" data-out="4">Budget v2.xlsx <em class="new">new</em></li>
           <li class="d3 file" data-in="3" data-out="4">oakfield-quote.pdf <em class="new">new</em></li>
@@ -152,22 +165,20 @@
         </ul>
       </div>
       <div class="pf-chat" id="pf-chat" aria-label="Example chat with the AI">
-        <div class="pf-msg pf-me" data-s="0">Start a new project called Summer away day. 40 people, 26 June.</div>
-        <div class="pf-msg pf-ai" data-s="1">Here's the plan: a Summer away day folder in 1 Projects, with Venue, Budget, Agenda and guests, and Archive, plus a README. OK?</div>
+        <div class="pf-msg pf-me" data-s="0">Start a new project called Summer away day. 40 people, 26 June. I’ve got a draft budget already.</div>
+        <div class="pf-msg pf-ai" data-s="1">Here's the plan: a Summer away day folder in 1 Projects, with a Budget folder for your draft and a README. I'll add other folders when there's something to put in them. OK?</div>
         <div class="pf-msg pf-me" data-s="1">Yes</div>
         <div class="pf-msg pf-ai" data-s="2">Done. Here's the README:<pre># Summer away day
 Goal: team away day, 40 people
 Deadline: 26 June · Status: planning
 
 ## Where things are
-Venue/   quotes and contract
 Budget/  costs
-Agenda and guests/
-Archive/ older versions
+(more folders added as files arrive)
 
 ## Latest versions
 Budget: Budget v1.xlsx</pre></div>
-        <div class="pf-msg pf-ai" data-s="5">Daily sweep, 18:00. Filed 3 new files. Archived Budget v1 (v2 is newer). README updated: Budget v2 is now the latest. Nothing needs you.</div>
+        <div class="pf-msg pf-ai" data-s="5">Daily sweep, 18:00. Filed 3 new files and made Venue and Agenda folders for them. Archived Budget v1 (v2 is newer). README updated: Budget v2 is now the latest. Nothing needs you.</div>
         <div class="pf-msg pf-me" data-s="6">The away day is finished. Archive it.</div>
         <div class="pf-msg pf-ai" data-s="6">Done. Status set to finished, final versions listed in the README, and the folder moved to 4 Archive.</div>
       </div>
@@ -208,12 +219,36 @@ Budget: Budget v1.xlsx</pre></div>
     <p>The four top-level folders come from Tiago Forte's PARA method in <i>Building a Second Brain</i>. Every file in your working life fits one of them.</p>
   </div>
   <div class="pf-para">
-    <div class="card"><span class="big">1</span><h3>Projects</h3><p>Short-term pieces of work with a goal and an end date.</p><p class="eg">The summer away day</p></div>
-    <div class="card"><span class="big">2</span><h3>Areas</h3><p>Parts of your work that need ongoing attention, with no end date.</p><p class="eg">Finance, team, suppliers</p></div>
-    <div class="card"><span class="big">3</span><h3>Resources</h3><p>Topics and reference material you might use.</p><p class="eg">Templates, brand guidelines, how-to guides</p></div>
-    <div class="card"><span class="big">4</span><h3>Archive</h3><p>Anything no longer active that you might want later.</p><p class="eg">Finished projects and old versions</p></div>
+    <div class="card"><span class="big">1</span><h3>Projects</h3><p>Things you’re actively working on, with a goal and a deadline.</p><p class="eg">A product launch, the summer away day</p></div>
+    <div class="card"><span class="big">2</span><h3>Areas</h3><p>Your roles and responsibilities: a standard to keep up, with no end date.</p><p class="eg">Finance, team, suppliers</p></div>
+    <div class="card"><span class="big">3</span><h3>Resources</h3><p>Things you’re interested in or might use.</p><p class="eg">Slide templates, brand guidelines, how-to guides</p></div>
+    <div class="card"><span class="big">4</span><h3>Archive</h3><p>Completed or inactive things.</p><p class="eg">Finished projects and old versions</p></div>
   </div>
-  <p class="pf-credit">Read more on <a href="https://fortelabs.com/blog/para/" rel="noopener">Tiago Forte's PARA method</a>. Archiving is what keeps this working: old versions and finished projects move out of the way, so the latest document is always the one your AI finds first.</p>
+  <p class="pf-credit">Archiving is what keeps this working: old versions and finished projects move out of the way, so the latest document is always the one your AI finds first.</p>
+
+  <div class="pf-where">
+    <div>
+      <p class="kicker">Where does a file go?</p>
+      <h3>Ask three questions, in order</h3>
+      <ol class="pf-flow">
+        <li><span>Will it help move a current project forward?</span><b>Projects</b></li>
+        <li><span>Will it help you keep up an ongoing responsibility?</span><b>Areas</b></li>
+        <li><span>Will it support one of your interests?</span><b>Resources</b></li>
+        <li class="pf-no"><span>None of these? Is it really worth keeping?</span><b>Probably not</b></li>
+      </ol>
+      <p class="pf-small">Your AI asks the same questions every time it files something. When it isn't sure, it never deletes: it adds the file to "Needs you" in the README.</p>
+    </div>
+    <div>
+      <p class="kicker">Rules the course follows</p>
+      <ul class="ticks">
+        <li><b>Never create an empty folder.</b> Folders appear only when there's a file to go in them.</li>
+        <li><b>Move quickly, touch lightly.</b> There's no one perfect place. Pick a good one and move on.</li>
+        <li><b>Search is your friend.</b> Search first, then look in folders.</li>
+        <li><b>When in doubt, start over.</b> Archive everything with today's date and start fresh.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="pf-credit">The questions and rules come from Tiago Forte's PARA cheat sheet, and they're built into the instructions you copy below. <a href="https://fortelabs.com/blog/para/" rel="noopener">Read his free introduction to PARA</a>.</p>
 </section>
 
 <section class="wrap">
@@ -299,10 +334,10 @@ Budget: Budget v1.xlsx</pre></div>
 (function(){
   var scenes=[
     'One sentence starts a new project.',
-    'It shows the plan, then creates the folders inside 1 Projects.',
+    'It shows the plan, then creates the project folder, with subfolders only for files you already have.',
     'Every project gets a README: what’s where, and which version is the latest.',
     'You work as normal. New files land wherever you saved them.',
-    '18:00, the daily sweep: new files go to the right folder, and Budget v1 moves to Archive because v2 is newer.',
+    '18:00, the daily sweep: new files go to the right place, new folders appear only when needed, and Budget v1 moves to Archive because v2 is newer.',
     'The README now points to Budget v2, so you and your AI always open the latest.',
     'Project finished? One sentence moves the whole folder to 4 Archive.'
   ];
