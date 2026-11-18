@@ -22,6 +22,7 @@ Claire Kavanagh's consulting site for AI workshops, CX and teams. This is a plai
 | `404.html` | Not found page |
 | `assets/site.css` | All styles. Colours are CSS variables in `:root` |
 | `assets/logo.png`, `assets/claire.jpg` | Images |
+| `assets/results/` | Claire's results icons (cost savings, satisfaction, automations), resized to 240px from the 4500px originals in website_management. Used in the Services Results cards. |
 | `assets/embed/` | Claire's own EMBED artwork: the circle diagram and the five lime-to-green stage icons. Originals are in `AutomationFramework/website_management/`, which also has her branded People, Process, Platforms, results and cart/ticket icons. |
 | `netlify.toml` | Domain redirects, booking redirects, old-URL redirects, headers |
 
@@ -127,6 +128,8 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 - **18 Nov 2026:** Added the second free course, Daily email and calendar sweep (/free/daily-sweep/), with a card on /free/ and a sitemap entry.
 - **18 Nov 2026:** Split payments out of the Calendly course into a new course 3, Connect Stripe and take payment before booking (/free/booking-payments/). Course 1's animation no longer shows payment (5 steps). Added "likely need a paid plan" notes, a card on /free/ and a sitemap entry.
 - **18 Nov 2026:** /free/: course card tops are now equal height, and there's a platform filter (built from each card's `data-platforms`).
+
+- **18 Nov 2026:** Services Results cards now use Claire's own icons in place of the £ / + / ↻ circles. Note: the cost savings icon shows $, not £.
 
 ## Known issues
 
