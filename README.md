@@ -72,7 +72,7 @@ Short free courses for PAs and admins. Each course is a set of instructions that
   - Cards sit in `.grid.courses`. Each black top is the same height across a row (CSS subgrid), whatever wraps inside it.
   - **Platform filter:** each card has `data-platforms="Google Calendar, Stripe"` (comma-separated). The filter pills above the cards are built from those, with counts, so a new platform gets its pill automatically. Keep the platform names spelled the same on every card.
   - `?platform=Stripe` opens the page already filtered.
-- **Home page links:** a lime "Free mini courses" strip sits after "Start where you are" (`.free-band` in `index.html`), with one link per course and a "See all free courses" button. **When you add a course, add a line there too** (the list isn't built automatically).
+- **Home page links:** a lime "Free mini courses" strip sits after "Start where you are" (`.free-band` in `index.html`), with a "See all free courses" button. **The course links build themselves:** a script reads the cards on /free/ (title, `data-platforms` and set-up time) and shows the first 4 in the order they appear there. The links written in the page are only a fallback if that fails, so there's no need to update them for each new course. To put a course on the home page, move its card nearer the top of /free/.
 - **Paid plans:** each course page says "You'll likely need a paid plan" where it applies.
 - `netlify.toml` serves `/free/*.md` as UTF-8 markdown, so curly quotes and other special characters display properly.
 - **Styles:** the "Free mini courses" rules at the end of `assets/site.css`.
@@ -159,6 +159,7 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 - **18 Nov 2026:** Travel eSIM case study rewritten as product launch support, through a product development lens: research (buying scenarios), design (12 customer journeys) and clickable prototypes, made much quicker with AI. The drawn ticket was replaced by a three-step illustration (research card, destination search, sending eSIMs to family), `.pd-*` styles in `assets/case-studies/mobile-proto.css`. "Much quicker" is used instead of a time figure until Claire confirms one.
 - **18 Nov 2026:** Home page: added the Free mini courses strip (links to all three courses and /free/) after "Start where you are".
 - **18 Nov 2026:** Travel eSIM case study rebuilt from Claire’s two diagrams: "A travel eSIM service, mapped and working in six weeks" (requirements captured and a working service in six weeks; the public launch came later). "One journey, six flows" is an animated diagram (`.fl-*` styles in `assets/case-studies/mobile-proto.css`, scenes in `assets/case-studies/journey-flow.js`), and "Where automation could help each team" is six team cards (`.tm-*`), labelled as opportunities, not all built. The note says the original development partner didn’t build all the self-service and the business moved to a new partner: keep it neutral, never criticise the developers on the site.
+- **18 Nov 2026:** Home page: the Free mini courses links are now built from the /free/ cards (first 4), so new courses appear automatically.
 
 ## Known issues
 

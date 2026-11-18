@@ -249,7 +249,7 @@
       <p>Short courses for PAs and admins. Paste the instructions into the AI chat you already use, and it coaches you through the job one step at a time.</p>
       <div class="btns"><a class="btn btn-dark" href="/free/">See all free courses</a></div>
     </div>
-    <ul class="free-links">
+    <ul class="free-links" id="free-links">
       <li><a href="/free/google-bookings-stripe/"><b>Swap Calendly for Google Calendar bookings</b><span>Google Calendar · 20 to 40 minutes</span></a></li>
       <li><a href="/free/booking-payments/"><b>Connect Stripe and take payment before booking</b><span>Google Calendar · Stripe · 30 to 45 minutes</span></a></li>
       <li><a href="/free/daily-sweep/"><b>Daily email and calendar sweep</b><span>Gmail or Outlook · 15 to 20 minutes</span></a></li>
@@ -382,6 +382,31 @@
   </div>
 </section>
 
+<script>
+// Free courses strip: built from the cards on /free/, so new courses appear here automatically.
+// The links written in the page are a fallback if this can't load.
+(function(){
+  var list=document.getElementById('free-links');
+  if(!list||!window.fetch||!window.DOMParser)return;
+  var MAX=4;
+  fetch('/free/').then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(html){
+    var doc=new DOMParser().parseFromString(html,'text/html');
+    var cards=[].slice.call(doc.querySelectorAll('#courses .product[data-platforms]'));
+    if(!cards.length)return;
+    list.innerHTML='';
+    cards.slice(0,MAX).forEach(function(c){
+      var a=c.querySelector('a.cover'),h=c.querySelector('h3'),m=c.querySelector('.meta');
+      if(!a||!h)return;
+      var plats=c.dataset.platforms.split(',').map(function(x){return x.trim()}).filter(Boolean);
+      var time=m?m.textContent.replace(/^\s*Time to set up:\s*/i,'').trim():'';
+      var li=document.createElement('li'),link=document.createElement('a'),b=document.createElement('b'),sp=document.createElement('span');
+      link.href=a.getAttribute('href');b.textContent=h.textContent.trim();
+      sp.textContent=plats.concat(time?[time]:[]).join(' · ');
+      link.appendChild(b);link.appendChild(sp);li.appendChild(link);list.appendChild(li);
+    });
+  }).catch(function(){});
+})();
+</script>
 </main>
 
 <footer class="site-foot">
