@@ -53,7 +53,7 @@ This is the section headed **"Stop learning. Start coaching."** The idea is that
 
 ## Free mini courses (/free/)
 
-Short free courses for PAs and admins. Each course is a set of instructions that people paste into ChatGPT, Claude, Copilot or Gemini. The AI then coaches them through the job one step at a time.
+Short free courses for anyone who wants to recapture more of their time (originally aimed at PAs and admins). Each course is a set of instructions that people paste into ChatGPT, Claude, Copilot or Gemini. The AI then coaches them through the job one step at a time.
 - **The instructions live only in `guide.md`.** The course page loads that file into the copy box, so to change a course you edit `guide.md` and nothing else. The Copy and Download buttons use the same file.
 - **The guide has a set shape.** It opens with "Instructions for the AI" (ask first, one step at a time, never ask for passwords or card details, plain English), then "Questions to ask first", then "Reference: the steps", then "When we're finished".
 - **To add a course:**
@@ -160,3 +160,4 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 - None at the moment.
 - Home "Start where you are": the section title and product names are still to be settled with Claire, and the page names (AI Audit, Team workshop) don't match the card names yet.
 - "The approach" is on both Services and the home page. Claire to decide what replaces it on Services.
+- **18 Nov 2026:** /free/ intro line changed from "for PAs and admins" to "for anyone who wants to recapture more of their time", with a new line: "These examples are designed to illustrate new ways of using your existing tools." The page title, meta descriptions and course pages still say PAs and admins.
