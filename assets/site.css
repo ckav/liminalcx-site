@@ -217,3 +217,7 @@ ul.ticks li::before{content:"";position:absolute;left:4px;top:6px;width:15px;hei
 .sw-more{font-size:17px;font-weight:500;color:var(--green-dark);text-underline-offset:3px}
 .sw-more:hover{color:#000}
 @media (max-width:640px){.sw-journey{grid-template-columns:1fr}.sw-journey .sw-right{justify-self:start;text-align:left}.sw-bar{grid-row:2}}
+
+/* Time, scope, resource diagram (Home and About, under the bio) */
+.tsr .tsr-lede{margin:8px 0 0;font-size:20px;color:#000;max-width:640px}
+.tsr-fig{display:block;width:100%;max-width:900px;height:auto;margin:24px auto 0}
