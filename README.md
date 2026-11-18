@@ -13,11 +13,10 @@ Claire Kavanagh's consulting site for AI workshops, CX and teams. This is a plai
 
 | Path | Page |
 |---|---|
-| `index.html` | Home |
+| `index.html` | Home (the former draft, live since 18 Nov 2026) |
 | `services/index.html` | Services: 1:1, Workshops, Consulting (was /workshops, which still redirects) |
 | `ai-audit/index.html` | AI Audit (was /focus-first, which still redirects) |
 | `about/index.html` | Bio and first case study (this website), with a flow diagram and an update animation |
-| `draft-home/index.html` | **Hidden draft** of a new home page at /draft-home/. It's set to `noindex`, isn't in the menu or the sitemap, and the live home page is unchanged. |
 | `404.html` | Not found page |
 | `assets/site.css` | All styles. Colours are CSS variables in `:root` |
 | `assets/logo.png`, `assets/claire.jpg` | Images |
@@ -48,9 +47,9 @@ This is the section headed **"Stop learning. Start coaching."** The idea is that
 - **Styles** are the `.loop*` rules in `assets/site.css`.
 - **History.** The first version (replaced on 17 Nov 2026) had a New starter / AI switch with two written lists. Claire dropped it because it took too much room and didn't add much, and she wanted the section to be useful straight away, with real prompts.
 
-## Draft home page (/draft-home/)
+## Home page
 
-A new direction for the home page, agreed with Claire on 17 Nov 2026:
+This direction was agreed with Claire on 17 Nov 2026 and built as a hidden draft at /draft-home/. It replaced the old home page on 18 Nov 2026, and /draft-home/ now redirects to /. The old home page ("Raising the bar for customer experience", EMBED cards, People / Process / Platform) is in git history.
 - **Audience:** founders and teams who already use AI but feel they should be doing more. Consulting isn't expected to come from the website, so it's played down.
 - **Hero:** "Unlock the power to create better human experiences".
 - **Section order (18 Nov 2026):** hero → The approach (the coaching loop, copied from Services) → How we help: EMBED (Claire's circle and icons) → Start where you are → bio → platforms → Sound familiar? (moved to the bottom, above contact).
@@ -63,9 +62,10 @@ A new direction for the home page, agreed with Claire on 17 Nov 2026:
     3. Bring your team (team workshop)
   - The Consulting card is gone from the draft.
 - The "Why together" block was tried and removed on 18 Nov 2026: Claire felt it wasn't working.
-- The old EMBED and People / Process / Platform sections and the top strip are removed from the draft. They're still on the live home page.
+- The old EMBED and People / Process / Platform sections and the top strip are removed from the draft. They're gone from the site now.
 - **Still to come:** a Microsoft stat on collaborative success rates, once Claire finds the source document.
-- **To go live:** copy the draft's sections into `index.html`. Then remove the `noindex` meta and the draft's `<style>` block (move those rules into site.css), and delete `draft-home/`.
+- **Styles** for the home sections are at the end of `assets/site.css`.
+- **The approach loop** appears on both the home page and Services. A wording change has to be made in both `steps` arrays.
 
 ## Checking a change before pushing
 
@@ -88,9 +88,13 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
   - Hidden draft of a new home page added at /draft-home/ (see above).
 - **18 Nov 2026:** Loop card (Services and draft home) is now a fixed height, so it no longer jumps when the Update prompt shows.
 - **18 Nov 2026:** Draft home: the "25+ years" lime panel became a quote in the bio.
-- **18 Nov 2026:** Draft home: EMBED is now a table, with one row per stage and a line each for Customers and Employees. On phones the column names show inside each row. The live home page still has the old long cards.
+- **18 Nov 2026:** Draft home: EMBED is now a table, with one row per stage and a line each for Customers and Employees. On phones the column names show inside each row. 
 - **18 Nov 2026:** Draft home page: added The approach (coaching loop) and an EMBED section with Claire's branded artwork, and moved Sound familiar? to the bottom. Removed "Why together" and replaced the services cards with the alone vs together section and three product steps.
+
+- **18 Nov 2026:** Stat changed from "370+ women mentored since 2020" to "370+ founders mentored since 2020" on Home, About and AI Audit.
+- **18 Nov 2026:** The draft replaced the live home page. Styles moved into site.css, the meta description and social preview text were updated, and /draft-home/ redirects to /.
 
 ## Known issues
 
 - None at the moment.
+- "The approach" is on both Services and the home page. Claire to decide what replaces it on Services.
