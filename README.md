@@ -160,6 +160,7 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 - **18 Nov 2026:** Home page: added the Free mini courses strip (links to all three courses and /free/) after "Start where you are".
 - **18 Nov 2026:** Travel eSIM case study rebuilt from Claire’s two diagrams: "A travel eSIM service, mapped and working in six weeks" (requirements captured and a working service in six weeks; the public launch came later). "One journey, six flows" is an animated diagram (`.fl-*` styles in `assets/case-studies/mobile-proto.css`, scenes in `assets/case-studies/journey-flow.js`), and "Where automation could help each team" is six team cards (`.tm-*`), labelled as opportunities, not all built. The note says the original development partner didn’t build all the self-service and the business moved to a new partner: keep it neutral, never criticise the developers on the site.
 - **18 Nov 2026:** Home page: the Free mini courses links are now built from the /free/ cards (first 4), so new courses appear automatically.
+- **18 Nov 2026:** /free/ intro line changed from "for PAs and admins" to "for anyone who wants to recapture more of their time", with a new line: "These examples are designed to illustrate new ways of using your existing tools." The page title, meta descriptions and course pages still say PAs and admins.
 
 ## Known issues
 
