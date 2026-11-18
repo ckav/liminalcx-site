@@ -558,89 +558,71 @@
   <article class="cs" id="travel-esim">
     <div class="cs-top">
       <p class="eyebrow">Case study · Travel eSIM business</p>
-      <h3>Launching a travel eSIM, with AI as the design team</h3>
-      <p>Using AI for the research, the journey design and clickable prototypes behind a product launch, so the team could see, test and change each idea far sooner.</p>
+      <h3>A travel eSIM service, mapped and working in six weeks</h3>
+      <p>Using AI to capture the requirements, design the whole customer journey and find where self-service and automation could help every team.</p>
+      <p class="cs-note">Not all of the self-service was built by the original development partner. The business later moved to a new partner, with the requirements and designs ready to hand over.</p>
     </div>
     <div class="cs-body">
 
       <div class="cs-facts">
-        <div><h4>The challenge</h4><p>A travel eSIM business needed its customer journeys worked out for launch: finding a plan for several countries, buying for the whole family, topping up, pausing a plan. Normally that means weeks of workshops, write-ups and design before anyone can click through an idea. And every decision depends on how travellers really buy.</p></div>
-        <div><h4>What I did</h4><p><span class="tag">E</span>Researched how travellers buy: who buys, for whom, and on how many devices. Then ranked the scenarios to build for first, such as a parent buying for a family of four.<br><span class="tag">M</span>Designed 12 customer journeys, from multi-country search and checkout to auto-renewal, pausing a plan, sending eSIMs to family and buying by message.<br><span class="tag">D</span>Turned meeting recordings into around 400 traceable requirements, and shared each journey as a design to review and a prototype to try.</p></div>
-        <div><h4>How AI helped</h4><p>AI turned meeting transcripts into requirements, helped sort the research into scenarios, and built the wireframes and clickable prototypes. That made it much quicker to try an idea, show it and change it. I decided what to test, and the team agreed every requirement and design before it went to the developers.</p></div>
+        <div><h4>The challenge</h4><p>A new travel eSIM business wanted a service that ran on self-service, from a traveller’s first visit to after their trip. It needed the requirements agreed and a working service quickly, ahead of a wider public launch.</p></div>
+        <div><h4>What I did</h4><p><span class="tag">E</span>Captured around 400 requirements from meeting recordings in six weeks, each traceable to where it was agreed.<br><span class="tag">M</span>Designed the whole customer journey as six connected flows, from welcome to feedback.<br><span class="tag">D</span>Read the platform’s technical documentation to find what customers could do for themselves, and mapped where automation could help six teams.</p></div>
+        <div><h4>How AI helped</h4><p>AI turned meeting transcripts into requirements tables, read the technical documentation to spot what could be self-service, and drafted the journey maps and prototypes. That made it much quicker to go from a conversation to something the team could review. The team checked and agreed every requirement.</p></div>
       </div>
 
       <div>
-        <h4 class="kicker" style="margin-bottom:14px">One scenario, from research to prototype</h4>
-        <div class="pd">
-          <div class="pd-step">
-            <p class="pd-n"><span>1</span>Research</p>
-            <div class="pd-card">
-              <span class="mp-kick">Scenario · build for first</span>
-              <p class="pd-q">A parent buys eSIMs for a family of four, travelling to three countries.</p>
-              <div class="pd-row"><span>Who pays</span><b>One person</b></div>
-              <div class="pd-row"><span>Who uses it</span><b>Four people, four phones</b></div>
-              <div class="pd-row"><span>What could go wrong</span><b>eSIMs installed on the wrong phone</b></div>
+        <h4 class="kicker" style="margin-bottom:14px">One journey, six flows</h4>
+        <figure class="mpdemo">
+          <div class="fl-view" id="fl-view" role="img" aria-label="Diagram: the customer journey as six connected flows. Every customer starts at one entry point, which checks whether they already have a plan. With no plan, first-time eSIM users get a phone check and experienced travellers are asked where they are going and how much data they need. Both go to purchase, then setup. With a plan, customers who haven’t installed it get setup help, and those who have get help with usage and network problems through support. Every journey ends with feedback.">
+            <div class="fl" id="fl" aria-hidden="true">
+              <svg class="fl-lines" viewBox="0 0 760 480" width="760" height="480">
+                <path data-k="l-pre" d="M380 66 L180 96"/><path data-k="l-post" d="M380 66 L580 96"/>
+                <path data-k="l-new" d="M180 146 L104 176"/><path data-k="l-exp" d="M180 146 L260 176"/>
+                <path data-k="l-ni" d="M580 146 L500 176"/><path data-k="l-in" d="M580 146 L656 176"/>
+                <path data-k="l-np" d="M104 240 L380 270"/><path data-k="l-ep" d="M260 240 L380 270"/>
+                <path data-k="l-po" d="M380 320 L190 350"/><path data-k="l-nio" d="M500 240 L190 350"/><path data-k="l-ins" d="M656 240 L570 350"/>
+                <path data-k="l-of" d="M190 400 L380 420"/><path data-k="l-sf" d="M570 400 L380 420"/>
+              </svg>
+              <div class="fl-n main" data-k="entry" style="left:290px;top:16px;width:180px"><small>1 · Welcome</small><b>Entry point</b></div>
+              <div class="fl-n main" data-k="pre" style="left:70px;top:96px;width:220px"><small>2 · Pre-purchase</small><b>No plan yet</b></div>
+              <div class="fl-n main" data-k="post" style="left:470px;top:96px;width:220px"><small>3 · Post-purchase</small><b>Has a plan</b></div>
+              <div class="fl-n" data-k="new" style="left:30px;top:176px;width:148px"><b>First-time eSIM user</b><span>Does my phone support it? Try before you fly</span></div>
+              <div class="fl-n" data-k="exp" style="left:186px;top:176px;width:148px"><b>Experienced traveller</b><span>Where to, and how much data?</span></div>
+              <div class="fl-n" data-k="notin" style="left:426px;top:176px;width:148px"><b>Not installed yet</b><span>Setup help</span></div>
+              <div class="fl-n" data-k="inst" style="left:582px;top:176px;width:148px"><b>Installed</b><span>Usage and network help</span></div>
+              <div class="fl-n main" data-k="buy" style="left:290px;top:270px;width:180px"><small>Purchase</small><b>Compare and buy</b></div>
+              <div class="fl-n main" data-k="onb" style="left:90px;top:350px;width:200px"><small>5 · Onboarding</small><b>Step-by-step setup</b></div>
+              <div class="fl-n main" data-k="sup" style="left:470px;top:350px;width:200px"><small>4 · Support</small><b>Fix connection problems</b></div>
+              <div class="fl-n main" data-k="fb" style="left:290px;top:420px;width:180px"><small>6 · Feedback</small><b>Reviews and referrals</b></div>
             </div>
           </div>
-          <div class="pd-step">
-            <p class="pd-n"><span>2</span>Design</p>
-            <div class="pd-phone"><div class="pd-scr">
-              <p class="pd-h">Where are you going?</p>
-              <div class="pd-tags"><span>France ✕</span><span>Italy ✕</span><span>Spain ✕</span></div>
-              <div class="pd-tip">One Europe plan covers all three</div>
-              <div class="pd-opt on"><b>Europe plan</b><small>All three countries · one eSIM each</small></div>
-              <div class="pd-opt"><b>Three single-country plans</b><small>One per country</small></div>
-              <div class="pd-qty"><span>How many people?</span><b>− 4 +</b></div>
-              <span class="pd-btn">Continue</span>
-            </div></div>
-          </div>
-          <div class="pd-step">
-            <p class="pd-n"><span>3</span>Prototype</p>
-            <div class="pd-phone"><div class="pd-scr">
-              <p class="pd-h">Your 4 eSIMs</p>
-              <div class="pd-es"><b>Me</b><span class="ok">Installed ✓</span></div>
-              <div class="pd-es"><b>Sam</b><span class="ok">Sent ✓</span></div>
-              <div class="pd-es"><b>Alex</b><span class="send">Send ›</span></div>
-              <div class="pd-es"><b>Jo</b><span class="send">Send ›</span></div>
-              <div class="pd-via"><small>Send by</small><span class="on">Email</span><span>Text</span><span>Message</span></div>
-              <p class="pd-hint">Each person scans their own code, on their own phone.</p>
-            </div></div>
-          </div>
-        </div>
-        <p class="tk-ill">Illustration, redrawn for this site. Not the client’s designs or data.</p>
+          <figcaption>
+            <p class="mp-say" id="fl-say"></p>
+            <div class="mp-steps" id="fl-steps"><button type="button" data-s="0">1 Start</button><button type="button" data-s="1">2 New to eSIM</button><button type="button" data-s="2">3 Experienced</button><button type="button" data-s="3">4 Buy</button><button type="button" data-s="4">5 Set up</button><button type="button" data-s="5">6 Has a plan</button><button type="button" data-s="6">7 Support and feedback</button><button type="button" class="mp-pp" id="fl-pp" aria-pressed="false">Pause</button></div>
+          </figcaption>
+        </figure>
       </div>
 
       <div>
-        <h4 class="kicker" style="margin-bottom:14px">How each idea moved</h4>
-        <div class="flow flow-6" role="list">
-          <div class="node" role="listitem"><b>Meeting recordings</b><span>Ideas and decisions, as they were discussed</span></div>
-          <div class="arrow" aria-hidden="true">→</div>
-          <div class="node" role="listitem"><b>Requirements</b><span>Around 400, each traceable to its source</span></div>
-          <div class="arrow" aria-hidden="true">→</div>
-          <div class="node" role="listitem"><b>Scenarios</b><span>How real travellers buy, ranked</span></div>
-          <div class="arrow" aria-hidden="true">→</div>
-          <div class="node" role="listitem"><b>Prototype</b><span>A journey the team can click through</span></div>
-          <div class="arrow" aria-hidden="true">→</div>
-          <div class="node" role="listitem"><b>Team review</b><span>Try it, comment, change it</span></div>
-          <div class="arrow" aria-hidden="true">→</div>
-          <div class="node live" role="listitem"><b>Ready to build</b><span>Agreed before it reaches the developers</span></div>
+        <h4 class="kicker" style="margin-bottom:14px">Where automation could help each team</h4>
+        <div class="tm">
+          <div class="tm-c"><h5>Operations and tech</h5><ul><li>Automatic checks after every change, so the service stays stable</li><li>Spotting gaps or errors in data from suppliers</li><li>Alerts for network outages and fraud</li></ul></div>
+          <div class="tm-c"><h5>Marketing</h5><ul><li>Tracking competitors’ prices</li><li>Moving budget to the campaigns that work</li><li>Content in several languages, written to be found in search</li></ul></div>
+          <div class="tm-c"><h5>Product</h5><ul><li>Prices that follow holidays and demand</li><li>Testing designs against types of traveller</li><li>Shaping plans and family accounts</li></ul></div>
+          <div class="tm-c"><h5>Customer service</h5><ul><li>Before buying: setup guides and help choosing a plan</li><li>After buying: activation help and troubleshooting</li><li>Plan changes, upgrades and usage alerts</li></ul></div>
+          <div class="tm-c"><h5>Partners</h5><ul><li>Finding relevant affiliates</li><li>Recommending partners by destination</li><li>Tracking sales and testing commission levels</li></ul></div>
+          <div class="tm-c"><h5>Across teams</h5><ul><li>Automatic translation</li><li>Analysis that joins up every team’s data</li><li>Connected systems, with alerts in the team chat</li></ul></div>
         </div>
-      </div>
-
-      <div>
-        <h4 class="kicker" style="margin-bottom:14px">One idea, before and after</h4>
-        <div class="ba">
-          <div class="ba-before"><h4>The usual way</h4><p>“Let parents buy for the whole family” is discussed in a meeting, written up, designed, then built. Most people only see it working weeks later, when changes are expensive.</p></div>
-          <div class="ba-after"><h4>With AI</h4><p>The same idea becomes a clickable prototype the team can try, comment on and change, before anything is built.</p></div>
-        </div>
+        <p class="tk-ill">Opportunities identified during the project. Not all of them were built.</p>
       </div>
 
       <div>
         <h4 class="kicker" style="margin-bottom:14px">The result</h4>
         <div class="results">
-          <div class="stat"><b>12</b><span>customer journeys designed and prototyped</span></div>
-          <div class="stat"><b>~400</b><span>requirements, traced from meeting recordings</span></div>
-          <div class="stat"><b>Much quicker</b><span>from idea to something the team could click through</span></div>
+          <div class="stat"><b>6 weeks</b><span>to captured requirements and a working service</span></div>
+          <div class="stat"><b>~400</b><span>requirements, each one traceable</span></div>
+          <div class="stat"><b>6 flows</b><span>one connected customer journey</span></div>
+          <div class="stat"><b>18</b><span>automation opportunities across six teams</span></div>
         </div>
       </div>
 
@@ -730,6 +712,7 @@
 </script>
 <script src="/assets/case-studies/order-panel.js" defer></script>
 <script src="/assets/case-studies/mobile-proto.js" defer></script>
+<script src="/assets/case-studies/journey-flow.js" defer></script>
 </main>
 
 <footer class="site-foot">

@@ -72,34 +72,31 @@
 .mp-steps button.mp-pp{border-color:#000}
 .mp-steps button:focus-visible{outline:3px solid var(--green-dark,#007A34);outline-offset:2px}
 
-/* travel eSIM: one scenario, research → design → prototype (static drawing) */
-.pd{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start}
-.pd-n{display:flex;align-items:center;gap:8px;margin:0 0 10px;font-weight:600;color:#000;font-size:15px}
-.pd-n span{width:24px;height:24px;border-radius:50%;background:#000;color:var(--lime);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
-.pd-card{border:1px solid var(--lime);box-shadow:0 0 0 3px var(--lime-tint);border-radius:14px;padding:16px 18px;background:#fff}
-.pd-q{margin:0 0 10px;color:#000;font-size:16px;font-weight:500;line-height:1.35}
-.pd-row{padding:8px 0;border-top:1px solid var(--soft);font-size:14px}
-.pd-row span{display:block;color:var(--ink);font-size:12px}
-.pd-row b{color:#000}
-.pd-phone{max-width:250px;border-radius:28px;background:#000;padding:9px}
-.pd-scr{border-radius:20px;background:#fff;padding:16px 14px;min-height:330px;color:#000;font-size:13px}
-.pd-h{margin:0 0 10px;font-weight:700;font-size:15px}
-.pd-tags{display:flex;flex-wrap:wrap;gap:5px;border:1px solid var(--line);border-radius:10px;padding:7px}
-.pd-tags span{background:var(--soft);border-radius:999px;padding:2px 8px;font-size:12px}
-.pd-tip{margin:8px 0;background:var(--lime-tint);color:var(--olive);border-radius:8px;padding:6px 9px;font-size:12px;font-weight:600}
-.pd-opt{border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin-bottom:6px}
-.pd-opt.on{border:2px solid #000}
-.pd-opt b{display:block;font-size:13px}
-.pd-opt small{color:var(--ink);font-size:11px}
-.pd-qty{display:flex;justify-content:space-between;font-size:12px;padding:6px 2px}
-.pd-btn{display:block;text-align:center;font-weight:600;font-size:12px;border-radius:999px;padding:9px 0;margin-top:8px;background:#000;color:var(--lime)}
-.pd-es{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin-bottom:6px}
-.pd-es .ok{color:var(--green-dark,#007A34);font-weight:600;font-size:12px}
-.pd-es .send{background:#000;color:var(--lime);border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600}
-.pd-via{display:flex;align-items:center;gap:5px;margin-top:10px;flex-wrap:wrap}
-.pd-via small{font-size:11px;color:var(--ink);margin-right:2px}
-.pd-via span{font-size:11px;font-weight:600;border:1px solid var(--line);border-radius:999px;padding:2px 8px}
-.pd-via span.on{background:var(--lime);border-color:var(--lime)}
-.pd-hint{font-size:11px;color:var(--ink);margin:10px 0 0}
+/* travel eSIM: "One journey, six flows" diagram (.fl-*, script journey-flow.js) and six team cards (.tm-*) */
+.fl-view{position:relative;width:100%;border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 12px 34px rgba(0,0,0,.10)}
+.fl{position:absolute;left:0;top:0;width:760px;height:480px;transform-origin:0 0;color:#000;font-family:Rubik,Arial,sans-serif;font-size:13px;line-height:1.3;user-select:none}
+.fl *{box-sizing:border-box}
+.fl-lines{position:absolute;left:0;top:0}
+.fl-lines path{fill:none;stroke:var(--line);stroke-width:2;stroke-dasharray:6 5;transition:stroke .35s}
+.fl-lines path.done{stroke:#000;stroke-dasharray:none}
+.fl-lines path.on{stroke:var(--lime);stroke-width:4;stroke-dasharray:none}
+.fl-n{position:absolute;min-height:50px;border:1.5px solid var(--line);border-radius:10px;background:#fff;padding:7px 10px;text-align:center;display:flex;flex-direction:column;justify-content:center;transition:background .35s,border-color .35s,color .35s,box-shadow .35s}
+.fl-n.main{border-width:2px}
+.fl-n small{font-family:"DM Mono","Courier New",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--olive)}
+.fl-n b{font-size:14px}
+.fl-n span{font-size:11px;color:var(--ink);margin-top:2px}
+.fl-n:not(.main){min-height:64px}
+.fl-n:not(.main) b{font-size:13px}
+.fl-n.done{border-color:#000;background:#000;color:#fff}
+.fl-n.done small{color:var(--lime)} .fl-n.done span{color:#D9D9D9}
+.fl-n.on{border-color:var(--lime);background:var(--lime);color:#000;box-shadow:0 0 0 5px var(--lime-tint)}
+.fl-n.on small{color:#000} .fl-n.on span{color:#000}
+.tm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.tm-c{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:#fff;border-top:4px solid var(--lime)}
+.tm-c h5{margin:0 0 10px;color:#000;font-size:16px}
+.tm-c ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+.tm-c li{font-size:14px;line-height:1.35;padding-left:14px;position:relative}
+.tm-c li::before{content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--olive)}
 .tk-ill{font-size:12px;color:var(--muted);margin:10px 0 0}
-@media (max-width:860px){.pd{grid-template-columns:1fr}.pd-phone{margin:0}}
+@media (max-width:860px){.tm{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.tm{grid-template-columns:1fr}}
