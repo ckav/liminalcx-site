@@ -137,7 +137,10 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 
 - **18 Nov 2026:** Third case study added to About: a global merchandise company, with 50+ online stores in one order panel beside the ticket. It includes a low-fidelity animated mock-up (no real names or data) and the line "How AI would help today", because the project was done without AI.
 
+- **18 Nov 2026:** Home "Start where you are" replaced with Claude Design's version: an On your own → Together bar, and three cards with line icons (1:1 Power Hour, AI implementation workshop, Team AI Audit; the last is tinted). Styles are the `.sw-*` rules in site.css; the old `.vs` / `.path` rules are removed. The product names and copy came from the design, and Claire plans to tweak the copy later. Links: 1:1 → /services/#one-to-one, workshop → /ai-audit/, Team AI Audit → /services/#workshops. Source file: `AutomationFramework/website_management/start-where-you-are.html`.
+
 ## Known issues
 
 - None at the moment.
+- Home "Start where you are": the section title and product names are still to be settled with Claire, and the page names (AI Audit, Team workshop) don't match the card names yet.
 - "The approach" is on both Services and the home page. Claire to decide what replaces it on Services.
