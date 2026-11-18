@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&amp;family=Rubik:wght@300;400;500;600;700&amp;display=swap">
 <link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/case-studies/order-panel.css">
 <style>
 .cs{border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-top:28px}
 .cs-top{background:#000;color:#fff;padding:28px 28px 24px}
@@ -245,6 +246,112 @@
 
     </div>
   </article>
+
+  <article class="cs" id="merch-orders">
+    <div class="cs-top">
+      <p class="eyebrow">Case study · Global sports and entertainment merchandise company</p>
+      <h3>50+ online stores, one view of every order</h3>
+      <p>Support agents went from hunting through dozens of shops to seeing a customer’s latest order the moment they open the ticket.</p>
+    </div>
+    <div class="cs-body">
+
+      <div class="cs-facts">
+        <div><h4>The challenge</h4><p>The company runs online shops for sports teams and entertainment brands, with more than 50 stores worldwide. A single brand could have 7, split by country and currency. The help desk’s standard connection only linked to one store. So before agents could answer “where is my order?” (the most common question), they had to work out which shop the customer had bought from.</p></div>
+        <div><h4>What I did</h4><p><span class="tag">E</span>Confirmed the standard set-up couldn’t cover multiple stores. Patching it store by store would have meant hundreds of separate rules to maintain.<br><span class="tag">M</span>Mapped how a ticket finds the right order: search that brand’s stores by the customer’s email address and return the most recent order.<br><span class="tag">D</span>Wrote the brief, designed the order panel and managed the developer through build and launch, testing it with the agents who’d use it every day.</p></div>
+        <div><h4>How AI would help today</h4><p>This project was done without AI: the brief, the designs and the build were done the long way. Today, AI could turn the agents’ requests into a first brief, build a clickable prototype the same day, and check the finished build against the brief. People would still decide what agents see first, and who is allowed to cancel or refund.</p></div>
+      </div>
+
+      <div>
+        <h4 class="kicker" style="margin-bottom:14px">The order panel, in action</h4>
+        <figure class="opdemo">
+          <div class="op-view" id="op-view" role="img" aria-label="Illustration: an agent opens a “Where is my order?” ticket. A panel beside it has already searched all of the brand’s stores and shows the latest order’s payment, fulfilment and shipping status, dates and tracking link. The agent checks past orders, sees buttons to contact the courier, cancel or refund, and sends a saved reply with the order details filled in.">
+            <div class="op" id="op" aria-hidden="true">
+              <div class="op-bar"><span class="op-logo"></span><span class="op-app">Help desk</span><span class="op-search">Search tickets</span><span class="op-me"></span></div>
+              <div class="op-list">
+                <div class="op-lh"><b>Tickets</b><span>Latest order status on every ticket</span></div>
+                <div class="op-row new" data-k="row1"><i></i><div><b>Where is my order?</b><small>Brand A · email address only</small></div><span class="op-tag ship pop" data-k="tag1">In transit</span><span class="t">Just now</span></div>
+                <div class="op-row"><i></i><div><b>Can I change my delivery address?</b><small>Brand B</small></div><span class="op-tag">Unfulfilled</span><span class="t">10 min</span></div>
+                <div class="op-row"><i></i><div><b>Wrong size sent</b><small>Brand A</small></div><span class="op-tag">Delivered</span><span class="t">1 hr</span></div>
+                <div class="op-row"><i></i><div><b>Add a gift message</b><small>Brand C</small></div><span class="op-tag">Paid</span><span class="t">2 hr</span></div>
+              </div>
+              <div class="op-tk">
+                <div class="op-conv">
+                  <div class="op-back">← Tickets</div>
+                  <p class="op-subj">Where is my order?</p>
+                  <div class="op-meta"><span class="op-tag">Brand A</span><span>customer@email.com</span></div>
+                  <div class="op-msg"><span class="av">C</span><div><b>Customer</b><p>Hi, my order hasn’t arrived yet. Can you help?</p><div class="op-bars"><i style="width:90%"></i><i style="width:60%"></i></div></div></div>
+                  <div class="op-reply">
+                    <div class="op-rtools"><span class="op-btn" data-k="saved">Saved replies ▾</span><span class="op-btn dark" data-k="send">Send</span></div>
+                    <div class="op-drop op-sdrop" data-k="sdrop"><div data-k="s-where">Where is my order?</div><div>Returns</div><div>Change of address</div></div>
+                    <div class="op-rtext" data-k="rtext"><span class="ph">Write a reply…</span></div>
+                    <span class="op-sent" data-k="sent">Sent ✓</span>
+                  </div>
+                </div>
+                <div class="op-panel">
+                  <div class="op-ph"><span class="op-kick">Latest order</span><span class="op-live">● Live</span></div>
+                  <div class="op-stores"><span data-k="s1">UK</span><span data-k="s2">EU</span><span data-k="s3">US</span><span data-k="s4">JP</span><span data-k="s5">AU</span><span data-k="s6">KR</span><span data-k="s7">CN</span></div>
+                  <div class="op-find" data-k="find">Searching Brand A’s 7 stores…</div>
+                  <div class="op-fields" data-k="fields">
+                    <div class="op-f"><span>Order</span><b>#A1234</b></div>
+                    <div class="op-f"><span>Payment</span><b class="ok">Paid</b></div>
+                    <div class="op-f"><span>Fulfilment</span><b class="ok">Fulfilled</b></div>
+                    <div class="op-f"><span>Shipping</span><b>In transit</b></div>
+                    <div class="op-f"><span>Ordered · shipped</span><b>2 Mar · 4 Mar</b></div>
+                    <div class="op-f"><span>Tracking</span><b class="ln">Track parcel ↗</b></div>
+                  </div>
+                  <div class="op-past" data-k="past"><span>Past orders (2)</span><span>▾</span></div>
+                  <div class="op-drop op-pdrop" data-k="pdrop"><div><b>#A1102</b><span>Delivered · 12 Jan</span></div><div><b>#A0957</b><span>Delivered · 3 Nov</span></div></div>
+                  <div class="op-acts"><span class="op-btn" data-k="courier">Contact courier</span><span class="op-btn" data-k="cancel">Cancel</span><span class="op-btn" data-k="refund">Refund</span></div>
+                  <div class="op-note" data-k="note">Admins can switch cancel and refund on or off</div>
+                </div>
+              </div>
+              <div class="op-cur" data-k="cur"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M4 2l15 9-6.5 1.5L16 20l-3 1.5-3.5-7.5L4 18z" fill="#000" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+            </div>
+          </div>
+          <figcaption>
+            <p class="op-say" id="op-say"></p>
+            <div class="op-steps"><button type="button" data-s="0">1 Ticket</button><button type="button" data-s="1">2 Latest order</button><button type="button" data-s="2">3 Past orders</button><button type="button" data-s="3">4 Actions</button><button type="button" data-s="4">5 Reply</button><button type="button" class="op-pp" id="op-pp" aria-pressed="false">Pause</button></div>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div>
+        <h4 class="kicker" style="margin-bottom:14px">How an order is found</h4>
+        <div class="flow flow-6" role="list">
+          <div class="node" role="listitem"><b>Customer gets in touch</b><span>Usually just an email address, no order number</span></div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="node" role="listitem"><b>Brand identified</b><span>The ticket says which brand they bought from</span></div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="node" role="listitem"><b>Stores searched</b><span>Every store for that brand, at once</span></div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="node" role="listitem"><b>Latest order found</b><span>Status, dates and tracking pulled through</span></div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="node" role="listitem"><b>At a glance</b><span>Beside the ticket, already open</span></div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="node live" role="listitem"><b>Faster replies</b><span>Order details drop into saved replies and rules</span></div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="kicker" style="margin-bottom:14px">One question, before and after</h4>
+        <div class="ba">
+          <div class="ba-before"><h4>Before</h4><p>A customer emails “where’s my order?” The agent checks the UK shop, then the EU shop, then the US shop, and copies the tracking link across by hand.</p></div>
+          <div class="ba-after"><h4>After</h4><p>The agent opens the ticket. The panel already shows the order, its shipping status and the tracking link. They reply in one go.</p></div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="kicker" style="margin-bottom:14px">The result</h4>
+        <div class="results">
+          <div class="stat"><b>50+ stores</b><span>viewed from one panel, beside the ticket</span></div>
+          <div class="stat"><b>No store-hopping</b><span>the latest order is found from the customer’s email address</span></div>
+          <div class="stat"><b>One screen</b><span>cancel, refund and past orders without leaving the help desk</span></div>
+          <div class="stat"><b>3+ years</b><span>still in use, and it survived a move to a new order system</span></div>
+        </div>
+      </div>
+
+    </div>
+  </article>
 </section>
 
 <section id="contact" class="wrap contact">
@@ -271,6 +378,7 @@
   if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!timer){tick()}else if(!e.isIntersecting&&timer){clearTimeout(timer);timer=null}})},{threshold:.3}).observe(el)}else{tick()}
 })();
 </script>
+<script src="/assets/case-studies/order-panel.js" defer></script>
 </main>
 
 <footer class="site-foot">

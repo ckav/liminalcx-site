@@ -1,0 +1,103 @@
+/* Merchandise case study: low-fidelity order panel animation (an illustration, not the real product). All rules are .op-* */
+.opdemo{margin:0;display:flex;flex-direction:column;gap:14px}
+.op-view{position:relative;width:100%;border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 12px 34px rgba(0,0,0,.10)}
+.op{position:absolute;left:0;top:0;width:760px;height:460px;transform-origin:0 0;background:#fff;color:#000;font-family:Rubik,Arial,sans-serif;font-size:13px;line-height:1.35;overflow:hidden;user-select:none}
+.op *{box-sizing:border-box}
+.op.fast,.op.fast *{transition:none!important;animation:none!important}
+
+/* top bar */
+.op-bar{height:40px;display:flex;align-items:center;gap:12px;padding:0 16px;background:#000;color:#fff}
+.op-logo{width:18px;height:18px;border-radius:5px;background:var(--lime)}
+.op-app{font-weight:600}
+.op-search{margin-left:20px;flex:0 0 240px;height:22px;border-radius:11px;background:#262626;color:#8c8c8c;font-size:11px;line-height:22px;padding:0 12px}
+.op-me{margin-left:auto;width:22px;height:22px;border-radius:50%;background:#404040}
+
+/* ticket list */
+.op-list{position:absolute;top:40px;left:0;right:0;bottom:0;padding:18px 22px;transition:opacity .35s,transform .35s}
+.op.open .op-list{opacity:0;transform:translateX(-30px);pointer-events:none}
+.op-lh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.op-lh b{font-size:17px}
+.op-lh span,.op-kick{font-family:"DM Mono","Courier New",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--olive)}
+.op-row{display:grid;grid-template-columns:14px 1fr 92px 70px;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;background:#fff;transition:background .3s,border-color .3s}
+.op-row i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.op-row b{display:block;font-size:14px}
+.op-row small{color:var(--ink);font-size:11px}
+.op-row .t{font-size:11px;color:var(--muted);text-align:right}
+.op-row.new{max-height:0;padding-top:0;padding-bottom:0;margin-bottom:0;border-width:0;opacity:0;overflow:hidden;transition:max-height .45s,padding .45s,margin .45s,opacity .45s}
+.op-row.new.on{max-height:70px;padding-top:12px;padding-bottom:12px;margin-bottom:8px;border-width:1px;opacity:1;background:var(--lime-tint);border-color:var(--lime)}
+.op-row.new i{background:var(--lime)}
+.op-tag{display:inline-block;justify-self:start;font-size:10px;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--soft);color:#000;white-space:nowrap}
+.op-tag.ship{background:#000;color:var(--lime)}
+.op-tag.pop{opacity:0;transform:scale(.6);transition:opacity .3s,transform .3s}
+.op-tag.pop.on{opacity:1;transform:none}
+
+/* ticket view */
+.op-tk{position:absolute;top:40px;left:0;right:0;bottom:0;display:flex;opacity:0;transform:translateX(30px);transition:opacity .35s,transform .35s;pointer-events:none}
+.op.open .op-tk{opacity:1;transform:none}
+.op-conv{flex:1;position:relative;padding:16px 20px}
+.op-back{font-size:11px;color:var(--muted);margin-bottom:8px}
+.op-subj{font-size:18px;font-weight:700;margin:0 0 6px}
+.op-meta{display:flex;gap:8px;align-items:center;font-size:11px;color:var(--ink);margin-bottom:16px}
+.op-msg{display:flex;gap:10px;border:1px solid var(--line);border-radius:10px;padding:12px}
+.op-msg .av{flex:0 0 28px;height:28px;border-radius:50%;background:var(--soft);text-align:center;line-height:28px;font-weight:600;font-size:12px}
+.op-msg b{font-size:12px}
+.op-msg p{margin:2px 0 0;font-size:13px}
+.op-bars{margin-top:14px;display:grid;gap:7px}
+.op-bars i{display:block;height:7px;border-radius:4px;background:var(--soft)}
+.op-reply{position:absolute;left:20px;right:20px;bottom:16px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff}
+.op-rtools{display:flex;gap:8px;margin-bottom:8px}
+.op-rtext{min-height:58px;font-size:13px;color:#000}
+.op-rtext .ph{color:var(--muted)}
+.op-rtext mark{background:var(--lime);color:#000;border-radius:3px;padding:0 3px}
+.op-sent{position:absolute;right:12px;bottom:10px;font-size:11px;font-weight:600;background:#000;color:var(--lime);padding:4px 10px;border-radius:999px;opacity:0;transition:opacity .3s}
+.op-sent.on{opacity:1}
+
+/* buttons and dropdowns */
+.op-btn{display:inline-block;font-size:11px;font-weight:600;padding:5px 11px;border-radius:999px;border:1px solid #000;background:#fff;color:#000;transition:background .2s,color .2s}
+.op-btn.dark{background:#000;color:#fff;margin-left:auto}
+.op-btn.hl{background:var(--lime);border-color:var(--lime)}
+.op-drop{position:absolute;background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 20px rgba(0,0,0,.12);padding:4px 0;opacity:0;transform:translateY(6px);transition:opacity .2s,transform .2s;z-index:3;pointer-events:none}
+.op-drop.on{opacity:1;transform:none}
+.op-drop div{padding:7px 14px;font-size:12px}
+.op-drop .hl{background:var(--lime-tint)}
+.op-sdrop{left:10px;bottom:100%;margin-bottom:6px;min-width:190px}
+
+/* the order panel */
+.op-panel{flex:0 0 300px;border-left:2px solid #000;background:var(--soft);padding:14px 16px;position:relative}
+.op-ph{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.op-live{font-size:10px;font-weight:600;color:var(--green-dark)}
+.op-stores{display:flex;gap:4px;margin-bottom:6px}
+.op-stores span{flex:1;text-align:center;font-family:"DM Mono","Courier New",monospace;font-size:10px;padding:4px 0;border-radius:5px;background:#fff;border:1px solid var(--line);color:var(--muted);transition:background .2s,color .2s,border-color .2s}
+.op-stores span.on{color:#000;border-color:#000}
+.op-stores span.hit{background:#000;color:var(--lime);border-color:#000}
+.op-find{font-size:11px;color:var(--ink);min-height:16px;margin-bottom:8px}
+.op-f{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--line);opacity:0;transform:translateY(4px);transition:opacity .3s,transform .3s}
+.op-fields.on .op-f{opacity:1;transform:none}
+.op-fields.on .op-f:nth-child(2){transition-delay:.1s}.op-fields.on .op-f:nth-child(3){transition-delay:.2s}
+.op-fields.on .op-f:nth-child(4){transition-delay:.3s}.op-fields.on .op-f:nth-child(5){transition-delay:.4s}.op-fields.on .op-f:nth-child(6){transition-delay:.5s}
+.op-f span{font-size:11px;color:var(--ink)}
+.op-f b{font-size:12px;font-weight:600}
+.op-f b.ok{color:var(--green-dark)}
+.op-f b.ln{text-decoration:underline}
+.op-past{margin-top:10px;font-size:12px;font-weight:600;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:#fff;display:flex;justify-content:space-between}
+.op-pdrop{left:16px;right:16px;top:auto}
+.op-pdrop div{display:flex;justify-content:space-between}
+.op-pdrop span{color:var(--ink)}
+.op-acts{display:flex;gap:6px;margin-top:10px}
+.op-note{margin-top:8px;font-size:10px;color:var(--ink);padding:4px 8px;border-radius:6px;transition:background .3s}
+.op-note.on{background:var(--lime)}
+
+/* cursor */
+.op-cur{position:absolute;left:600px;top:330px;width:26px;height:26px;z-index:9;transition:left .7s cubic-bezier(.5,0,.3,1),top .7s cubic-bezier(.5,0,.3,1);pointer-events:none}
+.op-cur svg{display:block;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}
+.op-ring{position:absolute;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;border:3px solid var(--lime);z-index:8;animation:op-ring .5s ease-out forwards;pointer-events:none}
+@keyframes op-ring{from{transform:scale(.4);opacity:1}to{transform:scale(1.4);opacity:0}}
+
+/* caption and controls */
+.op-say{margin:0;color:#000;font-weight:500;font-size:17px;min-height:3em}
+.op-say span{color:var(--olive);font-family:"DM Mono","Courier New",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-right:8px}
+.op-steps{display:flex;flex-wrap:wrap;gap:6px}
+.op-steps button{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);background:#fff;color:#000;padding:4px 12px;border-radius:999px;cursor:pointer}
+.op-steps button[aria-current="step"]{background:var(--lime);border-color:var(--lime)}
+.op-steps button.op-pp{border-color:#000}
+.op-steps button:focus-visible{outline:3px solid var(--green);outline-offset:2px}
