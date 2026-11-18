@@ -94,6 +94,7 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 - **18 Nov 2026:** Stat changed from "370+ women mentored since 2020" to "370+ founders mentored since 2020" on Home, About and AI Audit.
 - **18 Nov 2026:** The draft replaced the live home page. Styles moved into site.css, the meta description and social preview text were updated, and /draft-home/ redirects to /.
 - **18 Nov 2026:** Second case study added to About: a Premier League football club (three teams merged into one, next-match-first rule, help centre). It's anonymised, as is everything in Case studies.
+- **18 Nov 2026:** Case study result headings on About can now wrap ("Peaks absorbed" was spilling out of its box). Bio stats still stay on one line.
 
 ## Known issues
 
