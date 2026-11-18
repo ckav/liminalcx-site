@@ -116,6 +116,7 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 
 - **18 Nov 2026:** Added Free mini courses at /free/, with the first course (Google Calendar bookings with Stripe, replacing Calendly). "Free courses" added to the nav on every page, and both pages added to the sitemap.
 - **18 Nov 2026:** Bookings course: added the animated walk-through and the Official help links (Google and Stripe). The guide now tells the AI to check the official pages and covers the Workspace admin switch. Plan facts were corrected: Google One plans don't include paid bookings.
+- **18 Nov 2026:** Bookings course: the hero line now reads "Free mini courses · Google Calendar · Stripe · Time to set up: 30 to 60 minutes". "What you need" pills (Google Workspace (paid plan), Stripe account, Any AI chat) sit above the title. The /free/ card shows its pills above the title too. "You'll need" now says a paid Workspace plan is required for payments.
 
 ## Known issues
 

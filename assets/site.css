@@ -186,3 +186,4 @@ ul.ticks li::before{content:"";position:absolute;left:4px;top:6px;width:15px;hei
 .prompt-bar .btn{min-height:40px;padding:0 18px;font-size:15px;border:0;cursor:pointer}
 .prompt-text{margin:0;padding:22px 24px;max-height:520px;overflow:auto;background:#fff;color:#000;font-family:"DM Mono","Courier New",monospace;font-size:13px;line-height:1.6;white-space:pre-wrap;word-break:break-word}
 .copied{color:var(--lime);font-size:14px;font-weight:600;min-width:6em}
+.course-tags-lg span{font-size:14px;padding:4px 14px;border-color:var(--lime);color:var(--lime)}
