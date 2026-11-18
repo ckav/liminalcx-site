@@ -52,6 +52,14 @@
 .demo-steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:var(--line);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;transition:background .3s}
 .demo-steps li.on::before{background:#000;color:var(--lime)}
 .results{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:16px}
+.cs-top p.cs-note{color:var(--muted);font-size:14px;margin-top:12px}
+.flow-6 .node{flex-basis:120px}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ba > div{border-radius:14px;padding:20px 22px}
+.ba h4{font-family:"DM Mono","Courier New",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;font-weight:500}
+.ba-before{background:var(--soft)} .ba-before h4{color:var(--ink)} .ba-before p{color:var(--ink);margin:0}
+.ba-after{background:#000} .ba-after h4{color:var(--lime)} .ba-after p{color:#fff;margin:0}
+@media (max-width:700px){.ba{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -165,6 +173,60 @@
           <div class="stat"><b>14 updates</b><span>in the first two days</span></div>
           <div class="stat"><b>Seconds</b><span>from "make it live" to live</span></div>
           <div class="stat"><b>Every change</b><span>saved, and can be undone</span></div>
+        </div>
+      </div>
+
+    </div>
+  </article>
+
+  <article class="cs" id="football-club">
+    <div class="cs-top">
+      <p class="eyebrow">Case study · Premier League football club</p>
+      <h3>Fewer queries, calmer fans, no extra seasonal staff</h3>
+      <p>Merging three siloed teams into one let the club handle its busiest moments without extra staff, and answer anxious fans first.</p>
+      <p class="cs-note">I worked with the club as a consultant, including a spell as interim Head of Customer Service.</p>
+    </div>
+    <div class="cs-body">
+
+      <div class="cs-facts">
+        <div><h4>The challenge</h4><p>Retail, ticketing and supporter services each ran as a separate team, each with its own peaks: membership renewals, kit launches, Christmas. So each brought in temporary staff. Fans sent the same question several times and were bounced between teams. A worried email about this weekend’s match waited in the same queue as one about a game weeks away.</p></div>
+        <div><h4>What I did</h4><p><span class="tag">E</span>Audited every point where fans and local residents contact the club, across systems, processes and people.<br><span class="tag">M</span>Mapped the whole matchday experience, from buying a ticket to the day after, to find where questions start.<br><span class="tag">D</span>Merged the three teams into one, rebuilt the help centre, added automatic replies and advance notices, and put questions about the next match first.</p></div>
+        <div><h4>What made it work</h4><p>One team could absorb every team’s peak, so one season’s rush was covered by staff who were quiet that month. Advance notices and the help centre answered questions before fans needed to ask. And a simple rule put the next match first, because that’s when fans get anxious.</p></div>
+      </div>
+
+      <div>
+        <h4 class="kicker" style="margin-bottom:14px">How a question flows now</h4>
+        <div class="flow flow-6" role="list">
+          <div class="node" role="listitem"><b>Tell fans first</b><span>Advance notices, like when tickets go on sale</span></div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="node" role="listitem"><b>Help centre</b><span>Searchable answers to the most common questions</span></div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="node" role="listitem"><b>Automatic reply</b><span>Confirms receipt and points to the answer</span></div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="node" role="listitem"><b>Next match first</b><span>Urgent questions jump the queue</span></div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="node" role="listitem"><b>One team</b><span>Shares the load across every peak</span></div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="node live" role="listitem"><b>Calmer fans</b><span>Fewer queries, fewer repeat contacts</span></div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="kicker" style="margin-bottom:14px">One fan, before and after</h4>
+        <div class="ba">
+          <div class="ba-before"><h4>Before</h4><p>A fan emails on Thursday about a refund for Saturday’s match. It sits behind hundreds of emails about other things. With no reply, they email twice more, then phone.</p></div>
+          <div class="ba-after"><h4>After</h4><p>An automatic reply confirms the email has arrived and links to the refund page. It’s tagged as next-match and answered the same day. The fan gets in touch once.</p></div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="kicker" style="margin-bottom:14px">The result</h4>
+        <div class="results">
+          <div class="stat"><b>One team</b><span>retail, ticketing and supporter services, silos removed</span></div>
+          <div class="stat"><b>7 days a week</b><span>service cover, including during games</span></div>
+          <div class="stat"><b>Peaks absorbed</b><span>less need for temporary staff at renewals, kit launches and Christmas</span></div>
+          <div class="stat"><b>Far fewer</b><span>repeat contacts: fans got an answer the first time</span></div>
+          <div class="stat"><b>Almost none</b><span>complaints to senior management about slow replies</span></div>
         </div>
       </div>
 
