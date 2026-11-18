@@ -106,3 +106,9 @@
   for = "/free/*.md"
   [headers.values]
     Content-Type = "text/markdown; charset=utf-8"
+
+# Personal PA course page: live but hidden from search engines until price, date and booking are set
+[[headers]]
+  for = "/personal-pa/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

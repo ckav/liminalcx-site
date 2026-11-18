@@ -19,6 +19,7 @@ Claire Kavanagh's consulting site for AI workshops, CX and teams. This is a plai
 | `about/index.html` | Bio and case studies: this website (flow diagram, update animation) a Premier League football club (flow, before/after, results), and a global merchandise company's multi-store order panel (animated mock-up in `assets/case-studies/order-panel.css` / `.js`, built like the bookings course demo: edit the `scenes` list in the JS and the matching `data-k` elements in the page). Clients aren't named on the site. Source text for case studies is in `AutomationFramework/website_management/` (`case-study-*.md`), written using `case-study-brief.md`. |
 | `free/index.html` | Free mini courses: one card per course (in the nav as "Free courses") |
 | `free/<course>/` | One course: `index.html` (the page) and `guide.md` (the instructions people paste into their AI chat) |
+| `personal-pa/index.html` | **Hidden** paid course sales page: "Build your own Personal PA" (2-hour live course). Not in the nav or sitemap, and noindex (meta tag plus an `X-Robots-Tag` header in `netlify.toml`). It's a self-contained Claude Design export, not built on `site.css`. Source: `AutomationFramework/workshop_variations/life_locker_workshop/Personal PA Course.html` (the folder keeps the old "Life Locker" name, which is only what Claire calls her own one). Still to fill: `[£PRICE]` (2 places), `[DATE]`, `[TIME]`; the Reserve button emails info@liminalcx.com until there's a booking link. |
 | `404.html` | Not found page |
 | `assets/site.css` | All styles. Colours are CSS variables in `:root` |
 | `assets/logo.png`, `assets/claire.jpg` | Images |
@@ -138,6 +139,8 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 - **18 Nov 2026:** Third case study added to About: a global merchandise company, with 50+ online stores in one order panel beside the ticket. It includes a low-fidelity animated mock-up (no real names or data) and the line "How AI would help today", because the project was done without AI.
 
 - **18 Nov 2026:** Home "Start where you are" replaced with Claude Design's version: an On your own → Together bar, and three cards with line icons (1:1 Power Hour, AI implementation workshop, Team AI Audit; the last is tinted). Styles are the `.sw-*` rules in site.css; the old `.vs` / `.path` rules are removed. The product names and copy came from the design, and Claire plans to tweak the copy later. Links: 1:1 → /services/#one-to-one, workshop → /ai-audit/, Team AI Audit → /services/#workshops. Source file: `AutomationFramework/website_management/start-where-you-are.html`.
+
+- **18 Nov 2026:** Added the hidden "Build your own Personal PA" paid course page at /personal-pa/ (noindex, not in nav or sitemap). Contact email set to info@liminalcx.com; price, date and time are still placeholders, and Reserve emails info@ for now.
 
 ## Known issues
 
