@@ -172,3 +172,17 @@ ul.ticks li::before{content:"";position:absolute;left:4px;top:6px;width:15px;hei
   .embed-row{grid-template-columns:1fr;gap:8px}
   .embed-who{display:block;font-family:"DM Mono","Courier New",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);margin-bottom:2px}
 }
+
+/* Free mini courses (/free/) */
+.course-tags{display:flex;flex-wrap:wrap;gap:6px}
+.course-tags span{border:1px solid #333;border-radius:999px;padding:2px 10px;font-size:13px;color:#D9D9D9}
+.product a.cover{text-decoration:none;color:inherit;display:flex;flex-direction:column;flex:1}
+.product:has(a.cover:hover){border-color:#000}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:16px;margin-top:24px}
+.howto .card{background:var(--soft);border:0}
+.prompt-box{border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:28px}
+.prompt-bar{background:#000;padding:14px 18px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
+.prompt-bar .meta{font-family:"DM Mono","Courier New",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.prompt-bar .btn{min-height:40px;padding:0 18px;font-size:15px;border:0;cursor:pointer}
+.prompt-text{margin:0;padding:22px 24px;max-height:520px;overflow:auto;background:#fff;color:#000;font-family:"DM Mono","Courier New",monospace;font-size:13px;line-height:1.6;white-space:pre-wrap;word-break:break-word}
+.copied{color:var(--lime);font-size:14px;font-weight:600;min-width:6em}

@@ -100,3 +100,9 @@
   from = "/draft-home"
   to = "/"
   status = 301
+
+# Free mini courses: the instructions files open as readable text
+[[headers]]
+  for = "/free/*.md"
+  [headers.values]
+    Content-Type = "text/markdown; charset=utf-8"

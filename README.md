@@ -17,6 +17,8 @@ Claire Kavanagh's consulting site for AI workshops, CX and teams. This is a plai
 | `services/index.html` | Services: 1:1, Workshops, Consulting (was /workshops, which still redirects) |
 | `ai-audit/index.html` | AI Audit (was /focus-first, which still redirects) |
 | `about/index.html` | Bio and case studies: this website (flow diagram, update animation) and a Premier League football club (flow, before/after, results). Clients aren't named on the site. Source text for case studies is in `AutomationFramework/website_management/` (`case-study-*.md`), written using `case-study-brief.md`. |
+| `free/index.html` | Free mini courses: one card per course (in the nav as "Free courses") |
+| `free/<course>/` | One course: `index.html` (the page) and `guide.md` (the instructions people paste into their AI chat) |
 | `404.html` | Not found page |
 | `assets/site.css` | All styles. Colours are CSS variables in `:root` |
 | `assets/logo.png`, `assets/claire.jpg` | Images |
@@ -46,6 +48,21 @@ This is the section headed **"Stop learning. Start coaching."** The idea is that
 - **The card never changes height.** The script adds invisible copies of all five prompts to the card (`.loop-ghost`), so it's always as tall as the longest one. Nothing needs adjusting when the wording changes.
 - **Styles** are the `.loop*` rules in `assets/site.css`.
 - **History.** The first version (replaced on 17 Nov 2026) had a New starter / AI switch with two written lists. Claire dropped it because it took too much room and didn't add much, and she wanted the section to be useful straight away, with real prompts.
+
+## Free mini courses (/free/)
+
+Short free courses for PAs and admins. Each course is a set of instructions that people paste into ChatGPT, Claude, Copilot or Gemini. The AI then coaches them through the job one step at a time.
+- **The instructions live only in `guide.md`.** The course page loads that file into the copy box, so to change a course you edit `guide.md` and nothing else. The Copy and Download buttons use the same file.
+- **The guide has a set shape.** It opens with "Instructions for the AI" (ask first, one step at a time, never ask for passwords or card details, plain English), then "Questions to ask first", then "Reference: the steps", then "When we're finished".
+- **To add a course:**
+  1. Copy the `free/google-bookings-stripe/` folder and give it a new short name.
+  2. Rewrite `guide.md`, then the page text (title, meta tags, "You'll end up with", "You'll need" and the download filename).
+  3. Add a card to `free/index.html` and a line to `sitemap.xml`.
+- **Course 1: Swap Calendly for Google Calendar bookings, with Stripe payments.** It's a general version of `AutomationFramework/website_management/liminalcx-booking-setup.md`, with Claire's own details taken out.
+- **Keep guides evergreen.** Each guide has an "Official help" list of the provider's own help pages, and tells the AI to check them before each step, because button names and plans change. The steps describe *what* to do; where a screen name is given, it's marked "at the time of writing". The course page shows the same links.
+- **The animation** ("See it first") on the bookings course is a drawn illustration of the Google Calendar screens, not a recording: `demo.css` (styles, all `.gd-*`) and `demo.js` (the `scenes` list: one caption and one set of cursor actions per step). It's built at 760×500 and scaled to fit, so it looks the same on phones. It pauses when scrolled out of view, has Pause/Play and step buttons, and doesn't move if the visitor's device is set to reduce motion. To change a step, edit its scene in `demo.js` and the matching `data-k` elements in `index.html`.
+- `netlify.toml` serves `/free/*.md` as UTF-8 markdown, so curly quotes and other special characters display properly.
+- **Styles:** the "Free mini courses" rules at the end of `assets/site.css`.
 
 ## Home page
 
@@ -96,6 +113,9 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 - **18 Nov 2026:** Second case study added to About: a Premier League football club (three teams merged into one, next-match-first rule, help centre). It's anonymised, as is everything in Case studies.
 - **18 Nov 2026:** Case study result headings on About can now wrap ("Peaks absorbed" was spilling out of its box). Bio stats still stay on one line.
 - **18 Nov 2026:** Football club case study: added Claire's "Classic fan journey" diagram (`assets/case-studies/fan-journey.png`, shown at its own 774px width and clickable to open).
+
+- **18 Nov 2026:** Added Free mini courses at /free/, with the first course (Google Calendar bookings with Stripe, replacing Calendly). "Free courses" added to the nav on every page, and both pages added to the sitemap.
+- **18 Nov 2026:** Bookings course: added the animated walk-through and the Official help links (Google and Stripe). The guide now tells the AI to check the official pages and covers the Workspace admin switch. Plan facts were corrected: Google One plans don't include paid bookings.
 
 ## Known issues
 
