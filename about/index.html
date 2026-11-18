@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About Claire Kavanagh | Liminal CX</title>
-<meta name="description" content="Claire Kavanagh: customer experience consultant and optimisation expert. Projects, and how I use AI every day, starting with this website.">
+<meta name="description" content="Claire Kavanagh: customer experience consultant and optimisation expert. Projects, and how I use AI every day, starting with this website: built on my laptop, updated from my phone.">
 <link rel="canonical" href="https://liminalcx.com/about/">
 <meta property="og:title" content="About Claire Kavanagh | Liminal CX">
 <meta property="og:description" content="Projects, and how I use AI every day, starting with this website.">
@@ -67,6 +67,32 @@
 .ba-before{background:var(--soft)} .ba-before h4{color:var(--ink)} .ba-before p{color:var(--ink);margin:0}
 .ba-after{background:#000} .ba-after h4{color:var(--lime)} .ba-after p{color:#fff;margin:0}
 @media (max-width:700px){.ba{grid-template-columns:1fr}}
+.wb{display:grid;grid-template-columns:minmax(0,1.3fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:14px;align-items:stretch}
+@media (max-width:900px){.wb{grid-template-columns:1fr}.wb-arrow{transform:rotate(90deg);justify-self:center}}
+.wb-col{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff;min-width:0}
+.wb-h{font-family:"DM Mono","Courier New",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);margin:0 0 10px;font-weight:500}
+.wb-arrow{align-self:center;color:var(--green);font-weight:700;font-size:22px}
+.wb ul,.wb ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.wb-files li{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.35}
+.wb-files b{display:block;color:#000;font-size:15px}
+.wb-ic{flex:0 0 auto;width:26px;height:32px;border-radius:4px;border:1.5px solid #000;background:#fff;position:relative;margin-top:2px}
+.wb-ic::after{position:absolute;left:0;right:0;bottom:3px;text-align:center;font:600 8px/1 "DM Mono","Courier New",monospace;color:#000}
+.wb-ic.web::after{content:"HTML"} .wb-ic.csv::after{content:"CSV"} .wb-ic.doc::after{content:"DOC"} .wb-ic.img::after{content:"IMG"}
+.wb-ic.csv{background:#eaf4ea} .wb-ic.doc{background:var(--soft)} .wb-ic.img{background:#f6f8d9}
+.wb-pages li{background:var(--soft);border-radius:10px;padding:8px 12px;color:#000;font-size:15px}
+.wb-pages small{color:var(--olive);font-size:12px;margin-left:6px}
+.wb-live li{padding:8px 12px;border-radius:10px;border:1px solid var(--line);font-size:14px;line-height:1.35}
+.wb-live b{display:block;color:#000;font-size:15px}
+.wb-live li.on{background:#000;border-color:#000;color:#D9D9D9}
+.wb-live li.on b{color:var(--lime)}
+.wb-log{margin-top:24px;border-left:3px solid var(--lime);padding:4px 0 4px 18px}
+.wb-log ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.wb-log li{display:flex;gap:12px;font-size:15px;color:#000}
+.wb-log time{font-family:"DM Mono","Courier New",monospace;font-size:13px;color:var(--olive);flex:0 0 auto;padding-top:2px}
+.wb-shots{display:flex;gap:20px;flex-wrap:wrap;margin-top:24px;justify-content:flex-start}
+.wb-shots figure{margin:0;flex:0 1 240px;display:flex;flex-direction:column;gap:8px}
+.wb-shots img{width:100%;height:auto;border:8px solid #111;border-radius:28px;background:#111}
+.wb-shots figcaption{font-size:14px;color:var(--ink)}
 </style>
 </head>
 <body>
@@ -162,25 +188,94 @@
   <article class="cs" id="this-website">
     <div class="cs-top">
       <p class="eyebrow">Case study · Liminal CX (my own business)</p>
-      <h3>This website: from Webflow to updates from my phone</h3>
-      <p>Moving off a website builder, so changes take minutes, from anywhere, without a designer or developer.</p>
+      <h3>This website: built on my laptop, updated from my phone</h3>
+      <p>I rebuilt the site in an afternoon from documents I already had. Now I change it from wherever I am, without a designer or developer.</p>
     </div>
     <div class="cs-body">
 
       <div class="cs-facts">
-        <div><h4>The challenge</h4><p>The old site lived in Webflow. Every change meant sitting at a desk, logging in and finding the right setting. So small fixes waited.</p></div>
-        <div><h4>What I did</h4><p><span class="tag">E</span>Reviewed what the old site was for, and what to keep.<br><span class="tag">M</span>Rebuilt the pages around the services, keeping old links working.<br><span class="tag">D</span>Moved it to simple, fast hosting, live the same day.</p></div>
-        <div><h4>How AI helped</h4><p>Claude rebuilt the site and now makes every change. I describe what I want, often with a screenshot, check the preview and say "make it live".</p></div>
+        <div><h4>The challenge</h4><p>The old site lived in Webflow. Every change meant sitting at a desk, logging in and finding the right setting, so small fixes waited. What I offered had moved on, and the site hadn't.</p></div>
+        <div><h4>What I did</h4><p><span class="tag">E</span>Gathered what I already had: the old pages, my product notes and booking plan.<br><span class="tag">M</span>Rebuilt the pages around the services, keeping old links working.<br><span class="tag">D</span>Published it through GitHub and Netlify, live the same day.</p></div>
+        <div><h4>How AI helped</h4><p>On my laptop, Claude read my documents and rebuilt each page. I checked every preview and decided what stayed. Since then I send a screenshot from my phone, check the preview and say "make it live". Nothing goes live without my OK.</p></div>
       </div>
 
       <div>
-        <h4 class="kicker" style="margin-bottom:14px">The move</h4>
+        <h4 class="kicker" style="margin-bottom:6px">Part 1 · On my laptop, 16 November</h4>
+        <p style="margin:0 0 16px;max-width:780px">One afternoon. I didn't start from a blank page: I gave Claude the documents I already had, and it rebuilt the site from them.</p>
+        <div class="wb">
+          <div class="wb-col">
+            <p class="wb-h">What I gave Claude</p>
+            <ul class="wb-files">
+              <li><i class="wb-ic web"></i><span><b>The old Webflow pages</b>saved from the live site</span></li>
+              <li><i class="wb-ic csv"></i><span><b>Webflow content exports</b>About, blog and privacy pages, as spreadsheets</span></li>
+              <li><i class="wb-ic doc"></i><span><b>My product notes</b>who each offer is for, and what's still an idea</span></li>
+              <li><i class="wb-ic doc"></i><span><b>My booking plan</b>which buttons go to which calendar page</span></li>
+              <li><i class="wb-ic img"></i><span><b>Logo, photo and artwork</b>so it still looks like me</span></li>
+            </ul>
+          </div>
+          <div class="wb-arrow" aria-hidden="true">→</div>
+          <div class="wb-col">
+            <p class="wb-h">What it built</p>
+            <ul class="wb-pages">
+              <li>Home</li>
+              <li>Workshops <small>now Services</small></li>
+              <li>Focus First <small>now AI Audit</small></li>
+              <li>Booking buttons</li>
+              <li>Old links redirected, so nothing breaks</li>
+            </ul>
+          </div>
+          <div class="wb-arrow" aria-hidden="true">→</div>
+          <div class="wb-col">
+            <p class="wb-h">How it went live</p>
+            <ol class="wb-live">
+              <li><b>GitHub</b>saves every version, so any change can be undone</li>
+              <li><b>Netlify</b>publishes the site, and every change after</li>
+              <li class="on"><b>liminalcx.com</b>moved across the same evening</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="kicker" style="margin-bottom:6px">Part 2 · From my phone, ever since</h4>
+        <p style="margin:0 0 16px;max-width:780px">The next morning I was looking at the site on my phone and spotted something off. I sent a screenshot, and it was fixed and live before I'd finished my coffee. Then I kept going.</p>
+        <div class="demo">
+          <div class="phone" aria-hidden="true">
+            <div class="screen" id="demo-screen">
+              <div class="msg me" data-step="0">The corners on mobile don't look right, please fix<span class="thumb bad"><i></i></span></div>
+              <div class="msg ai" data-step="1">Found it: the box loses its side space on phones. Fixed. Here's the preview:<span class="thumb good"><i></i></span></div>
+              <div class="msg me" data-step="2">Looks better. Make it live</div>
+              <div class="msg ok" data-step="3">✓ Live on liminalcx.com</div>
+            </div>
+          </div>
+          <ol class="demo-steps" id="demo-steps">
+            <li data-step="0"><b>Spot it.</b> I'm looking at the site on my phone and something's off. I send a screenshot and say what I want.</li>
+            <li data-step="1"><b>Fix it.</b> Claude finds the cause, makes the change and shows me a preview.</li>
+            <li data-step="2"><b>Approve it.</b> Nothing goes live until I say so.</li>
+            <li data-step="3"><b>Live.</b> It's saved in GitHub and published by Netlify in seconds, and it can be undone.</li>
+          </ol>
+        </div>
+<!-- PHONE-SCREENSHOTS -->
+        <div class="wb-log">
+          <p class="wb-h">That first morning, from my phone (17 November)</p>
+          <ul>
+            <li><time>11:52</time>Fixed the rounded corners on mobile</li>
+            <li><time>12:22</time>Renamed Focus First to AI Audit, and kept the old link working</li>
+            <li><time>12:34</time>Added a 1:1 option for founders</li>
+            <li><time>12:58</time>Turned Workshops into Services: 1:1, workshops and consulting</li>
+            <li><time>12:59</time>Built this About page, and this case study</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="kicker" style="margin-bottom:14px">The whole flow</h4>
         <div class="flow" role="list">
-          <div class="node old" role="listitem"><b>Webflow</b><span>The old site, changed by logging in at a desk</span></div>
+          <div class="node" role="listitem"><b>Laptop or phone</b><span>My documents, or a screenshot and a request</span></div>
           <div class="arrow" aria-hidden="true">→</div>
-          <div class="node" role="listitem"><b>Claude</b><span>Rebuilds the pages and copy, and keeps old links working</span></div>
+          <div class="node" role="listitem"><b>Claude</b><span>Makes the change and shows me a preview</span></div>
           <div class="arrow" aria-hidden="true">→</div>
-          <div class="node" role="listitem"><b>GitHub</b><span>Saves every change, so any of them can be undone</span></div>
+          <div class="node" role="listitem"><b>GitHub</b><span>Saves every version, so any change can be undone</span></div>
           <div class="arrow" aria-hidden="true">→</div>
           <div class="node" role="listitem"><b>Netlify</b><span>Publishes each approved change in seconds</span></div>
           <div class="arrow" aria-hidden="true">→</div>
@@ -189,31 +284,11 @@
       </div>
 
       <div>
-        <h4 class="kicker" style="margin-bottom:14px">An update, from my phone</h4>
-        <div class="demo">
-          <div class="phone" aria-hidden="true">
-            <div class="screen" id="demo-screen">
-              <div class="msg me" data-step="0">The corners on mobile don't look right, please fix<span class="thumb bad"><i></i></span></div>
-              <div class="msg ai" data-step="1">Found it: the box loses its side space on phones. Fixed. Here's the preview:<span class="thumb good"><i></i></span></div>
-              <div class="msg me" data-step="2">Looks better. Make it live</div>
-              <div class="msg ok" data-step="3">✓ Live on liminalcx.com<br>published in 6 seconds</div>
-            </div>
-          </div>
-          <ol class="demo-steps" id="demo-steps">
-            <li data-step="0"><b>Spot it.</b> I'm looking at the site on my phone and something's off. I send a screenshot and say what I want.</li>
-            <li data-step="1"><b>Fix it.</b> Claude finds the cause, makes the change and shows me a preview.</li>
-            <li data-step="2"><b>Approve it.</b> Nothing goes live until I say so.</li>
-            <li data-step="3"><b>Live.</b> The change publishes in seconds, and it's saved, so it can be undone.</li>
-          </ol>
-        </div>
-      </div>
-
-      <div>
         <h4 class="kicker" style="margin-bottom:14px">The result</h4>
         <div class="results">
-          <div class="stat"><b>1 day</b><span>to rebuild and go live</span></div>
-          <div class="stat"><b>14 updates</b><span>in the first two days</span></div>
-          <div class="stat"><b>Seconds</b><span>from "make it live" to live</span></div>
+          <div class="stat"><b>1 afternoon</b><span>from my documents to a live site</span></div>
+          <div class="stat"><b>12 updates</b><span>from my phone, the next morning</span></div>
+          <div class="stat"><b>44 changes</b><span>in the first three days</span></div>
           <div class="stat"><b>Every change</b><span>saved, and can be undone</span></div>
         </div>
       </div>
