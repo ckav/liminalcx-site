@@ -81,8 +81,7 @@
       <button type="button" role="tab" data-i="4">Update</button>
     </div>
     <div class="loop-card" aria-live="polite">
-      <p class="loop-who"></p>
-      <blockquote class="loop-say"></blockquote>
+      <div class="loop-live"><p class="loop-who"></p><blockquote class="loop-say"></blockquote></div>
     </div>
     <figcaption id="loop-cap">One real task, start to finish</figcaption>
   </figure>
@@ -98,6 +97,14 @@
     var names=['Brief','Questions','First draft','Feedback','Update'];
     var nodes=document.querySelectorAll('.loop .node'), tabs=document.querySelectorAll('.loop-steps button');
     var who=document.querySelector('.loop-who'), say=document.querySelector('.loop-say');
+    // Invisible copies of every prompt share the card's space, so the card is always as tall as the longest one
+    var card=document.querySelector('.loop-card');
+    steps.forEach(function(st,i){
+      var g=document.createElement('div'); g.className='loop-live loop-ghost'; g.setAttribute('aria-hidden','true');
+      g.innerHTML='<p class="loop-who"></p><blockquote class="loop-say"></blockquote>';
+      g.firstChild.textContent=(i+1)+' · '+names[i]+' · '+st[0]; g.lastChild.textContent='"'+st[1]+'"';
+      card.appendChild(g);
+    });
     var cur=0, timer=null, pinned=false, fig=document.querySelector('.loop');
     function show(i){
       cur=i;

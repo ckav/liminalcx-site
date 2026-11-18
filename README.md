@@ -44,6 +44,7 @@ This is the section headed **"Stop learning. Start coaching."** The idea is that
 - **The example task** is a business development manager turning meeting notes into a draft proposal. "28 February" in the Feedback prompt is an example date that Claire approved.
 - **To change the wording,** edit the `steps` array in the `<script>` right after the figure in `services/index.html`. Each entry is `['You' or 'AI', 'text']`.
   - Use curly apostrophes (’) inside the text. A straight `'` ends the JavaScript string and breaks the whole loop: the card shows up empty.
+- **The card never changes height.** The script adds invisible copies of all five prompts to the card (`.loop-ghost`), so it's always as tall as the longest one. Nothing needs adjusting when the wording changes.
 - **Styles** are the `.loop*` rules in `assets/site.css`.
 - **History.** The first version (replaced on 17 Nov 2026) had a New starter / AI switch with two written lists. Claire dropped it because it took too much room and didn't add much, and she wanted the section to be useful straight away, with real prompts.
 
@@ -52,9 +53,9 @@ This is the section headed **"Stop learning. Start coaching."** The idea is that
 A new direction for the home page, agreed with Claire on 17 Nov 2026:
 - **Audience:** founders and teams who already use AI but feel they should be doing more. Consulting isn't expected to come from the website, so it's played down.
 - **Hero:** "Unlock the power to create better human experiences".
-- **Section order (18 Nov 2026):** hero → The approach (the coaching loop, copied from Services) → How we help: EMBED (Claire's circle and icons) → Why me → Start where you are → bio → platforms → Sound familiar? (moved to the bottom, above contact).
+- **Section order (18 Nov 2026):** hero → The approach (the coaching loop, copied from Services) → How we help: EMBED (Claire's circle and icons) → Start where you are → bio → platforms → Sound familiar? (moved to the bottom, above contact).
 - **Sound familiar? cards:** five concerns (Confidence, Platform, Apathy, Compliance, Consistency), each with "What I've heard" and "Where to start". Claire wrote the "Where to start" lines.
-- **Why me:** "25+ years…" panel.
+- **Why me:** the "25+ years…" line is a quote in the bio, after "My view…". It was a lime panel at first; Claire didn't like that design.
 - **Start where you are** (replaces the old services cards): "Alone, you improve your bit. Together, you improve the whole thing."
   - An "On your own" vs "Together" comparison, then the products as three steps:
     1. Start on your own (1:1 Power Hour)
@@ -85,6 +86,9 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
   - Fixed the stray `rtimel=` on the Services page (now `rel=`). Clicking a loop stage now keeps it there: moving the mouse away no longer restarts the cycling.
   - Loop Update prompt reworded: "Good. Update the readme doc for this client, and update the proposal creation document to always include milestone dates in the timeline section."
   - Hidden draft of a new home page added at /draft-home/ (see above).
+- **18 Nov 2026:** Loop card (Services and draft home) is now a fixed height, so it no longer jumps when the Update prompt shows.
+- **18 Nov 2026:** Draft home: the "25+ years" lime panel became a quote in the bio.
+- **18 Nov 2026:** Draft home: EMBED is now a table, with one row per stage and a line each for Customers and Employees. On phones the column names show inside each row. The live home page still has the old long cards.
 - **18 Nov 2026:** Draft home page: added The approach (coaching loop) and an EMBED section with Claire's branded artwork, and moved Sound familiar? to the bottom. Removed "Why together" and replaced the services cards with the alone vs together section and three product steps.
 
 ## Known issues

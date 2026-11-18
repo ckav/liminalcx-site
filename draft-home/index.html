@@ -22,8 +22,6 @@
 .concern .heard{margin:0;font-style:italic;color:var(--ink);font-size:15px}
 .concern .label{margin:6px 0 0;font-family:"DM Mono","Courier New",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--olive)}
 .concern .start{margin:0;color:#000;font-weight:500}
-.whyme{background:var(--lime-tint);border-radius:20px;padding:36px 32px}
-.whyme p{font-size:clamp(20px,2.4vw,26px);font-weight:600;color:#000;margin:0;line-height:1.3;max-width:860px}
 .vs{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px}
 .vs-card{border-radius:16px;padding:24px;background:var(--soft)}
 .vs-card h3{margin-bottom:8px}
@@ -34,8 +32,18 @@
 .path{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:20px;margin:20px 0 0}
 @media (max-width:760px){.vs{grid-template-columns:1fr}}
 .embed-circle{display:block;width:100%;max-width:520px;height:auto;margin:32px auto 8px}
-.embed-card{align-items:center;text-align:center}
-.embed-card img{width:72px;height:72px}
+.embed-table{max-width:900px;margin:8px auto 0;border-top:1px solid var(--line)}
+.embed-row{display:grid;grid-template-columns:200px 1fr 1fr;gap:12px 32px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.embed-row p{margin:0;color:#000}
+.embed-stage{display:flex;align-items:center;gap:14px}
+.embed-stage img{width:56px;height:56px}
+.embed-head{padding:10px 0;font-family:"DM Mono","Courier New",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--olive)}
+.embed-who{display:none}
+@media (max-width:760px){
+  .embed-head{display:none}
+  .embed-row{grid-template-columns:1fr;gap:8px}
+  .embed-who{display:block;font-family:"DM Mono","Courier New",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);margin-bottom:2px}
+}
 </style>
 </head>
 <body>
@@ -106,8 +114,7 @@
       <button type="button" role="tab" data-i="4">Update</button>
     </div>
     <div class="loop-card" aria-live="polite">
-      <p class="loop-who"></p>
-      <blockquote class="loop-say"></blockquote>
+      <div class="loop-live"><p class="loop-who"></p><blockquote class="loop-say"></blockquote></div>
     </div>
     <figcaption id="loop-cap">One real task, start to finish</figcaption>
   </figure>
@@ -123,6 +130,14 @@
     var names=['Brief','Questions','First draft','Feedback','Update'];
     var nodes=document.querySelectorAll('.loop .node'), tabs=document.querySelectorAll('.loop-steps button');
     var who=document.querySelector('.loop-who'), say=document.querySelector('.loop-say');
+    // Invisible copies of every prompt share the card's space, so the card is always as tall as the longest one
+    var card=document.querySelector('.loop-card');
+    steps.forEach(function(st,i){
+      var g=document.createElement('div'); g.className='loop-live loop-ghost'; g.setAttribute('aria-hidden','true');
+      g.innerHTML='<p class="loop-who"></p><blockquote class="loop-say"></blockquote>';
+      g.firstChild.textContent=(i+1)+' · '+names[i]+' · '+st[0]; g.lastChild.textContent='"'+st[1]+'"';
+      card.appendChild(g);
+    });
     var cur=0, timer=null, pinned=false, fig=document.querySelector('.loop');
     function show(i){
       cur=i;
@@ -148,18 +163,33 @@
     <p>Real service improvements, without disrupting your day-to-day operations.</p>
   </div>
   <img class="embed-circle" src="/assets/embed/embed-circle.png" alt="The EMBED cycle: Evaluate, Map, Benchmark, Engage and Deliver, then back to Evaluate." width="899" height="701" loading="lazy">
-  <div class="grid-5">
-    <div class="card embed-card"><img src="/assets/embed/evaluate.png" alt="" width="72" height="72" loading="lazy"><h3>Evaluate</h3><p class="small">Examining the effectiveness of people, processes and platforms, including the AI tools you already have, using metrics such as queries by purchase phase, time to resolution and contact rates.</p></div>
-    <div class="card embed-card"><img src="/assets/embed/map.png" alt="" width="72" height="72" loading="lazy"><h3>Map</h3><p class="small">Identifying every touchpoint of the end-to-end customer journey, deciding where to optimise and where AI can help, then measuring conversions.</p></div>
-    <div class="card embed-card"><img src="/assets/embed/benchmark.png" alt="" width="72" height="72" loading="lazy"><h3>Benchmark</h3><p class="small">Understanding how you compare, setting up dashboards, revealing focus areas, and tracking and improving NPS and CSAT scores.</p></div>
-    <div class="card embed-card"><img src="/assets/embed/engage.png" alt="" width="72" height="72" loading="lazy"><h3>Engage</h3><p class="small">Creating cohesion and gaining buy-in from your people, setting priorities and delivering success as a team.</p></div>
-    <div class="card embed-card"><img src="/assets/embed/deliver.png" alt="" width="72" height="72" loading="lazy"><h3>Deliver</h3><p class="small">Quick wins and lasting change, with due regard to budgets, impact versus effort, and continual measurement and improvement.</p></div>
-  </div>
-</section>
-
-<section class="wrap">
-  <div class="whyme">
-    <p>25+ years improving experiences for customers and the people who serve them. The barrier is almost never the platform or the talent. It’s knowing which question to ask first.</p>
+  <div class="embed-table">
+    <div class="embed-row embed-head" aria-hidden="true"><span></span><span>Customers</span><span>Employees</span></div>
+    <div class="embed-row">
+      <div class="embed-stage"><img src="/assets/embed/evaluate.png" alt="" width="56" height="56" loading="lazy"><h3>Evaluate</h3></div>
+      <p><span class="embed-who">Customers</span>What they ask, and where they get stuck.</p>
+      <p><span class="embed-who">Employees</span>What slows the team down, and what your tools can already do.</p>
+    </div>
+    <div class="embed-row">
+      <div class="embed-stage"><img src="/assets/embed/map.png" alt="" width="56" height="56" loading="lazy"><h3>Map</h3></div>
+      <p><span class="embed-who">Customers</span>Every step they take, from first look to after-sales.</p>
+      <p><span class="embed-who">Employees</span>Every handover, workaround and double entry behind those steps.</p>
+    </div>
+    <div class="embed-row">
+      <div class="embed-stage"><img src="/assets/embed/benchmark.png" alt="" width="56" height="56" loading="lazy"><h3>Benchmark</h3></div>
+      <p><span class="embed-who">Customers</span>How happy they are, and how easy you are to deal with.</p>
+      <p><span class="embed-who">Employees</span>Where time goes, and where it leaks.</p>
+    </div>
+    <div class="embed-row">
+      <div class="embed-stage"><img src="/assets/embed/engage.png" alt="" width="56" height="56" loading="lazy"><h3>Engage</h3></div>
+      <p><span class="embed-who">Customers</span>Find out what matters most to them.</p>
+      <p><span class="embed-who">Employees</span>Bring the team in, so changes stick.</p>
+    </div>
+    <div class="embed-row">
+      <div class="embed-stage"><img src="/assets/embed/deliver.png" alt="" width="56" height="56" loading="lazy"><h3>Deliver</h3></div>
+      <p><span class="embed-who">Customers</span>Faster, simpler service.</p>
+      <p><span class="embed-who">Employees</span>Less friction, more meaningful work.</p>
+    </div>
   </div>
 </section>
 
@@ -195,6 +225,7 @@
       <p>I've spent my career in senior marketing roles, across B2B and B2C, acquisition and retention. I've launched several mobile companies, including giffgaff, the UK's first 100% online mobile network. There I set up customer service, automated communications and the community, drove 50% of all new customers through referrals, and reached 99% self-service.</p>
       <p>As a customer experience consultant, I use Claude every day to write code, publish apps, create designs, and handle simple things, like reminding me to stop working at the end of the day. Most recently, as interim Global CMO of a new eSIM business, I used it as a sparring partner on a $100m contract, and to build prototypes showing vendors that a world-first, 100% self-service mobile company was possible.</p>
       <p>My view: you don't need another AI course. You already have the skills and the tools. This is about putting them to work with confidence and clarity, so you get consistent results, save time and make better business decisions.</p>
+      <p class="quote">"25+ years improving experiences for customers and the people who serve them. The barrier is almost never the platform or the talent. It’s knowing which question to ask first."</p>
       <p style="font-weight:500">Not sure where to start? Book a free 15-minute call and we'll work it out together.</p>
       <div class="btns"><a class="btn btn-ghost" href="/book">Book a 15-minute call</a></div>
     </div>
