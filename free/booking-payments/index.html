@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connect Stripe and take payment before booking | Free mini course | Liminal CX</title>
+<meta name="description" content="A free mini course for PAs and admins: connect Stripe to Google Calendar, make people pay when they book, and set a clear cancellation policy.">
+<link rel="canonical" href="https://liminalcx.com/free/booking-payments/">
+<meta property="og:title" content="Connect Stripe and take payment before booking | Liminal CX">
+<meta property="og:description" content="Free mini course: paid Google Calendar bookings with Stripe and a cancellation policy. Paste the instructions into your AI chat and follow along.">
+<meta property="og:url" content="https://liminalcx.com/free/booking-payments/">
+<meta property="og:type" content="article">
+<link rel="icon" href="/assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&amp;family=Roboto:wght@400;500&amp;family=Rubik:wght@300;400;500;600;700&amp;display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+.pm-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;margin-top:28px;align-items:start}
+@media (max-width:820px){.pm-wrap{grid-template-columns:1fr}}
+.pm-fig{margin:0;display:flex;flex-direction:column;gap:10px}
+.pm-fig figcaption{font-size:14px;color:var(--ink)}
+.pm-fig figcaption b{color:#000}
+.pm{background:#1f1f1f;color:#e3e3e3;font-family:Roboto,Arial,sans-serif;border-radius:16px;padding:22px 24px;font-size:14px;line-height:1.4;box-shadow:0 10px 28px rgba(0,0,0,.18)}
+.pm-crumb{font-size:12px;color:#9aa0a6;margin-bottom:14px}
+.pm h4{margin:0;font-size:19px;font-weight:400;color:#e3e3e3}
+.pm h5{margin:0;font-size:15px;font-weight:500;color:#e3e3e3}
+.pm .sub{font-size:13px;color:#c4c7c5;margin-top:2px}
+.pm-line{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;flex-wrap:wrap}
+.pm-ok{background:#0f5223;color:#c4eed0;border-radius:999px;padding:5px 14px;font-weight:500;font-size:13px}
+.pm-out{display:inline-block;border:1px solid #8e918f;border-radius:999px;padding:7px 18px;color:#f2b8b5;font-weight:500;margin-top:14px;font-size:13px}
+.pm-link{color:#a8c7fa;text-decoration:underline;font-size:13px}
+.pm-row{display:flex;gap:14px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid #3c4043}
+.pm-ico{width:22px;flex:none;color:#c4c7c5;padding-top:2px}
+.pm-sec{margin-top:14px;padding-left:36px}
+.pm-check{display:flex;align-items:center;gap:10px;margin-top:10px;font-size:15px}
+.pm-box{width:18px;height:18px;border-radius:3px;background:#a8c7fa;position:relative;flex:none}
+.pm-box::after{content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;border:solid #062e6f;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.pm-amt{display:flex;align-items:center;gap:8px;margin-top:12px}
+.pm-amt span{background:#303134;border-radius:6px;padding:8px 14px;min-width:54px;text-align:center}
+.pm-pol{background:#333537;border-radius:8px;padding:10px 12px;margin-top:8px;font-size:13.5px}
+.pm-pol .tb{color:#c4c7c5;font-size:12px;letter-spacing:10px;border-bottom:1px solid #45474a;padding-bottom:5px;margin-bottom:8px}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="/"><img src="/assets/logo.png" alt="" width="31" height="40">Liminal CX</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/services/">Services</a>
+        <a href="/ai-audit/">AI Audit</a>
+        <a href="/free/" aria-current="page">Free courses</a>
+        <a href="/about/">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+    <div class="hero">
+      <p class="eyebrow"><a href="/free/" style="color:inherit">Free mini courses</a> · Google Calendar · Stripe · Time to set up: 30 to 45 minutes</p>
+      <div class="course-tags course-tags-lg" aria-label="What you need"><span>Google Workspace (paid plan)</span><span>Stripe account</span><span>Any AI chat</span></div>
+      <h1>Connect Stripe and take payment before booking</h1>
+      <p class="lede">Make people pay when they book, so no-shows and last-minute cancellations stop costing you. Connect Stripe to Google Calendar, set the price and write a clear cancellation policy. Your AI chat coaches you through it, at your pace.</p>
+      <div class="btns"><a class="btn btn-lime" href="#course">Get the instructions</a></div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="wrap">
+  <div class="grid">
+    <div class="card">
+      <p class="kicker">You'll end up with</p>
+      <ul class="ticks">
+        <li>Stripe connected to Google Calendar</li>
+        <li>Booking pages that take card payment before the booking goes through</li>
+        <li>A cancellation and refund policy on the booking form and in reminders</li>
+        <li>Automatic receipts, and a tested refund</li>
+      </ul>
+    </div>
+    <div class="card">
+      <p class="kicker">You'll need</p>
+      <ul class="ticks">
+        <li><b>You'll likely need a paid Google plan.</b> Paid bookings need an eligible one, such as Google Workspace Business Standard. On a company account an admin may also need to switch them on. The course checks yours.</li>
+        <li>A booking page in Google Calendar. No booking page yet? Start with <a href="/free/google-bookings-stripe/">Swap Calendly for Google Calendar bookings</a>.</li>
+        <li>A Stripe account, or time to open one (Stripe runs ID checks)</li>
+        <li>No Stripe products needed: Google charges the amount you type in</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="intro">
+    <p class="kicker">See it first</p>
+    <h2>The two screens that matter</h2>
+    <p>One switch in Calendar settings, then one section in each booking page. Google changes its screens from time to time, so yours may look a little different. The course checks the latest official help for you.</p>
+  </div>
+  <div class="pm-wrap">
+    <figure class="pm-fig">
+      <div class="pm" role="img" aria-label="Google Calendar settings, Appointment schedules: Payment integration with Stripe, shown as Connected">
+        <div class="pm-crumb">Settings › General › Appointment schedules</div>
+        <h4>Appointment schedules</h4>
+        <div class="pm-line"><div><h5>Payment integration with Stripe</h5><div class="sub">Accept payments via debit or credit card</div></div><span class="pm-ok">Connected</span></div>
+        <span class="pm-out">Disconnect Stripe</span>
+        <p class="sub" style="margin-top:12px">Visit Stripe to manage all payments received from your appointment schedules</p>
+      </div>
+      <figcaption><b>1. Connect once.</b> In Calendar settings, connect Stripe. It shows "Connected" when it's done.</figcaption>
+    </figure>
+    <figure class="pm-fig">
+      <div class="pm" role="img" aria-label="Booking page settings: Payments and cancellation policy, with Require payment when booking ticked, an amount of 75 pounds and a cancellation policy">
+        <div class="pm-row"><span class="pm-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></span><div><h5>Payments and cancellation policy</h5><div class="sub">Help prevent no-shows and last-minute cancellations</div></div></div>
+        <div class="pm-sec">
+          <h5>Payments through Stripe</h5>
+          <div class="pm-check"><span class="pm-box"></span>Require payment when booking</div>
+          <div class="pm-amt"><span>75</span>·<span>00</span><span>GBP ▾</span></div>
+          <div style="margin-top:16px"><h5>Cancellation policy</h5><div class="sub">Shown on your booking form and in email reminders.</div></div>
+          <div class="pm-pol"><div class="tb">B I U ≡ •</div>Full refund if you cancel at least 24 hours before. Need to move it? Get in touch as soon as you can. Missed appointments can't be refunded.</div>
+        </div>
+      </div>
+      <figcaption><b>2. On each paid booking page.</b> Tick "Require payment when booking", set the amount and write your cancellation policy.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="intro">
+    <p class="kicker">How it works</p>
+    <h2>Three steps</h2>
+  </div>
+  <div class="howto">
+    <div class="card"><div class="card-head"><span class="num" style="background:var(--lime)">1</span><h3>Copy</h3></div><p>Copy the instructions below, or download them as a file.</p></div>
+    <div class="card"><div class="card-head"><span class="num" style="background:var(--lime)">2</span><h3>Paste</h3></div><p>Paste them into a new chat in the AI tool you already use.</p></div>
+    <div class="card"><div class="card-head"><span class="num" style="background:var(--lime)">3</span><h3>Answer</h3></div><p>It asks one question at a time, including how confident you are with Stripe, and goes at your pace.</p></div>
+  </div>
+  <p style="margin-top:20px;max-width:780px">Never type passwords, card numbers or bank details into the chat. You enter those in Google and Stripe yourself.</p>
+</section>
+
+<section id="course" class="wrap">
+  <div class="intro">
+    <p class="kicker">The course</p>
+    <h2>Copy this into your AI chat</h2>
+  </div>
+  <div class="prompt-box">
+    <div class="prompt-bar">
+      <span class="meta">guide.md</span>
+      <div class="btns" style="align-items:center">
+        <span class="copied" id="copied" role="status" aria-live="polite"></span>
+        <button class="btn btn-lime" id="copy" type="button">Copy instructions</button>
+        <a class="btn btn-line" href="guide.md" download="booking-payments-stripe.md">Download .md</a>
+      </div>
+    </div>
+    <pre class="prompt-text" id="prompt" tabindex="0">Loading… If nothing appears, use Download .md above.</pre>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="intro">
+    <p class="kicker">Official help</p>
+    <h2>Straight from Google and Stripe</h2>
+    <p>Screens and plans change. These pages are always the latest version, and the course tells your AI to check them as it goes.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <h3>Google Calendar</h3>
+      <ul class="ticks">
+        <li><a href="https://support.google.com/calendar/answer/13762729" rel="noopener">Require payment for appointments</a></li>
+        <li><a href="https://support.google.com/calendar/answer/16287038" rel="noopener">Which plans include payments</a></li>
+        <li><a href="https://support.google.com/a/answer/13765946" rel="noopener">For Workspace admins: allow paid bookings</a></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Stripe</h3>
+      <ul class="ticks">
+        <li><a href="https://stripe.com/pricing" rel="noopener">Pricing and fees</a></li>
+        <li><a href="https://docs.stripe.com/receipts" rel="noopener">Email receipts</a></li>
+        <li><a href="https://docs.stripe.com/refunds" rel="noopener">Refunds</a></li>
+        <li><a href="https://docs.stripe.com/payouts" rel="noopener">Payouts to your bank</a></li>
+        <li><a href="https://docs.stripe.com/invoicing/dashboard" rel="noopener">Send an invoice</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="wrap contact">
+  <div class="contact-box">
+    <h2>Stuck, or want it done with you?</h2>
+    <p>Book a Power Hour and we'll set it up together on your real calendar. Or book a free 15-minute call to talk about what else is eating your week.</p>
+    <a class="email" href="mailto:info@liminalcx.com?subject=Booking%20payments%20course">info@liminalcx.com</a>
+    <div class="btns" style="justify-content:center">
+      <a class="btn btn-lime" href="/book-power-hour">Book a Power Hour</a>
+      <a class="btn btn-line" href="/book">Book a 15-minute call</a>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var pre=document.getElementById('prompt'),btn=document.getElementById('copy'),msg=document.getElementById('copied'),text='';
+  fetch('guide.md').then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){text=t;pre.textContent=t}).catch(function(){});
+  btn.addEventListener('click',function(){
+    if(!text)return;
+    function done(){msg.textContent='Copied';setTimeout(function(){msg.textContent=''},2500)}
+    if(navigator.clipboard){navigator.clipboard.writeText(text).then(done,fallback)}else{fallback()}
+    function fallback(){var r=document.createRange();r.selectNodeContents(pre);var s=getSelection();s.removeAllRanges();s.addRange(r);try{document.execCommand('copy');done()}catch(e){msg.textContent='Select the text and copy'}}
+  });
+})();
+</script>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap row">
+    <span>© 2026 Liminal CX · Claire Kavanagh</span>
+    <span><a href="/book">Book a 15-minute call</a> · <a href="mailto:info@liminalcx.com">Email</a> · <a href="https://www.linkedin.com/in/clairekav" rel="noopener">LinkedIn</a></span>
+  </div>
+</footer>
+</body>
+</html>

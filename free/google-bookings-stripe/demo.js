@@ -49,30 +49,21 @@
       return click('loc',t).then(function(){on('l-drop');return wait(350,t)})
       .then(function(){cls('l-meet','hl');return click('l-meet',t)})
       .then(function(){on('l-drop',false);set('loc','Google Meet video conferencing');return click('desc',t,.5,.7)})
-      .then(function(){return type('desc-t','Bring one problem and leave with a plan. Payment is taken when you book.',t,28)})
+      .then(function(){return type('desc-t','A short call to see how we can help. No preparation needed.',t,28)})
       .then(function(){return click('form',t,.3,.3)})
       .then(function(){cls('form','open');return wait(500,t)})
       .then(function(){return click('add',t)})
       .then(function(){$('q2').style.display='flex';return wait(600,t)})}},
-    {say:'Switch on payment, set the price and your cancellation policy', run:function(t){
-      $('scroll').style.transform='translateY(-360px)';
-      return wait(700,t).then(function(){return click('pay',t,.3,.3)})
-      .then(function(){cls('pay','open');return wait(500,t)})
-      .then(function(){return click('box',t)})
-      .then(function(){on('box');return click('price',t)})
-      .then(function(){cls('price','focus');return type('price-t','75.00',t,90)})
-      .then(function(){cls('price','focus',false);return wait(700,t)})}},
     {say:'Save, then open your booking page and copy its link', run:function(t){
       return click('next',t).then(function(){on('toast');return wait(900,t)})
       .then(function(){return click('open',t)})
       .then(function(){on('toast',false);cls('S','booking');set('url','calendar.app.google/your-booking-page');return wait(900,t)})}},
-    {say:'Your client picks a time, answers your questions and pays. Done.', run:function(t){
+    {say:'Your client picks a time and answers your questions. Done.', run:function(t){
       return click('slot',t).then(function(){cls('slot','hl');return wait(300,t)})
       .then(function(){on('modal');return wait(500,t)})
       .then(function(){return click('f-name',t)}).then(function(){cls('f-name','focus');return type('f-name-t','Alex Morgan',t,50)})
       .then(function(){cls('f-name','focus',false);return click('f-co',t)}).then(function(){cls('f-co','focus');return type('f-co-t','Northlight Ltd',t,50)})
-      .then(function(){cls('f-co','focus',false);return click('f-card',t)}).then(function(){cls('f-card','focus');return type('f-card-t','•••• •••• •••• 1881',t,30)})
-      .then(function(){cls('f-card','focus',false);return click('cta',t)})
+      .then(function(){cls('f-co','focus',false);return click('cta',t)})
       .then(function(){on('done');return wait(3200,t)})}}
   ];
   // the stage itself is addressable as 'S'
@@ -109,5 +100,5 @@
       if(!visible&&was){token++}
     })},{threshold:.35}).observe(view);
   }else{visible=true}
-  go(reduce?3:0); // shown still until it scrolls into view; reduced motion starts on the payment step and never moves
+  go(reduce?2:0); // shown still until it scrolls into view; reduced motion starts on the details step and never moves
 })();
