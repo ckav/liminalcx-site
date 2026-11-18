@@ -95,6 +95,7 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 - **18 Nov 2026:** The draft replaced the live home page. Styles moved into site.css, the meta description and social preview text were updated, and /draft-home/ redirects to /.
 - **18 Nov 2026:** Second case study added to About: a Premier League football club (three teams merged into one, next-match-first rule, help centre). It's anonymised, as is everything in Case studies.
 - **18 Nov 2026:** Case study result headings on About can now wrap ("Peaks absorbed" was spilling out of its box). Bio stats still stay on one line.
+- **18 Nov 2026:** Football club case study: added Claire's "Classic fan journey" diagram (`assets/case-studies/fan-journey.png`, shown at its own 774px width and clickable to open).
 
 ## Known issues
 
