@@ -49,8 +49,11 @@
     <p>No sign-up and no video to sit through. Each course takes under an hour and leaves something working at the end.</p>
   </div>
 
-  <div class="grid">
-    <article class="product">
+  <div class="course-filter" id="course-filter" role="group" aria-label="Filter courses by platform" hidden></div>
+  <p class="course-count" id="course-count" aria-live="polite"></p>
+
+  <div class="grid courses" id="courses">
+    <article class="product" data-platforms="Google Calendar">
       <a class="cover" href="/free/google-bookings-stripe/">
         <div class="top">
           <div class="course-tags"><span>Google Calendar (paid plan likely)</span></div>
@@ -64,7 +67,7 @@
         </div>
       </a>
     </article>
-    <article class="product">
+    <article class="product" data-platforms="Google Calendar, Stripe">
       <a class="cover" href="/free/booking-payments/">
         <div class="top">
           <div class="course-tags"><span>Google Workspace (paid plan)</span><span>Stripe</span></div>
@@ -78,7 +81,7 @@
         </div>
       </a>
     </article>
-    <article class="product">
+    <article class="product" data-platforms="Gmail, Outlook, Google Calendar">
       <a class="cover" href="/free/daily-sweep/">
         <div class="top">
           <div class="course-tags"><span>Gmail or Outlook</span><span>AI chat with scheduled tasks</span></div>
@@ -106,6 +109,29 @@
     </div>
   </div>
 </section>
+<script>
+// Platform filter: built from each card's data-platforms, so a new course adds its own pill.
+(function(){
+  var cards=[].slice.call(document.querySelectorAll('#courses .product[data-platforms]'));
+  var box=document.getElementById('course-filter'),count=document.getElementById('course-count');
+  var counts={};
+  cards.forEach(function(c){c._p=c.dataset.platforms.split(',').map(function(x){return x.trim()}).filter(Boolean);c._p.forEach(function(p){counts[p]=(counts[p]||0)+1})});
+  var names=Object.keys(counts).sort(function(a,b){return a.localeCompare(b)});
+  if(names.length<2)return;
+  function pick(name){
+    [].forEach.call(box.children,function(b){b.setAttribute('aria-pressed',String(b.dataset.p===name))});
+    var shown=0;cards.forEach(function(c){var on=!name||c._p.indexOf(name)>-1;c.hidden=!on;if(on)shown++});
+    count.textContent=name?shown+' of '+cards.length+' courses use '+name:'';
+    try{history.replaceState(null,'',name?'?platform='+encodeURIComponent(name):location.pathname)}catch(e){}
+  }
+  function add(label,name){var b=document.createElement('button');b.type='button';b.dataset.p=name;b.textContent=label;b.addEventListener('click',function(){pick(name)});box.appendChild(b)}
+  add('All courses ('+cards.length+')','');
+  names.forEach(function(n){add(n+' ('+counts[n]+')',n)});
+  box.hidden=false;
+  var q=new URLSearchParams(location.search).get('platform');
+  pick(q&&counts[q]?q:'');
+})();
+</script>
 </main>
 
 <footer class="site-foot">
