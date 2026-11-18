@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="stylesheet" href="/assets/case-studies/order-panel.css">
 <link rel="stylesheet" href="/assets/case-studies/giffgaff.css">
+<link rel="stylesheet" href="/assets/case-studies/mobile-proto.css">
 <style>
 .cs{border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-top:28px}
 .cs-top{background:#000;color:#fff;padding:28px 28px 24px}
@@ -106,7 +107,7 @@
       <p>My view: you don't need another AI course. You already have the skills and the tools. This is about putting them to work with confidence and clarity, so you get consistent results, save time and make better business decisions.</p>
     </div>
     <div class="bio-side">
-      <img src="/assets/claire.jpg" alt="Claire Kavanagh" width="500" height="750" loading="lazy">
+      <img src="/assets/claire.jpg" alt="Claire Kavanagh" width="576" height="720" loading="lazy">
       <div class="stats">
         <div class="stat"><b>25+ years</b><span>in marketing (B2B/B2C)</span></div>
         <div class="stat"><b>15+ years</b><span>working with start-ups</span></div>
@@ -354,6 +355,162 @@
     </div>
   </article>
 
+  <article class="cs" id="digital-network">
+    <div class="cs-top">
+      <p class="eyebrow">Case study · All-digital mobile network (in development)</p>
+      <h3>Choosing a platform partner, with prototypes as proof</h3>
+      <p>Turning an ambitious brief for a mobile network with no call centre into a scored vendor shortlist, and a contract review that caught the gaps before signing.</p>
+      <p class="cs-note">Still in development. Not launched.</p>
+    </div>
+    <div class="cs-body">
+
+      <div class="cs-facts">
+        <div><h4>The challenge</h4><p>The company wanted a fully digital mobile network across several countries, run without call-centre agents. Choosing the platform behind it is a long, expensive commitment. And what a vendor shows in a sales demo doesn’t always make it into the contract.</p></div>
+        <div><h4>What I did</h4><p><span class="tag">E</span>Co-wrote the request for proposals and ran it across 11 vendors, then scored the shortlist of 7 on a 60% technical, 40% commercial basis.<br><span class="tag">M</span>Built quick, low-fidelity prototypes of the customer experience for each market, such as a family plan and an account dashboard, to make the requirements concrete.<br><span class="tag">B</span>Checked the preferred vendor’s draft contract line by line against 404 requirements, and flagged 12 blockers.</p></div>
+        <div><h4>How AI helped</h4><p>AI pulled more than 20 earlier working conversations into one master requirements list. It compared the vendor’s draft line by line against that list, and built the prototypes. I wrote the review comments myself. Technical calls went to the technical lead, and commercial calls to procurement.</p></div>
+      </div>
+
+      <div>
+        <h4 class="kicker" style="margin-bottom:14px">A prototype, from brief to review</h4>
+        <figure class="mpdemo">
+          <div class="mp-view" id="mp-view" role="img" aria-label="Illustration: a prototype of a self-service mobile app. It starts from the brief (no call centre), lists the information each screen needs, then shows an account screen with data left, plan status and coverage, and a customer adding a family member in a few taps. The same journey is checked for four markets, then goes through research, prototype, review and decision. It is a prototype, not a launched product.">
+            <div class="mp" id="mp" aria-hidden="true">
+              <span class="mp-badge">Prototype · illustration</span>
+              <div class="mp-left">
+                <div class="mp-card" data-k="brief"><span class="mp-kick">The brief</span><p>“Customers do everything themselves. There’s no call centre to fall back on.”</p></div>
+                <div class="mp-card" data-k="fields"><span class="mp-kick">What each screen needs to know</span><div class="mp-chips"><code data-k="f1">plan_status</code><code data-k="f2">data_remaining</code><code data-k="f3">coverage</code><code data-k="f4">family_members</code></div></div>
+                <div class="mp-card" data-k="mk"><span class="mp-kick">One journey, each market</span><div class="mp-tabs"><span data-k="m1">Market A</span><span data-k="m2">Market B</span><span data-k="m3">Market C</span><span data-k="m4">Market D</span></div><p class="mp-sm">Checked against each market’s requirements</p></div>
+                <div class="mp-card" data-k="path"><span class="mp-kick">Then people decide</span><ol class="mp-path"><li data-k="p1">Research</li><li data-k="p2">Prototype</li><li data-k="p3">Review</li><li data-k="p4">Decision</li></ol></div>
+              </div>
+              <div class="mp-phone"><div class="mp-scr">
+                <div class="mp-sbar"><span>9:41</span><span class="mp-mkt" data-k="mkt">Market A</span><span>●●●</span></div>
+                <div class="mp-s mp-skel" data-k="skel"><i style="width:60%;height:16px"></i><i class="ring"></i><i></i><i></i><i style="width:70%"></i><i class="btn"></i></div>
+                <div class="mp-s" data-k="dash">
+                  <p class="mp-h">Hi Sam</p>
+                  <div class="mp-ring"><b>6.2 GB</b><span>left this month</span></div>
+                  <div class="mp-row"><span>Plan</span><b class="mp-ok">Active ✓</b></div>
+                  <div class="mp-row"><span>Coverage</span><b class="mp-bars">▂▄▆█</b></div>
+                  <span class="mp-btn" data-k="add">Add a family member</span>
+                </div>
+                <div class="mp-s" data-k="fam">
+                  <p class="mp-h">Add a family member</p>
+                  <div class="mp-field"><small>Their name</small><b data-k="name"></b></div>
+                  <div class="mp-tog"><span>Share my data with them</span><span class="mp-sw" data-k="share"></span></div>
+                  <div class="mp-tog"><span>New SIM by post</span><span class="mp-sw on"></span></div>
+                  <p class="mp-hint">You’ll see the total before you confirm.</p>
+                  <span class="mp-btn" data-k="confirm">Confirm</span>
+                </div>
+                <div class="mp-s mp-done" data-k="done"><div class="tick">✓</div><b>Alex is added</b><p>Their SIM is on its way.<br>Change this any time.</p></div>
+              </div></div>
+            </div>
+          </div>
+          <figcaption>
+            <p class="mp-say" id="mp-say"></p>
+            <div class="mp-steps"><button type="button" data-s="0">1 Brief</button><button type="button" data-s="1">2 What it needs</button><button type="button" data-s="2">3 Account</button><button type="button" data-s="3">4 Family</button><button type="button" data-s="4">5 Markets</button><button type="button" data-s="5">6 Review</button><button type="button" class="mp-pp" id="mp-pp" aria-pressed="false">Pause</button></div>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div>
+        <h4 class="kicker" style="margin-bottom:14px">How the partner was chosen</h4>
+        <div class="flow" role="list">
+          <div class="node" role="listitem"><b>The brief</b><span>An all-digital mobile network, with no call centre</span></div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="node" role="listitem"><b>Request for proposals</b><span>11 vendors invited</span></div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="node" role="listitem"><b>Scored shortlist</b><span>7 vendors, technical and commercial</span></div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="node" role="listitem"><b>Prototypes</b><span>The experience made visible, market by market</span></div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="node live" role="listitem"><b>Contract review</b><span>12 blockers flagged before signing</span></div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="kicker" style="margin-bottom:14px">One promise, checked</h4>
+        <div class="ba">
+          <div class="ba-before"><h4>What was demonstrated</h4><p>In the sales process, vendors showed AI assistants that could act for customers.</p></div>
+          <div class="ba-after"><h4>What the draft contract said</h4><p>At launch, basic chatbots only, with “no decision autonomy”. My review comment: “This materially downgrades what was demonstrated.”</p></div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="kicker" style="margin-bottom:14px">The result</h4>
+        <div class="results">
+          <div class="stat"><b>11</b><span>vendors through the process</span></div>
+          <div class="stat"><b>404</b><span>requirements, each one traceable</span></div>
+          <div class="stat"><b>12</b><span>blockers caught before signing</span></div>
+        </div>
+      </div>
+
+    </div>
+  </article>
+
+  <article class="cs" id="travel-esim">
+    <div class="cs-top">
+      <p class="eyebrow">Case study · Travel eSIM business</p>
+      <h3>Support tickets that arrive with the answer attached</h3>
+      <p>Moving a live travel eSIM business to a new platform, and giving its support team every customer’s details on every ticket, instantly.</p>
+    </div>
+    <div class="cs-body">
+
+      <div class="cs-facts">
+        <div><h4>The challenge</h4><p>The business was already selling eSIMs for travellers, but it was moving away from its development partner. Customer data sat in four separate systems, so for every support question an agent had to look the customer up by hand: did they pay, did the eSIM download, are they using data?</p></div>
+        <div><h4>What I did</h4><p><span class="tag">E</span>Turned meeting recordings into around 400 traceable requirements and a brief for a new platform. The move was planned in safe stages: test, run in parallel, small pilot, then switch over.<br><span class="tag">M</span>Wireframed the customer journeys, including multi-country search, checkout, auto-renewal, pausing a plan and buying by message.<br><span class="tag">D</span>Built automation that adds each customer’s purchase, download and data status to every support ticket, and points the agent to the right fix.</p></div>
+        <div><h4>How AI helped</h4><p>AI turned meeting transcripts into requirements tables, drafted the wireframes and helped build the automation. The team checked every requirement. Replies only go out automatically when the system is confident. Otherwise the ticket goes to a person.</p></div>
+      </div>
+
+      <div>
+        <h4 class="kicker" style="margin-bottom:14px">A ticket, as the agent sees it</h4>
+        <div class="tk">
+          <div class="tk-msg"><b>Traveller</b><small>Just landed</small><div class="tk-bubble">Hi, I’ve just arrived and my eSIM isn’t working. Can you help?</div></div>
+          <div class="tk-note">
+            <span class="mp-kick">Added automatically, in seconds</span>
+            <div class="tk-row"><span>Paid</span><b class="yes">Yes ✓</b></div>
+            <div class="tk-row"><span>eSIM installed</span><b class="yes">Yes ✓</b></div>
+            <div class="tk-row"><span>Data used</span><b class="no">None yet</b></div>
+            <div class="tk-row"><span>Likely issue</span><b>Data roaming is switched off</b></div>
+            <div class="tk-fix"><small>Suggested fix</small>Turn on data roaming in the phone’s settings. An agent checks, then replies.</div>
+          </div>
+        </div>
+        <p class="tk-ill">Illustration, not real customer data</p>
+      </div>
+
+      <div>
+        <h4 class="kicker" style="margin-bottom:14px">How a ticket flows now</h4>
+        <div class="flow" role="list">
+          <div class="node" role="listitem"><b>Ticket arrives</b><span>A customer asks for help</span></div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="node" role="listitem"><b>Details added</b><span>Purchase, download and data usage, from four systems</span></div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="node" role="listitem"><b>Issue sorted</b><span>Five issues cover 90% of tickets</span></div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="node" role="listitem"><b>Fix suggested</b><span>For example, “turn on data roaming”</span></div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="node live" role="listitem"><b>Agent replies</b><span>A person checks and answers</span></div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="kicker" style="margin-bottom:14px">One ticket, before and after</h4>
+        <div class="ba">
+          <div class="ba-before"><h4>Before</h4><p>A traveller says their eSIM isn’t working. The agent opens four systems to find out whether they paid, whether it installed and whether it’s using data.</p></div>
+          <div class="ba-after"><h4>After</h4><p>The ticket arrives with a note showing all three, and the likely fix. The agent checks and replies.</p></div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="kicker" style="margin-bottom:14px">The result</h4>
+        <div class="results">
+          <div class="stat"><b>~400</b><span>requirements, traced from meeting recordings</span></div>
+          <div class="stat"><b>5 issues</b><span>covered 90% of support tickets</span></div>
+          <div class="stat"><b>700+</b><span>tickets processed in testing, 1 to 2 seconds each</span></div>
+        </div>
+      </div>
+
+    </div>
+  </article>
+
   <article class="cs" id="giffgaff">
     <div class="cs-top">
       <p class="eyebrow">Case study · giffgaff</p>
@@ -436,6 +593,7 @@
 })();
 </script>
 <script src="/assets/case-studies/order-panel.js" defer></script>
+<script src="/assets/case-studies/mobile-proto.js" defer></script>
 </main>
 
 <footer class="site-foot">

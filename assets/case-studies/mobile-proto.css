@@ -1,0 +1,91 @@
+/* Mobile network case studies (About page).
+   .mp-*  All-digital mobile network: animated prototype mock-up (an illustration built for the site, not the client's files).
+   .tk-*  Travel eSIM: drawn support ticket with the automatic note. */
+.mpdemo{margin:0;display:flex;flex-direction:column;gap:14px}
+.mp-view{position:relative;width:100%;border-radius:14px;overflow:hidden;background:var(--soft);border:1px solid var(--line);box-shadow:0 12px 34px rgba(0,0,0,.10)}
+.mp{position:absolute;left:0;top:0;width:760px;height:440px;transform-origin:0 0;background:var(--soft);color:#000;font-family:Rubik,Arial,sans-serif;font-size:13px;line-height:1.35;overflow:hidden;user-select:none}
+.mp *{box-sizing:border-box}
+.mp.fast,.mp.fast *{transition:none!important;animation:none!important}
+.mp-badge{position:absolute;top:14px;left:24px;font-family:"DM Mono","Courier New",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:#000;color:var(--lime);padding:4px 10px;border-radius:999px}
+.mp-kick{display:block;font-family:"DM Mono","Courier New",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--olive);margin-bottom:6px}
+
+/* left: the working notes */
+.mp-left{position:absolute;left:24px;top:46px;width:400px;display:flex;flex-direction:column;gap:10px}
+.mp-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s,border-color .3s,box-shadow .3s}
+.mp-card.on{opacity:1;transform:none}
+.mp-card.act{border-color:var(--lime);box-shadow:0 0 0 3px var(--lime-tint)}
+.mp-card p{margin:0;font-size:14px;color:#000}
+.mp-card .mp-sm{font-size:12px;color:var(--ink);margin-top:8px}
+.mp-chips{display:flex;flex-wrap:wrap;gap:6px}
+.mp-chips code{font-family:"DM Mono","Courier New",monospace;font-size:11px;background:var(--soft);border:1px dashed var(--muted);border-radius:6px;padding:3px 8px;opacity:.25;transition:opacity .3s,background .3s,border-color .3s}
+.mp-chips code.on{opacity:1;background:var(--lime-tint);border:1px solid var(--lime)}
+.mp-tabs{display:flex;gap:6px}
+.mp-tabs span{flex:1;text-align:center;font-size:12px;font-weight:600;border:1px solid var(--line);border-radius:999px;padding:4px 0;transition:background .3s,border-color .3s}
+.mp-tabs span.on{background:var(--lime);border-color:var(--lime)}
+.mp-path{display:flex;gap:6px;margin:0;padding:0;list-style:none}
+.mp-path li{flex:1;font-size:12px;font-weight:600;text-align:center;border-radius:8px;padding:6px 4px;background:var(--soft);color:var(--muted);transition:background .3s,color .3s}
+.mp-path li.on{background:#000;color:var(--lime)}
+
+/* right: the phone */
+.mp-phone{position:absolute;right:70px;top:20px;width:220px;height:400px;border-radius:30px;background:#000;padding:10px}
+.mp-scr{position:relative;width:100%;height:100%;border-radius:22px;background:#fff;overflow:hidden}
+.mp-sbar{height:30px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:10px;font-weight:600}
+.mp-mkt{font-family:"DM Mono","Courier New",monospace;font-size:9px;letter-spacing:.08em;background:var(--lime-tint);color:var(--olive);border-radius:999px;padding:1px 7px;opacity:0;transition:opacity .3s}
+.mp-mkt.on{opacity:1}
+.mp-s{position:absolute;left:0;right:0;top:30px;bottom:0;padding:8px 14px;opacity:0;transform:translateX(16px);transition:opacity .35s,transform .35s;pointer-events:none}
+.mp-s.on{opacity:1;transform:none}
+.mp-h{font-size:15px;font-weight:700;margin:2px 0 10px}
+.mp-skel i{display:block;height:12px;border-radius:6px;background:var(--soft);margin-bottom:10px}
+.mp-skel .ring{width:110px;height:110px;border-radius:50%;margin:16px auto 18px;border:12px solid var(--soft);background:none}
+.mp-skel .btn{height:34px;border-radius:999px;margin-top:22px}
+.mp-ring{position:relative;width:120px;height:120px;margin:4px auto 12px;border-radius:50%;background:conic-gradient(var(--lime) 0 62%,var(--soft) 62% 100%)}
+.mp-ring::after{content:"";position:absolute;inset:13px;border-radius:50%;background:#fff}
+.mp-ring b,.mp-ring span{position:absolute;left:0;right:0;text-align:center;z-index:1}
+.mp-ring b{top:38px;font-size:20px}
+.mp-ring span{top:64px;font-size:10px;color:var(--ink)}
+.mp-row{display:flex;justify-content:space-between;font-size:12px;padding:7px 0;border-bottom:1px solid var(--soft)}
+.mp-row span{color:var(--ink)}
+.mp-ok{color:var(--green-dark,#007A34);font-weight:600}
+.mp-bars{letter-spacing:1px;color:var(--green-dark,#007A34)}
+.mp-btn{display:block;text-align:center;font-weight:600;font-size:12px;border-radius:999px;padding:9px 0;margin-top:14px;background:#000;color:var(--lime);transition:transform .2s,box-shadow .2s}
+.mp-btn.hl{transform:scale(.96);box-shadow:0 0 0 4px var(--lime)}
+.mp-field{border:1px solid var(--line);border-radius:8px;padding:6px 9px;margin-bottom:8px}
+.mp-field small{display:block;font-size:9px;color:var(--ink);text-transform:uppercase;letter-spacing:.06em}
+.mp-field b{font-size:13px;min-height:17px;display:block}
+.mp-tog{display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:6px 0}
+.mp-sw{width:30px;height:17px;border-radius:999px;background:var(--line);position:relative;transition:background .3s}
+.mp-sw::after{content:"";position:absolute;top:2px;left:2px;width:13px;height:13px;border-radius:50%;background:#fff;transition:left .3s}
+.mp-sw.on{background:var(--lime)}
+.mp-sw.on::after{left:15px}
+.mp-hint{font-size:10px;color:var(--ink);margin-top:6px}
+.mp-done{text-align:center;padding-top:50px}
+.mp-done .tick{width:64px;height:64px;border-radius:50%;background:var(--lime);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:700}
+.mp-done p{font-size:12px;color:var(--ink);margin:6px 0 0}
+.mp-tap{position:absolute;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;border:3px solid var(--lime);pointer-events:none;animation:mpTap .5s ease-out forwards}
+@keyframes mpTap{from{transform:scale(.4);opacity:1}to{transform:scale(1.6);opacity:0}}
+
+.mp-say{margin:0;color:#000;font-weight:500;font-size:17px;min-height:3em}
+.mp-say span{color:var(--olive);font-family:"DM Mono","Courier New",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-right:8px}
+.mp-steps{display:flex;flex-wrap:wrap;gap:6px}
+.mp-steps button{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);background:#fff;color:#000;padding:4px 12px;border-radius:999px;cursor:pointer}
+.mp-steps button[aria-current="step"]{background:var(--lime);border-color:var(--lime)}
+.mp-steps button.mp-pp{border-color:#000}
+.mp-steps button:focus-visible{outline:3px solid var(--green-dark,#007A34);outline-offset:2px}
+
+/* travel eSIM: one drawn ticket */
+.tk{display:grid;grid-template-columns:1fr 1.25fr;gap:16px;align-items:start}
+.tk-msg,.tk-note{border:1px solid var(--line);border-radius:14px;padding:18px 20px;background:#fff}
+.tk-msg b{display:block;color:#000;font-size:15px}
+.tk-msg small{display:block;color:var(--ink);font-size:13px;margin-bottom:12px}
+.tk-bubble{background:var(--soft);color:#000;border-radius:18px 18px 18px 4px;padding:12px 16px;font-size:15px}
+.tk-note{border-color:var(--lime);box-shadow:0 0 0 3px var(--lime-tint)}
+.tk-note .mp-kick{margin-bottom:10px}
+.tk-row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--soft);font-size:15px}
+.tk-row span{color:var(--ink)}
+.tk-row b{color:#000;text-align:right}
+.tk-row b.yes{color:var(--green-dark,#007A34)}
+.tk-row b.no{color:#9A5B00}
+.tk-fix{margin-top:12px;background:#000;color:#fff;border-radius:10px;padding:12px 14px;font-size:15px}
+.tk-fix small{display:block;font-family:"DM Mono","Courier New",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);margin-bottom:4px}
+.tk-ill{font-size:12px;color:var(--muted);margin:8px 0 0}
+@media (max-width:760px){.tk{grid-template-columns:1fr}}
