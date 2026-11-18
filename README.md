@@ -21,6 +21,7 @@ Claire Kavanagh's consulting site for AI workshops, CX and teams. This is a plai
 | `404.html` | Not found page |
 | `assets/site.css` | All styles. Colours are CSS variables in `:root` |
 | `assets/logo.png`, `assets/claire.jpg` | Images |
+| `assets/embed/` | Claire's own EMBED artwork: the circle diagram and the five lime-to-green stage icons. Originals are in `AutomationFramework/website_management/`, which also has her branded People, Process, Platforms, results and cart/ticket icons. |
 | `netlify.toml` | Domain redirects, booking redirects, old-URL redirects, headers |
 
 ## Rules for the site
@@ -51,6 +52,7 @@ This is the section headed **"Stop learning. Start coaching."** The idea is that
 A new direction for the home page, agreed with Claire on 17 Nov 2026:
 - **Audience:** founders and teams who already use AI but feel they should be doing more. Consulting isn't expected to come from the website, so it's played down.
 - **Hero:** "Unlock the power to create better human experiences".
+- **Section order (18 Nov 2026):** hero → The approach (the coaching loop, copied from Services) → How we help: EMBED (Claire's circle and icons) → Why me → Start where you are → bio → platforms → Sound familiar? (moved to the bottom, above contact).
 - **Sound familiar? cards:** five concerns (Confidence, Platform, Apathy, Compliance, Consistency), each with "What I've heard" and "Where to start". Claire wrote the "Where to start" lines.
 - **Why me:** "25+ years…" panel.
 - **Start where you are** (replaces the old services cards): "Alone, you improve your bit. Together, you improve the whole thing."
@@ -83,7 +85,7 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
   - Fixed the stray `rtimel=` on the Services page (now `rel=`). Clicking a loop stage now keeps it there: moving the mouse away no longer restarts the cycling.
   - Loop Update prompt reworded: "Good. Update the readme doc for this client, and update the proposal creation document to always include milestone dates in the timeline section."
   - Hidden draft of a new home page added at /draft-home/ (see above).
-- **18 Nov 2026:** Draft home page: removed "Why together" and replaced the services cards with the alone vs together section and three product steps.
+- **18 Nov 2026:** Draft home page: added The approach (coaching loop) and an EMBED section with Claire's branded artwork, and moved Sound familiar? to the bottom. Removed "Why together" and replaced the services cards with the alone vs together section and three product steps.
 
 ## Known issues
 
