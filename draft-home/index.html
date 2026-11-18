@@ -22,14 +22,17 @@
 .concern .heard{margin:0;font-style:italic;color:var(--ink);font-size:15px}
 .concern .label{margin:6px 0 0;font-family:"DM Mono","Courier New",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--olive)}
 .concern .start{margin:0;color:#000;font-weight:500}
-.together{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:32px 56px;align-items:start}
-.together .intro p{color:var(--ink)}
-.friction{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
-.friction li{background:#000;color:#fff;border-radius:14px;padding:16px 20px;font-weight:500}
-.friction li span{color:var(--lime);font-family:"DM Mono","Courier New",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:4px}
 .whyme{background:var(--lime-tint);border-radius:20px;padding:36px 32px}
 .whyme p{font-size:clamp(20px,2.4vw,26px);font-weight:600;color:#000;margin:0;line-height:1.3;max-width:860px}
-@media (max-width:760px){.together{grid-template-columns:1fr}}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px}
+.vs-card{border-radius:16px;padding:24px;background:var(--soft)}
+.vs-card h3{margin-bottom:8px}
+.vs-card p{margin:0;color:var(--ink)}
+.vs-team{background:#000}
+.vs-team h3{color:var(--lime)}
+.vs-team p{color:#fff}
+.path{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:20px;margin:20px 0 0}
+@media (max-width:760px){.vs{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -106,22 +109,6 @@
 </section>
 
 <section class="wrap">
-  <div class="together">
-    <div class="intro">
-      <p class="kicker">Why together</p>
-      <h2>See the whole journey, not just your part of it</h2>
-      <p>People doing the work often see only their part of it. They improve their own bit, without seeing the opportunity or impact for employees or customers across the entire process.</p>
-      <p>When founders and teams look at the whole journey together, the friction shows up fast. Remove it, and people get back to meaningful work, with the freedom to keep improving it themselves.</p>
-    </div>
-    <ul class="friction">
-      <li><span>The workaround</span>The temporary fix that quietly became permanent.</li>
-      <li><span>The double entry</span>Typing the same thing into two systems.</li>
-      <li><span>The screen-switching</span>Five tabs open to answer one question.</li>
-    </ul>
-  </div>
-</section>
-
-<section class="wrap">
   <div class="whyme">
     <p>25+ years improving experiences for customers and the people who serve them. The barrier is almost never the platform or the talent. It’s knowing which question to ask first.</p>
   </div>
@@ -129,14 +116,24 @@
 
 <section class="wrap">
   <div class="intro">
-    <p class="kicker">Services</p>
-    <h2>Start where you are</h2>
+    <p class="kicker">Start where you are</p>
+    <h2>Alone, you improve your bit. Together, you improve the whole thing.</h2>
   </div>
-  <div class="grid">
-    <div class="card"><div class="card-head"><span class="num" style="background:var(--lime)">1</span><h3>1:1</h3></div><p class="small">Power Hour or AI Audit 1:1 · Online or in person</p><p>One hour might be all you need to unlock your existing tools and get more out of the AI you already have.</p><p><a href="/services/#one-to-one">Find out more</a></p></div>
-    <div class="card"><div class="card-head"><span class="num" style="background:var(--green-mid)">2</span><h3>Workshops</h3></div><p class="small">Small groups or your whole team · In person preferred</p><p>Collaboration and creativity for teams working through their wider AI adoption and implementation strategy.</p><p><a href="/services/#workshops">Find out more</a></p></div>
-    <div class="card"><div class="card-head"><span class="num" style="background:var(--green);color:#fff">3</span><h3>Consulting</h3></div><p class="small">Platform and process projects</p><p>Tackle the friction slowing your teams down, and free up your people for the work where human intelligence makes the difference.</p><p><a href="/services/#consulting">Find out more</a></p></div>
+  <div class="vs">
+    <div class="vs-card">
+      <h3>On your own</h3>
+      <p>You fix your own frustrations, one tweak at a time. Real progress, until you reach the edge of what you can see and what you know.</p>
+    </div>
+    <div class="vs-card vs-team">
+      <h3>Together</h3>
+      <p>The team sees the whole process. One person’s fix sparks the next idea, and everyone’s knowledge adds up.</p>
+    </div>
   </div>
+  <ol class="path">
+    <li class="card"><div class="card-head"><span class="num" style="background:var(--lime)">1</span><h3>Start on your own</h3></div><p class="small">1:1 Power Hour · One hour · Online or in person</p><p>Pick one real task and get it working your way, with the tools you already have.</p><p><a href="/services/#one-to-one">Find out more</a></p></li>
+    <li class="card"><div class="card-head"><span class="num" style="background:var(--green-mid)">2</span><h3>Learn alongside others</h3></div><p class="small">AI Audit · Two hours · Up to six people</p><p>See what you’re doing now, find what you’re missing, and borrow ideas from the people around the table.</p><p><a href="/ai-audit/">Find out more</a></p></li>
+    <li class="card"><div class="card-head"><span class="num" style="background:var(--green);color:#fff">3</span><h3>Bring your team</h3></div><p class="small">Team workshop · Your whole team · In person preferred</p><p>Look at the whole journey together, and agree what to fix first.</p><p><a href="/services/#workshops">Find out more</a></p></li>
+  </ol>
 </section>
 
 <section class="wrap">

@@ -52,8 +52,14 @@ A new direction for the home page, agreed with Claire on 17 Nov 2026:
 - **Audience:** founders and teams who already use AI but feel they should be doing more. Consulting isn't expected to come from the website, so it's played down.
 - **Hero:** "Unlock the power to create better human experiences".
 - **Sound familiar? cards:** five concerns (Confidence, Platform, Apathy, Compliance, Consistency), each with "What I've heard" and "Where to start". Claire wrote the "Where to start" lines.
-- **Why together:** people see only their part of the process. Three friction examples sit alongside: the workaround, the double entry, the screen-switching.
 - **Why me:** "25+ years…" panel.
+- **Start where you are** (replaces the old services cards): "Alone, you improve your bit. Together, you improve the whole thing."
+  - An "On your own" vs "Together" comparison, then the products as three steps:
+    1. Start on your own (1:1 Power Hour)
+    2. Learn alongside others (AI Audit, up to six people)
+    3. Bring your team (team workshop)
+  - The Consulting card is gone from the draft.
+- The "Why together" block was tried and removed on 18 Nov 2026: Claire felt it wasn't working.
 - The old EMBED and People / Process / Platform sections and the top strip are removed from the draft. They're still on the live home page.
 - **Still to come:** a Microsoft stat on collaborative success rates, once Claire finds the source document.
 - **To go live:** copy the draft's sections into `index.html`. Then remove the `noindex` meta and the draft's `<style>` block (move those rules into site.css), and delete `draft-home/`.
@@ -77,6 +83,7 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
   - Fixed the stray `rtimel=` on the Services page (now `rel=`). Clicking a loop stage now keeps it there: moving the mouse away no longer restarts the cycling.
   - Loop Update prompt reworded: "Good. Update the readme doc for this client, and update the proposal creation document to always include milestone dates in the timeline section."
   - Hidden draft of a new home page added at /draft-home/ (see above).
+- **18 Nov 2026:** Draft home page: removed "Why together" and replaced the services cards with the alone vs together section and three product steps.
 
 ## Known issues
 
