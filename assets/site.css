@@ -204,3 +204,4 @@ ul.ticks li::before{content:"";position:absolute;left:4px;top:6px;width:15px;hei
 .courses{grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr))}
 .courses .product,.courses .product a.cover{row-gap:0}
 .res-icon{width:56px;height:56px;flex:none}
+.embed-icon{width:56px;height:56px}

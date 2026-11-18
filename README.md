@@ -16,7 +16,7 @@ Claire Kavanagh's consulting site for AI workshops, CX and teams. This is a plai
 | `index.html` | Home (the former draft, live since 18 Nov 2026) |
 | `services/index.html` | Services: 1:1, Workshops, Consulting (was /workshops, which still redirects) |
 | `ai-audit/index.html` | AI Audit (was /focus-first, which still redirects) |
-| `about/index.html` | Bio and case studies: this website (flow diagram, update animation) and a Premier League football club (flow, before/after, results). Clients aren't named on the site. Source text for case studies is in `AutomationFramework/website_management/` (`case-study-*.md`), written using `case-study-brief.md`. |
+| `about/index.html` | Bio and case studies: this website (flow diagram, update animation) a Premier League football club (flow, before/after, results), and a global merchandise company's multi-store order panel (animated mock-up in `assets/case-studies/order-panel.css` / `.js`, built like the bookings course demo: edit the `scenes` list in the JS and the matching `data-k` elements in the page). Clients aren't named on the site. Source text for case studies is in `AutomationFramework/website_management/` (`case-study-*.md`), written using `case-study-brief.md`. |
 | `free/index.html` | Free mini courses: one card per course (in the nav as "Free courses") |
 | `free/<course>/` | One course: `index.html` (the page) and `guide.md` (the instructions people paste into their AI chat) |
 | `404.html` | Not found page |
@@ -130,6 +130,12 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 - **18 Nov 2026:** /free/: course card tops are now equal height, and there's a platform filter (built from each card's `data-platforms`).
 
 - **18 Nov 2026:** Services Results cards now use Claire's own icons in place of the £ / + / ↻ circles. Note: the cost savings icon shows $, not £.
+
+- **18 Nov 2026:** Services Team workshop tagline changed from "AI for the routine. EI for the human." to "Unlock your team’s time." There's no "EI" left on the site.
+- **18 Nov 2026:** Services Results heading changed from "Delivering success, every time" to "Delivering value".
+- **18 Nov 2026:** Services Consulting EMBED cards now use Claire's stage icons (from `assets/embed/`) in place of the black letter boxes.
+
+- **18 Nov 2026:** Third case study added to About: a global merchandise company, with 50+ online stores in one order panel beside the ticket. It includes a low-fidelity animated mock-up (no real names or data) and the line "How AI would help today", because the project was done without AI.
 
 ## Known issues
 
