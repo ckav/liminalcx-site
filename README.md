@@ -165,6 +165,8 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 
 - **19 Nov 2026:** About page reworked to lead with seniority (plan: `AutomationFramework/website_management/about-page-plan.md`). New bio (three mobile launches, giffgaff board member, TPO US launch, interim Global CMO kept vague), new stats, a "What I bring" block with a career strip, and the Time/scope/resource triangle moved to Services (above contact). Case studies reordered: giffgaff, digital network, football club, travel eSIM, merchandise; each has a lime "The decision" line and a "My role" note; "How AI helped" became "What AI made possible" on two. The website study is demoted to a "How I work" strip at the end (file lists and time log removed).
 
+- **19 Nov 2026:** About bio stats put back to the home page set (Claire didn't like the title boxes), with "people mentored" on both pages. giffgaff case study rebuilt in the slide format (styles `.sl-*` in the About page): situation, decision, what stayed with people and my role on the left, four big numbers on the right, then the 11-flow diagram with three cards tying flows to outcomes, and the two text messages folded into a "See the two messages" details block.
+
 ## Known issues
 
 - None at the moment.

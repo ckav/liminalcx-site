@@ -69,6 +69,28 @@
 .career b{font-weight:600}
 .career i{font-style:normal;color:var(--muted);padding:0 6px}
 .career-sub{font-size:13px;color:var(--muted);margin-top:4px}
+/* slide-format case study (giffgaff first) */
+.sl-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,280px);gap:32px 48px;align-items:start}
+.sl-text h4{font-family:"DM Mono","Courier New",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);margin:22px 0 6px;font-weight:500}
+.sl-text h4:first-child{margin-top:0}
+.sl-text p{margin:0;max-width:640px}
+.sl-text .sl-decision{border-left:3px solid var(--lime);padding-left:14px;color:#000;font-weight:500}
+.sl-nums div{padding:16px 0;border-top:1px solid var(--line)}
+.sl-nums div:first-child{border-top:0;padding-top:0}
+.sl-nums b{display:block;font-size:40px;font-weight:700;line-height:1;color:#000}
+.sl-nums span{display:block;margin-top:6px;font-size:14px;color:var(--ink);line-height:1.35}
+.sl-map{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:16px;margin-top:20px}
+.sl-map > div{border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.sl-k{font-family:"DM Mono","Courier New",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--olive)}
+.sl-map b{display:block;font-size:17px;color:#000;margin:4px 0 6px}
+.sl-map p{font-size:14px;margin:0}
+.sl-map em{display:block;font-style:normal;font-weight:600;color:var(--green-dark);margin-top:10px;font-size:14px}
+.sl-more summary{cursor:pointer;font-weight:600;color:#000;padding:10px 18px;border:1px solid #000;border-radius:999px;display:inline-block;list-style:none}
+.sl-more summary::-webkit-details-marker{display:none}
+.sl-more summary::after{content:" ▾";color:var(--green)}
+.sl-more[open] summary::after{content:" ▴"}
+.sl-more[open] summary{margin-bottom:18px}
+@media (max-width:760px){.sl-grid{grid-template-columns:1fr}.sl-nums{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}.sl-nums div:nth-child(2){border-top:0;padding-top:0}}
 .flow-6 .node{flex-basis:120px}
 .cs-figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:10px}
 .cs-figure img{width:100%;max-width:774px;height:auto;border:1px solid var(--line);border-radius:12px}
@@ -148,9 +170,9 @@
     <div class="bio-side">
       <img src="/assets/claire.jpg" alt="Claire Kavanagh" width="576" height="720" loading="lazy">
       <div class="stats">
-        <div class="stat"><b>Interim CMO</b><span>a new mobile business, 2025–26</span></div>
-        <div class="stat"><b>Board member</b><span>giffgaff founding team</span></div>
-        <div class="stat"><b>50%</b><span>of giffgaff's new members came by referral</span></div>
+        <div class="stat"><b>25+ years</b><span>in marketing (B2B/B2C)</span></div>
+        <div class="stat"><b>15+ years</b><span>working with start-ups</span></div>
+        <div class="stat"><b>99%</b><span>self-service at giffgaff</span></div>
         <div class="stat"><b>370+</b><span>people mentored since 2020</span></div>
       </div>
     </div>
@@ -181,57 +203,63 @@
 
   <article class="cs" id="giffgaff">
     <div class="cs-top">
-      <p class="eyebrow">Case study · giffgaff</p>
+      <p class="eyebrow">giffgaff · Head of Member Experience · 2009–2015</p>
       <h3>99% self-service, and members who sold it for us</h3>
-      <p>Building giffgaff’s automated member messages, community and referral scheme, so members helped themselves and each other, and brought in half of all new members.</p>
-      <p class="cs-decision"><b>The decision.</b> Tell members when a cheaper plan suited them better, even though it cost revenue. “I’d rather have 80% of something than 100% of nothing.”</p>
-      <p class="cs-note">My role: joined before launch as CRM Manager, and became Head of Member Experience and a board member. Accountable for half of all new members.</p>
+      <p>The world’s first 100% online mobile network, with no shops and no call centre. I built the member journey, the community and the referral scheme that made that work.</p>
     </div>
     <div class="cs-body">
 
-      <div class="cs-facts">
-        <div><h4>The challenge</h4><p>giffgaff launched as the UK’s first 100% online mobile network, with no shops and no call centre. Every member had to be able to get started, top up and sort out problems on their own. And mobile networks weren’t trusted: their satisfaction scores (NPS) were around 20.</p></div>
-        <div><h4>What I did</h4><p><span class="tag">M</span>Mapped the whole member journey, from welcome to repurchase, into 11 automated message flows (built in Neolane, now Adobe Campaign).<br><span class="tag">E</span>Set up the community, with a positive culture where members answered members. This was before Google reviews and TripAdvisor were part of everyday life.<br><span class="tag">D</span>Removed friction from the start, with simple instructions in the SIM pack and clear messages about what to do next. Then I launched Recommended plan and Extra SIM.</p></div>
-        <div><h4>What made it work</h4><p>Being proactive, even when it cost revenue. I pushed hard for Recommended plan, based on what I’d seen work before. My case to finance: “I’d rather have 80% of something than 100% of nothing.” Members trusted a network that tried to save them money, and they told their friends.</p></div>
+      <div class="sl-grid">
+        <div class="sl-text">
+          <h4>The situation</h4>
+          <p>Launch, 2009. Every member had to get started, top up and fix problems on their own, at a time when mobile networks scored an NPS of around 20 and few people trusted buying a phone contract online.</p>
+          <h4>The decision</h4>
+          <p class="sl-decision">Tell members when a cheaper plan suited them better, even though it cost revenue. “I’d rather have 80% of something than 100% of nothing.” Members trusted a network that tried to save them money, and they told their friends.</p>
+          <h4>What stayed with people</h4>
+          <p>The community. Members answered members, in public, good and bad. Automation carried the journey; people carried the judgement.</p>
+          <h4>My role</h4>
+          <p>Joined before launch as CRM Manager. Became Head of Member Experience and a board member. Accountable for half of all new members.</p>
+        </div>
+        <div class="sl-nums" aria-label="Results">
+          <div><b>99%</b><span>of care through self-serve and the community</span></div>
+          <div><b>70+ NPS</b><span>when mobile networks averaged around 20</span></div>
+          <div><b>50%</b><span>of new members came by referral</span></div>
+          <div><b>4m+</b><span>members today, on the same basic flows</span></div>
+        </div>
       </div>
 
       <div>
-        <h4 class="kicker" style="margin-bottom:14px">The 11 member flows</h4>
+        <h4 class="kicker" style="margin-bottom:14px">The member journey, as 11 automated flows</h4>
         <figure class="cs-figure">
           <a href="/assets/case-studies/member-flows.png" target="_blank" rel="noopener"><img src="/assets/case-studies/member-flows.png" alt="Eleven automated message flows along the member journey: 1 Welcome, 2 Prospect (for people who haven’t bought), 3 Purchase (confirmation, shipment, anticipate, receive), 4 Onboarding (use), 5 Education (not using yet), 6 Feedback, 7 Recommendation, 8 Recovery (after negative feedback), 9 Reactivation (dormant), 10 Exit (churned) and 11 Repurchase." width="1710" height="912" loading="lazy"></a>
-          <figcaption>Every stage of membership had its own automated messages, from the first welcome to winning members back.</figcaption>
+          <figcaption>From the first welcome to winning members back. Built in Neolane (now Adobe Campaign), and still the basis of giffgaff’s CRM.</figcaption>
         </figure>
+        <div class="sl-map">
+          <div><span class="sl-k">Recommendation flow</span><b>Extra SIM</b><p>A second SIM posted the moment a member activated, with £5 for them and £5 for the friend who used it.</p><em>→ 50% of new members by referral</em></div>
+          <div><span class="sl-k">Repurchase flow</span><b>Recommended plan</b><p>Members were told when a cheaper plan fitted how they used their phone. It came up unprompted in focus groups.</p><em>→ “giffgaff is still trying to save me money”</em></div>
+          <div><span class="sl-k">Onboarding and feedback flows</span><b>Community and self-serve</b><p>Instructions in the SIM pack, clear next steps, and a community where members answered members.</p><em>→ 99% of care without an agent</em></div>
+        </div>
       </div>
 
-      <div>
-        <h4 class="kicker" style="margin-bottom:14px">Two flows, in action</h4>
+      <details class="sl-more">
+        <summary>See the two messages members talked about</summary>
         <div class="gg-stories">
           <div class="gg-story">
             <p class="gg-label">Keeping members</p>
             <h4>Recommended plan</h4>
             <div class="gg-sms"><span>giffgaff</span>Based on last month, a cheaper plan would cover how you use your phone. Want to switch? It only takes a minute.</div>
             <p class="gg-ill">Illustrative message, not the original wording</p>
-            <p>Members were told when a different plan would better suit how they used their phone, even if it meant they’d pay less. In focus groups it came up unprompted, and members posted screenshots on Twitter, along the lines of “giffgaff is still trying to save me money”. When asked why giffgaff, they said: because they try to save me money.</p>
+            <p>Members posted screenshots on Twitter, along the lines of “giffgaff is still trying to save me money”. When asked why giffgaff, they said: because they try to save me money.</p>
           </div>
           <div class="gg-story">
             <p class="gg-label">Members bringing members</p>
             <h4>Extra SIM</h4>
             <div class="gg-sms"><span>giffgaff</span>Your SIM’s working. We’ve popped a spare in the post. Give it to a friend, and when they join, you both get £5.</div>
             <p class="gg-ill">Illustrative message, not the original wording</p>
-            <p>When a member activated their SIM, we sent them a second one to pass on to a friend. Both got something: £5 for the member and £5 for their friend. It put a ready-made invitation in every member’s hand.</p>
+            <p>A team of two set the £5 each on a whiteboard, in a day, because the developers needed an answer that afternoon. Done beat perfect, and it put a ready-made invitation in every member’s hand.</p>
           </div>
         </div>
-      </div>
-
-      <div>
-        <h4 class="kicker" style="margin-bottom:14px">The result</h4>
-        <div class="results">
-          <div class="stat"><b>99%</b><span>self-service, through the community and clear messages</span></div>
-          <div class="stat"><b>70+ NPS</b><span>when mobile networks averaged around 20, alongside the likes of Facebook and Google</span></div>
-          <div class="stat"><b>50%</b><span>of new members came through member referral</span></div>
-          <div class="stat"><b>4 million+</b><span>members, with the same basic flows still in use (as of 2022)</span></div>
-        </div>
-      </div>
+      </details>
 
     </div>
   </article>
