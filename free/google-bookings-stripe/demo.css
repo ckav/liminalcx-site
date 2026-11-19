@@ -151,3 +151,5 @@
 .gd-steps button.gd-pp{border-color:#000}
 .gd-steps button:focus-visible{outline:3px solid var(--green);outline-offset:2px}
 .gd-small{font-size:14px;color:var(--ink)}
+.gd-rems{display:flex;gap:6px;flex-wrap:wrap}
+.gd-rems .gd-sel{padding:6px 10px;font-size:12px}

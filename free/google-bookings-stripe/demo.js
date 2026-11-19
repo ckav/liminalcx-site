@@ -28,6 +28,7 @@
   function on(k,v){$(k).classList.toggle('on',v!==false)}
   function cls(k,c,v){$(k).classList.toggle(c,v!==false)}
   function set(k,html){$(k).innerHTML=html}
+  function scrollTo(k,t){var r=$(k);$('scroll').style.transform='translateY('+(-Math.max(0,r.offsetTop-60))+'px)';return wait(700,t)}
 
   var scenes=[
     {say:'Open Google Calendar on a computer, then Create → Appointment schedule', run:function(t){
@@ -45,15 +46,25 @@
       .then(function(){set('thu','<span class="gd-time">10:00</span>– <span class="gd-time">12:00</span>');on('av-thu');return wait(600,t)})
       .then(function(){return click('next',t)})
       .then(function(){on('p1',false);on('p2');set('title2','30-minute session');set('next','Save');return wait(400,t)})}},
-    {say:'Add video, a description and the questions you need answered', run:function(t){
+    {say:'Add video, a description and your questions. Email verification cuts spam bookings', run:function(t){
       return click('loc',t).then(function(){on('l-drop');return wait(350,t)})
       .then(function(){cls('l-meet','hl');return click('l-meet',t)})
       .then(function(){on('l-drop',false);set('loc','Google Meet video conferencing');return click('desc',t,.5,.7)})
       .then(function(){return type('desc-t','A short call to see how we can help. No preparation needed.',t,28)})
+      .then(function(){return scrollTo('form',t)})
       .then(function(){return click('form',t,.3,.3)})
       .then(function(){cls('form','open');return wait(500,t)})
       .then(function(){return click('add',t)})
-      .then(function(){$('q2').style.display='flex';return wait(600,t)})}},
+      .then(function(){$('q2').style.display='flex';return wait(400,t)})
+      .then(function(){return click('verify',t)})
+      .then(function(){cls('verify','on');return wait(700,t)})}},
+    {say:'Add a second reminder to cut no-shows. Payment stays unticked for now', run:function(t){
+      return scrollTo('rem',t).then(function(){return click('rem',t,.3,.15)})
+      .then(function(){cls('rem','open');return wait(500,t)})
+      .then(function(){return click('add-rem',t)})
+      .then(function(){$('r2').style.display='inline-flex';return wait(500,t)})
+      .then(function(){return click('pay',t,.3,.15)})
+      .then(function(){cls('pay','open');return wait(1400,t)})}},
     {say:'Save, then open your booking page and copy its link', run:function(t){
       return click('next',t).then(function(){on('toast');return wait(900,t)})
       .then(function(){return click('open',t)})
