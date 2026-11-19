@@ -177,6 +177,8 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 
 - **19 Nov 2026:** Removed the lime top border from the team cards (`.tm-c`) in the travel eSIM study; they now have the same thin border all round.
 
+- **19 Nov 2026:** Case study pills (and prev/next) now jump to the top of the chosen study. They used to scroll to the sticky pill bar, which was already on screen, so nothing moved; they now scroll to `#cs-anchor`, the spot the bar sits in. New site-wide "Top" button (`assets/top.js`, `.to-top` in site.css), loaded on every page; it appears after a screen and a half of scrolling.
+
 ## Known issues
 
 - None at the moment.

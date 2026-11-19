@@ -248,6 +248,7 @@
     <h2>Case studies</h2>
     <p>Real projects, each with the decision that made the difference. Clients aren't named. giffgaff is the exception, as I worked there in-house.</p>
   </div>
+  <div id="cs-anchor" aria-hidden="true"></div>
   <div class="cs-tabs" id="cs-tabs" role="tablist" aria-label="Case studies"></div>
 
   <article class="cs" id="giffgaff" data-tab="giffgaff">
@@ -783,7 +784,7 @@
     arts.forEach(function(a,i){var on=a.id===id;a.hidden=!on;btns[i].setAttribute('aria-selected',String(on))});
     if(history.replaceState)history.replaceState(null,'','#'+id);
     window.dispatchEvent(new Event('resize')); // the animations size themselves to their box, which was 0 while hidden
-    if(scroll)bar.scrollIntoView({block:'start'});
+    if(scroll){var an=document.getElementById('cs-anchor');window.scrollTo({top:an.getBoundingClientRect().top+window.scrollY-8})} // the bar is sticky, so scroll to the spot it sits in, not the bar itself
   }
   var h=location.hash.slice(1);
   go(has(h)?h:arts[0].id,false);
@@ -799,5 +800,6 @@
     <span><a href="/book">Book a 15-minute call</a> · <a href="mailto:info@liminalcx.com">Email</a> · <a href="https://www.linkedin.com/in/clairekav" rel="noopener">LinkedIn</a></span>
   </div>
 </footer>
+<script src="/assets/top.js" defer></script>
 </body>
 </html>
