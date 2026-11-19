@@ -20,7 +20,7 @@ Claire Kavanagh's consulting site for AI workshops, CX and teams. This is a plai
 | `index.html` | Home (the former draft, live since 18 Nov 2026) |
 | `services/index.html` | Services: 1:1, Workshops, Consulting (was /workshops, which still redirects) |
 | `ai-audit/index.html` | AI Audit (was /focus-first, which still redirects) |
-| `about/index.html` | Bio and case studies: this website (flow diagram, update animation) a Premier League football club (flow, before/after, results), and a global merchandise company's multi-store order panel (animated mock-up in `assets/case-studies/order-panel.css` / `.js`, built like the bookings course demo: edit the `scenes` list in the JS and the matching `data-k` elements in the page). Clients aren't named on the site. Source text for case studies is in `AutomationFramework/website_management/` (`case-study-*.md`), written using `case-study-brief.md`. |
+| `about/index.html` | Bio, career line, then one section per industry (Mobile only since 19 Nov 2026; see "About page" below) and "Let's talk" |
 | `free/index.html` | Free mini courses: one card per course (in the nav as "Free courses") |
 | `free/<course>/` | One course: `index.html` (the page) and `guide.md` (the instructions people paste into their AI chat) |
 | `personal-pa/index.html` | **Hidden** paid course sales page: "Build your own Personal PA" (2-hour live course). Not in the nav or sitemap, and noindex (meta tag plus an `X-Robots-Tag` header in `netlify.toml`). It's a self-contained Claude Design export, not built on `site.css`. Source: `AutomationFramework/workshop_variations/life_locker_workshop/Personal PA Course.html` (the folder keeps the old "Life Locker" name, which is only what Claire calls her own one). Still to fill: `[£PRICE]` (2 places), `[DATE]`, `[TIME]`; the Reserve button emails info@liminalcx.com until there's a booking link. |
@@ -112,9 +112,26 @@ This direction was agreed with Claire on 17 Nov 2026 and built as a hidden draft
 - **Styles** for the home sections are at the end of `assets/site.css`.
 - **The approach loop** appears on both the home page and Services. A wording change has to be made in both `steps` arrays.
 
+## About page
+
+**Goal:** the page shows that Claire is a senior leader with real, hands-on experience, and uses the work to show the art of the possible. It's not a CV and not a list of AI features.
+
+**Order:** hero → bio (photo only beside it, no number boxes) → career line → one section per industry → "Let's talk".
+
+**Each industry section follows the Mobile pattern** (`<section id="projects">`, styles in `assets/case-studies/mobile-anims.css`):
+1. Kicker and heading (Mobile: "Mobile" / "Mobile roles").
+2. **Role list** (`ul.roles`): one item per role or client. Bold label (with years where useful), then one short paragraph: role, who Claire reported to, what she was accountable for, and the result. Only figures Claire has given.
+3. **Number boxes** (`.stats.mstats`): up to four, specific to the industry. The general boxes no longer sit beside the photo.
+4. **Animations** (`.anims`), under a one-line framing sentence. Each is an iframe of a self-contained HTML player in `assets/case-studies/<industry>/`, copied from the storyboard in `AutomationFramework/website_management/case_studies/<industry>_casestudy/storyboard/`. Copy, then add the embed block: hide `.wrap > p.meta:first-child` and `.onscreen`, white background, `fit()` uses the full width, and play when scrolled into view. `mobile-anims.js` sizes every `.anim iframe` to its content. Each has the caption "Illustrative example of how this approach could work. Not a record of a live system. Names, places and figures are examples."
+5. No call-to-action box under the section. "Let's talk" at the bottom does that job.
+
+**No labels** (Delivered, Illustrative pills) and no cards, carousel or "Full story" panels. The page no longer loads `sectors.css` / `sectors.js` (tabs and carousel). They are kept in case tabs come back when there are several industries.
+
+**Plan for the other industries:** `AutomationFramework/website_management/about-industries-plan.md`.
+
 ## Checking a change before pushing
 
-Serve the folder with `python -m http.server 8765`, then open http://localhost:8765/services/. For a screenshot, use headless Edge:
+Push to `preview` and check https://preview--liminalcx.netlify.app (free). To check before pushing, serve the folder with `python -m http.server 8765`, then open http://localhost:8765/services/. For a screenshot, use headless Edge:
 `msedge --headless=new --window-size=1280,1100 --screenshot=out.png http://localhost:8765/services/`
 Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few stages.
 
@@ -200,6 +217,7 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 - **19 Nov 2026:** The other five courses (booking-payments, daily-sweep, organise-a-folder, project-folders, explainers) brought into the standard course page shape: bold question lede, "Who it's for" card with a small note pointing the wrong reader elsewhere, "You'll need" items with bold lead-ins, and the course explanation and ".md" note above the copy box. Explainers gained the three cards above the word list. Guides unchanged: they already ask about the reader's tool and plan.
 - **19 Nov 2026:** The free courses are no longer described as "for PAs and admins". They are for people who want to advance their skills and free up their time. Updated the /free/ title and descriptions, the Home page free courses strip, and the descriptions on the booking-payments and daily-sweep courses. Don't reintroduce "PAs and admins" for the free courses.
 - **19 Nov 2026:** About: case studies grouped by industry (plan: `AutomationFramework/website_management/about-sector-cards-plan.md`). Sector tabs eSIM and mobile / Sports / eCommerce (`#esim`, `#sports`, `#ecommerce`), built by `assets/case-studies/sectors.js` from each `.sector[data-tab]`, styles `sectors.css` (`.sc-*`). The eSIM tab is a swipeable card carousel (scroll-snap, arrows, dots): giffgaff, network contracts, self-service (designed and directed), margin and fraud (designed and directed), travel eSIM. Each card is labelled Delivered or Designed and directed. "Full story" opens the existing in-depth study under the cards; old links (#giffgaff, #digital-network, #travel-esim, #football-club, #merch-orders) still open the right tab and study. Sports and eCommerce show their existing study until their cards are written. "How I work" is no longer a tab and sits under the tabs.
+- **19 Nov 2026:** README: new "About page" section (the per-industry pattern); structure row and known issues updated. About no longer loads `sectors.css`. Plan for the other industries: `AutomationFramework/website_management/about-industries-plan.md`.
 - **19 Nov 2026:** About: "My personal KPIs" on giffgaff. Mobile boxes: "2 MVNOs launched: giffgaff in the UK, and The People's Operator in the US"; the 4-countries box replaced by "99% self-service reached at giffgaff, aiming for 100%".
 - **19 Nov 2026:** About: "2025–26" added to the eSIM and global MVNO project line; the giffgaff "80% of something" quote removed.
 - **19 Nov 2026:** About: role list rewritten from Claire's notes (giffgaff KPIs; TPO PLC, reporting to the CEO, care costs halved; eSIM and global MVNO project, with network operators in the US, Mexico and the UK named, as on LinkedIn).
@@ -217,6 +235,6 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 
 - Time, scope, resource section (Home and About): the line under the kicker ("Fix the time first...") is placeholder copy for Claire to confirm. The diagram's small labels are hard to read on phones; a taller phone version with bigger text was offered.
 - Orbit case studies (travel eSIM, MVNO): drafts in AutomationFramework/website_management/case_studies/orbit_mobile/, waiting on Claire's answers (was there a six-week launch; are the bio's "$100m contract" and "showing vendors... was possible" claims accurate; can the MVNO countries be named; any post-go-live results). Then add to About with case-study navigation.
-- Bio on Home and About still says "$100m contract": no evidence for it was found in the Orbit files. Claire to confirm or reword.
+- Bio on Home still says "$100m contract" (About no longer does): no evidence for it was found in the Orbit files. Claire to confirm or reword.
 - Home "Start where you are": the section title and product names are still to be settled with Claire, and the page names (AI Audit, Team workshop) don't match the card names yet.
 - "The approach" is on both Services and the home page. Claire to decide what replaces it on Services.
