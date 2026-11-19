@@ -28,6 +28,7 @@
   function on(k,v){$(k).classList.toggle('on',v!==false)}
   function cls(k,c,v){$(k).classList.toggle(c,v!==false)}
   function set(k,html){$(k).innerHTML=html}
+  function field(k,text,t){return click(k,t).then(function(){cls(k,'focus');return type(k+'-t',text,t,40)}).then(function(){cls(k,'focus',false)})}
   function scrollTo(k,t){var r=$(k);$('scroll').style.transform='translateY('+(-Math.max(0,r.offsetTop-60))+'px)';return wait(700,t)}
 
   var scenes=[
@@ -72,8 +73,11 @@
     {say:'Your client picks a time and answers your questions. Done.', run:function(t){
       return click('slot',t).then(function(){cls('slot','hl');return wait(300,t)})
       .then(function(){on('modal');return wait(500,t)})
-      .then(function(){return click('f-name',t)}).then(function(){cls('f-name','focus');return type('f-name-t','Alex Morgan',t,50)})
-      .then(function(){cls('f-name','focus',false);return click('f-co',t)}).then(function(){cls('f-co','focus');return type('f-co-t','Northlight Ltd',t,50)})
+      .then(function(){return field('f-name','Alex',t)})
+      .then(function(){return field('f-sur','Morgan',t)})
+      .then(function(){return field('f-em','alex@northlight.co.uk',t)})
+      .then(function(){return field('f-help','Setting up online bookings',t)})
+      .then(function(){return click('f-co',t)}).then(function(){cls('f-co','focus');return type('f-co-t','Northlight Ltd',t,50)})
       .then(function(){cls('f-co','focus',false);return click('cta',t)})
       .then(function(){on('done');return wait(3200,t)})}}
   ];

@@ -153,3 +153,5 @@
 .gd-small{font-size:14px;color:var(--ink)}
 .gd-rems{display:flex;gap:6px;flex-wrap:wrap}
 .gd-rems .gd-sel{padding:6px 10px;font-size:12px}
+.gd-2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.gd-hint{font-size:10.5px;color:#444746;margin:3px 0 0 2px}
