@@ -69,6 +69,15 @@
 .career b{font-weight:600}
 .career i{font-style:normal;color:var(--muted);padding:0 6px}
 .career-sub{font-size:13px;color:var(--muted);margin-top:4px}
+/* case study tabs: one study shown at a time, pills to flip between them */
+.cs-tabs{position:sticky;top:0;z-index:5;background:#fff;display:flex;flex-wrap:wrap;gap:8px;padding:14px 0 12px;margin-top:8px;border-bottom:1px solid var(--line)}
+.cs-tabs:empty{display:none}
+.cs-tabs button{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--line);background:#fff;color:#000;padding:7px 16px;border-radius:999px;cursor:pointer}
+.cs-tabs button[aria-selected="true"]{background:#000;color:var(--lime);border-color:#000}
+.cs-tabs button:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.cs-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 28px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+.cs-nav button{font:inherit;font-size:14px;font-weight:600;border:0;background:none;color:var(--green-dark);cursor:pointer;padding:0;text-align:left}
+.cs-nav button:hover{color:#000}
 /* slide-format case study (giffgaff first) */
 .sl-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,280px);gap:32px 48px;align-items:start}
 .sl-text h4{font-family:"DM Mono","Courier New",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);margin:22px 0 6px;font-weight:500}
@@ -200,8 +209,9 @@
     <h2>Case studies</h2>
     <p>Real projects, each with the decision that made the difference. Clients aren't named. giffgaff is the exception, as I worked there in-house.</p>
   </div>
+  <div class="cs-tabs" id="cs-tabs" role="tablist" aria-label="Case studies"></div>
 
-  <article class="cs" id="giffgaff">
+  <article class="cs" id="giffgaff" data-tab="giffgaff">
     <div class="cs-top">
       <p class="eyebrow">giffgaff · Head of Member Experience · 2009–2015</p>
       <h3>99% self-service, and members who sold it for us</h3>
@@ -264,7 +274,7 @@
     </div>
   </article>
 
-  <article class="cs" id="digital-network">
+  <article class="cs" id="digital-network" data-tab="Mobile network">
     <div class="cs-top">
       <p class="eyebrow">Case study · All-digital mobile network (in development)</p>
       <h3>Choosing a platform partner, with prototypes as proof</h3>
@@ -356,7 +366,7 @@
     </div>
   </article>
 
-  <article class="cs" id="football-club">
+  <article class="cs" id="football-club" data-tab="Football club">
     <div class="cs-top">
       <p class="eyebrow">Case study · Premier League football club</p>
       <h3>Fewer queries, calmer fans, no extra seasonal staff</h3>
@@ -419,7 +429,7 @@
     </div>
   </article>
 
-  <article class="cs" id="travel-esim">
+  <article class="cs" id="travel-esim" data-tab="Travel eSIM">
     <div class="cs-top">
       <p class="eyebrow">Case study · Travel eSIM business</p>
       <h3>A travel eSIM service, mapped and working in six weeks</h3>
@@ -494,7 +504,7 @@
     </div>
   </article>
 
-  <article class="cs" id="merch-orders">
+  <article class="cs" id="merch-orders" data-tab="Merchandise">
     <div class="cs-top">
       <p class="eyebrow">Case study · Global sports and entertainment merchandise company</p>
       <h3>50+ online stores, one view of every order</h3>
@@ -602,7 +612,7 @@
     </div>
   </article>
 
-  <article class="cs" id="this-website">
+  <article class="cs" id="this-website" data-tab="How I work">
     <div class="cs-top">
       <p class="eyebrow">How I work · this website</p>
       <h3>This website: built in an afternoon, updated from my phone</h3>
@@ -694,6 +704,33 @@
 <script src="/assets/case-studies/order-panel.js" defer></script>
 <script src="/assets/case-studies/mobile-proto.js" defer></script>
 <script src="/assets/case-studies/journey-flow.js" defer></script>
+<script>
+(function(){ // case study tabs. Without JavaScript every study shows, one after another.
+  var sec=document.getElementById('projects'),bar=document.getElementById('cs-tabs');
+  if(!sec||!bar)return;
+  var arts=[].slice.call(sec.querySelectorAll('article.cs[data-tab]'));
+  if(arts.length<2)return;
+  var btns=arts.map(function(a){var b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.textContent=a.dataset.tab;b.addEventListener('click',function(){go(a.id,true)});bar.appendChild(b);return b});
+  arts.forEach(function(a,i){
+    var p=arts[(i-1+arts.length)%arts.length],n=arts[(i+1)%arts.length],nav=document.createElement('div');
+    nav.className='cs-nav';
+    nav.innerHTML='<button type="button" data-go="'+p.id+'">\u2190 '+p.dataset.tab+'</button><span>'+(i+1)+' of '+arts.length+'</span><button type="button" data-go="'+n.id+'">'+n.dataset.tab+' \u2192</button>';
+    nav.addEventListener('click',function(e){var t=e.target.closest('[data-go]');if(t)go(t.dataset.go,true)});
+    a.appendChild(nav);
+  });
+  function has(id){return arts.some(function(a){return a.id===id})}
+  function go(id,scroll){
+    if(!has(id))id=arts[0].id;
+    arts.forEach(function(a,i){var on=a.id===id;a.hidden=!on;btns[i].setAttribute('aria-selected',String(on))});
+    if(history.replaceState)history.replaceState(null,'','#'+id);
+    window.dispatchEvent(new Event('resize')); // the animations size themselves to their box, which was 0 while hidden
+    if(scroll)bar.scrollIntoView({block:'start'});
+  }
+  var h=location.hash.slice(1);
+  go(has(h)?h:arts[0].id,false);
+  window.addEventListener('hashchange',function(){var h=location.hash.slice(1);if(has(h))go(h,true)});
+})();
+</script>
 </main>
 
 <footer class="site-foot">

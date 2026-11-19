@@ -169,6 +169,8 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 
 - **19 Nov 2026:** About bio: added that Claire studied information systems (database and web design) alongside marketing in the late 1990s, as the foundation for the technical side of her work and for AI.
 
+- **19 Nov 2026:** About case studies are now tabs: a sticky row of pills (built from each article's `data-tab` label, so a new study gets a pill automatically) shows one study at a time, with previous/next at the foot of each. Links like `/about/#giffgaff` open that tab. Without JavaScript, all studies show in order. Showing a tab fires a `resize` event so the animations size themselves.
+
 ## Known issues
 
 - None at the moment.
