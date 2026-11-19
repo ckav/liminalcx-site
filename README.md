@@ -173,6 +173,8 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 
 - **19 Nov 2026:** The other four client case studies rebuilt in the slide format (situation, decision, what stayed with people, my role; four numbers on the right). Each has a hero visual of the decision, built in HTML: the 11 → 7 → 1 vendor funnel (`.funnel`), three teams into one (`.merge`), the six-week timeline (`.tl`) and 52 stores before/after (`.stores`). The animations now sit inside "See…" details blocks; opening one fires a `resize` so it sizes itself. The merchandise study's "How AI would help today" moved into My role. The website study is unchanged.
 
+- **19 Nov 2026:** Travel eSIM six-flow diagram re-laid out so no lines cross: "Compare and buy" sits centred under the two pre-purchase boxes, "Step-by-step setup" is centred above "Reviews and referrals", and "Fix connection problems" moved right to make room.
+
 ## Known issues
 
 - None at the moment.
