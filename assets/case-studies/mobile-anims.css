@@ -11,3 +11,7 @@
 .anim h3 span{flex:none;width:30px;height:30px;border-radius:50%;background:#000;color:var(--lime);font-size:14px;display:flex;align-items:center;justify-content:center}
 .anim iframe{display:block;width:100%;max-width:1000px;height:640px;border:0;background:#fff}
 .anim figcaption{font-size:14px;color:var(--muted);max-width:760px}
+/* per-industry number boxes (Mobile): four across on desktop, two on phones */
+.mstats{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:28px;max-width:1000px}
+.mstats .stat b{font-size:28px}
+@media (max-width:760px){.mstats{grid-template-columns:repeat(2,minmax(0,1fr))}}
