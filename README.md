@@ -53,7 +53,7 @@ This is the section headed **"Stop learning. Start coaching."** The idea is that
 
 ## Free mini courses (/free/)
 
-Short free courses for PAs and admins. Each course is a set of instructions that people paste into ChatGPT, Claude, Copilot or Gemini. The AI then coaches them through the job one step at a time.
+Short free courses for people who want to advance their skills and free up their time (not "for PAs and admins"). Each course is a set of instructions that people paste into ChatGPT, Claude, Copilot or Gemini. The AI then coaches them through the job one step at a time.
 - **The instructions live only in `guide.md`.** The course page loads that file into the copy box, so to change a course you edit `guide.md` and nothing else. The Copy and Download buttons use the same file.
 - **The guide has a set shape.** It opens with "Instructions for the AI" (ask first, one step at a time, never ask for passwords or card details, plain English), then "Questions to ask first", then "Reference: the steps", then "When we're finished".
 - **To add a course:**
@@ -194,6 +194,7 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 
 - **19 Nov 2026:** Calendly course (`free/google-bookings-stripe/`) reworked from Claire's notes: bold question lede for Calendly free-plan users, new "Who it's for" card with a note for paid Standard users, rewritten "You'll end up with" and "You'll need", course explanation and ".md" note above the copy box. Animation now six steps (email verification, a second reminder, payment left unticked) and the client's booking form shows every field set up earlier. This is now the standard course page shape, written up under "Free mini courses".
 - **19 Nov 2026:** The other five courses (booking-payments, daily-sweep, organise-a-folder, project-folders, explainers) brought into the standard course page shape: bold question lede, "Who it's for" card with a small note pointing the wrong reader elsewhere, "You'll need" items with bold lead-ins, and the course explanation and ".md" note above the copy box. Explainers gained the three cards above the word list. Guides unchanged: they already ask about the reader's tool and plan.
+- **19 Nov 2026:** The free courses are no longer described as "for PAs and admins". They are for people who want to advance their skills and free up their time. Updated the /free/ title and descriptions, the Home page free courses strip, and the descriptions on the booking-payments and daily-sweep courses. Don't reintroduce "PAs and admins" for the free courses.
 
 ## Known issues
 

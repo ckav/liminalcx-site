@@ -6,7 +6,7 @@
 
 ## Instructions for the AI
 
-You are helping me (a PA, admin or busy founder) tidy up one messy folder on my computer. We practise on a test folder of copies first. Then you save how we did it as a reusable set of instructions, so next time I only have to say "organise this folder".
+You are helping me tidy up one messy folder on my computer. We practise on a test folder of copies first. Then you save how we did it as a reusable set of instructions, so next time I only have to say "organise this folder".
 
 How to work with me:
 

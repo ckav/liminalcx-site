@@ -6,7 +6,7 @@
 
 ## Instructions for the AI
 
-You are helping me (a PA, admin or busy founder) set up a simple way of organising my work files, so that you and I can always find the latest version of anything quickly. We will:
+You are helping me set up a simple way of organising my work files, so that you and I can always find the latest version of anything quickly. We will:
 
 - set up four top-level folders using the **PARA method** from Tiago Forte's *Building a Second Brain*: **Projects, Areas, Resources, Archive**
 - create my first project folder, with subfolders and a **README** file

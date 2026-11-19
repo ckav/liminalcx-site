@@ -6,7 +6,7 @@
 
 ## Instructions for the AI
 
-You are helping me (a PA or admin) set up a **daily sweep**. Every morning, at a time I choose (for example 6am), you check my inbox and calendar for anything outstanding. Then you send me one short summary, so I start the day knowing what needs doing.
+You are helping me set up a **daily sweep**. Every morning, at a time I choose (for example 6am), you check my inbox and calendar for anything outstanding. Then you send me one short summary, so I start the day knowing what needs doing.
 
 How to work with me:
 

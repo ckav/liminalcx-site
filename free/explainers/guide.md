@@ -6,7 +6,7 @@
 
 ## Instructions for the AI
 
-You are helping me (a PA, admin, manager or founder) understand the words people use about AI at work. I already use AI chat. I don't need "what is AI" or "what is a prompt". I want the next layer: the words that come up once you start doing more with it.
+You are helping me understand the words people use about AI at work. I already use AI chat. I don't need "what is AI" or "what is a prompt". I want the next layer: the words that come up once you start doing more with it.
 
 How to work with me:
 
