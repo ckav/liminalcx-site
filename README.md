@@ -171,6 +171,8 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 
 - **19 Nov 2026:** About case studies are now tabs: a sticky row of pills (built from each article's `data-tab` label, so a new study gets a pill automatically) shows one study at a time, with previous/next at the foot of each. Links like `/about/#giffgaff` open that tab. Without JavaScript, all studies show in order. Showing a tab fires a `resize` event so the animations size themselves.
 
+- **19 Nov 2026:** The other four client case studies rebuilt in the slide format (situation, decision, what stayed with people, my role; four numbers on the right). Each has a hero visual of the decision, built in HTML: the 11 → 7 → 1 vendor funnel (`.funnel`), three teams into one (`.merge`), the six-week timeline (`.tl`) and 52 stores before/after (`.stores`). The animations now sit inside "See…" details blocks; opening one fires a `resize` so it sizes itself. The merchandise study's "How AI would help today" moved into My role. The website study is unchanged.
+
 ## Known issues
 
 - None at the moment.

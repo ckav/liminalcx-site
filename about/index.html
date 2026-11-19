@@ -78,6 +78,45 @@
 .cs-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 28px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
 .cs-nav button{font:inherit;font-size:14px;font-weight:600;border:0;background:none;color:var(--green-dark);cursor:pointer;padding:0;text-align:left}
 .cs-nav button:hover{color:#000}
+/* hero visuals for the slide-format studies */
+.funnel{display:flex;flex-direction:column;gap:8px;align-items:center}
+.fn{width:var(--w);min-width:min(300px,100%);max-width:100%;background:var(--soft);border-radius:12px;padding:14px 20px;display:flex;align-items:baseline;gap:16px}
+.fn b{font-size:28px;color:#000;white-space:nowrap;line-height:1}
+.fn span{font-size:14px}
+.fn-dark{background:#000;color:#D9D9D9;margin-top:8px}
+.fn-dark b{color:var(--lime)}
+.merge{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:16px;align-items:center}
+.merge-from{display:flex;flex-direction:column;gap:10px}
+.mnode{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:#fff}
+.mnode b{display:block;color:#000;font-size:17px}
+.mnode span{font-size:14px}
+.mnode-to{background:#000;border-color:#000;padding:24px 22px}
+.mnode-to b{color:var(--lime);font-size:22px}
+.mnode-to span{color:#D9D9D9;font-size:15px}
+.merge-arrow{color:var(--green);font-weight:700;font-size:28px}
+@media (max-width:700px){.merge{grid-template-columns:1fr}.merge-arrow{text-align:center;transform:rotate(90deg)}}
+.tl{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:12px;counter-reset:w}
+.tl li{position:relative;padding-top:22px}
+.tl li::before{content:"";position:absolute;left:0;right:-12px;top:6px;height:3px;background:var(--lime)}
+.tl li:last-child::before{right:0}
+.tl li::after{content:"";position:absolute;left:0;top:0;width:15px;height:15px;border-radius:50%;background:var(--lime)}
+.tl li.tl-live::after{background:#000}
+.tl b{display:block;color:#000;font-size:16px}
+.tl span{font-size:13px}
+@media (max-width:700px){.tl{grid-template-columns:1fr;gap:4px}.tl li{padding:6px 0 10px 30px}.tl li::before{left:6px;right:auto;top:0;bottom:-10px;width:3px;height:auto}.tl li:last-child::before{display:none}.tl li::after{left:0;top:8px}}
+.stores{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.st{border-radius:14px;padding:20px 22px}
+.st h4{font-family:"DM Mono","Courier New",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin:0 0 6px;font-weight:500}
+.st p{font-size:14px;margin:0 0 14px}
+.st-before{background:var(--soft)} .st-before h4,.st-before p{color:var(--ink)}
+.st-after{background:#000} .st-after h4{color:var(--lime)} .st-after p{color:#fff}
+.st-grid{display:grid;grid-template-columns:repeat(13,1fr);gap:4px}
+.st-grid i{display:block;aspect-ratio:1;border-radius:3px;background:var(--line)}
+.st-after .st-grid i{background:#333}
+.st-grid i.on{background:var(--lime)}
+.st-cap{display:block;margin-top:12px;font-size:13px;font-weight:600}
+.st-before .st-cap{color:var(--ink)} .st-after .st-cap{color:var(--lime)}
+@media (max-width:700px){.stores{grid-template-columns:1fr}}
 /* slide-format case study (giffgaff first) */
 .sl-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,280px);gap:32px 48px;align-items:start}
 .sl-text h4{font-family:"DM Mono","Courier New",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);margin:22px 0 6px;font-weight:500}
@@ -276,22 +315,53 @@
 
   <article class="cs" id="digital-network" data-tab="Mobile network">
     <div class="cs-top">
-      <p class="eyebrow">Case study · All-digital mobile network (in development)</p>
+      <p class="eyebrow">All-digital mobile network · Interim Global CMO · 2025–26</p>
       <h3>Choosing a platform partner, with prototypes as proof</h3>
-      <p>Turning an ambitious brief for a mobile network with no call centre into a scored vendor shortlist, and a contract review that caught the gaps before signing.</p>
-      <p class="cs-decision"><b>The decision.</b> Score every vendor 60% technical, 40% commercial, and treat the sales demo as a promise the contract has to keep.</p>
-      <p class="cs-note">My role: interim Global CMO, across four countries. Still in development. Not launched.</p>
+      <p>Eleven vendors, four countries, one contract. The gaps between what was demonstrated and what was contracted were caught before anyone signed.</p>
     </div>
     <div class="cs-body">
 
-      <div class="cs-facts">
-        <div><h4>The challenge</h4><p>The company wanted a fully digital mobile network across several countries, run without call-centre agents. Choosing the platform behind it is a long, expensive commitment. And what a vendor shows in a sales demo doesn’t always make it into the contract.</p></div>
-        <div><h4>What I did</h4><p><span class="tag">E</span>Co-wrote the request for proposals and ran it across 11 vendors, then scored the shortlist of 7 on a 60% technical, 40% commercial basis.<br><span class="tag">M</span>Built quick, low-fidelity prototypes of the customer experience for each market, such as a family plan and an account dashboard, to make the requirements concrete.<br><span class="tag">B</span>Checked the preferred vendor’s draft contract line by line against 404 requirements, and flagged 12 blockers.</p></div>
-        <div><h4>What AI made possible</h4><p>More than 20 working conversations became one list of 404 requirements, and the vendor’s draft was checked against every one of them. That’s a job for a team of analysts, done without one. I wrote every review comment. Technical calls went to the technical lead, and commercial calls to procurement.</p></div>
+      <div class="sl-grid">
+        <div class="sl-text">
+          <h4>The situation</h4>
+          <p>A new mobile network across four countries, run without call-centre agents. The platform behind it is a long, expensive commitment, and what a vendor shows in a sales demo doesn’t always make it into the contract.</p>
+          <h4>The decision</h4>
+          <p class="sl-decision">Score every vendor 60% technical, 40% commercial, and treat the sales demo as a promise the contract has to keep.</p>
+          <h4>What AI made possible</h4>
+          <p>More than 20 working conversations became one list of 404 requirements, and the vendor’s draft contract was checked against every one of them. That’s a job for a team of analysts, done without one. It also built the prototypes that made the requirements concrete, market by market.</p>
+          <h4>What stayed with people</h4>
+          <p>Every review comment was mine. Technical calls went to the technical lead, and commercial calls to procurement. AI did the comparing; people did the deciding.</p>
+          <h4>My role</h4>
+          <p>Interim Global CMO, across four countries. Co-wrote the request for proposals and led the review. Still in development, not launched.</p>
+        </div>
+        <div class="sl-nums" aria-label="Results">
+          <div><b>11</b><span>vendors through the process</span></div>
+          <div><b>404</b><span>requirements, each one traceable</span></div>
+          <div><b>12</b><span>blockers caught before signing</span></div>
+          <div><b>4</b><span>countries, one journey prototyped for each</span></div>
+        </div>
       </div>
 
       <div>
-        <h4 class="kicker" style="margin-bottom:14px">A prototype, from brief to review</h4>
+        <h4 class="kicker" style="margin-bottom:14px">How the partner was chosen</h4>
+        <div class="funnel" role="list">
+          <div class="fn" style="--w:100%" role="listitem"><b>11</b><span>vendors invited to tender</span></div>
+          <div class="fn" style="--w:76%" role="listitem"><b>7</b><span>shortlisted and scored, 60% technical and 40% commercial</span></div>
+          <div class="fn" style="--w:52%" role="listitem"><b>1</b><span>preferred vendor</span></div>
+          <div class="fn fn-dark" style="--w:100%" role="listitem"><b>404 → 12</b><span>requirements checked line by line against the draft contract. Twelve blockers flagged before signing.</span></div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="kicker" style="margin-bottom:14px">One promise, checked</h4>
+        <div class="ba">
+          <div class="ba-before"><h4>What was demonstrated</h4><p>In the sales process, vendors showed AI assistants that could act for customers.</p></div>
+          <div class="ba-after"><h4>What the draft contract said</h4><p>At launch, basic chatbots only, with “no decision autonomy”. My review comment: “This materially downgrades what was demonstrated.”</p></div>
+        </div>
+      </div>
+
+      <details class="sl-more">
+        <summary>See a prototype, from brief to review</summary>
         <figure class="mpdemo">
           <div class="mp-view" id="mp-view" role="img" aria-label="Illustration: a prototype of a self-service mobile app. It starts from the brief (no call centre), lists the information each screen needs, then shows an account screen with data left, plan status and coverage, and a customer adding a family member in a few taps. The same journey is checked for four markets, then goes through research, prototype, review and decision. It is a prototype, not a launched product.">
             <div class="mp" id="mp" aria-hidden="true">
@@ -329,69 +399,69 @@
             <div class="mp-steps"><button type="button" data-s="0">1 Brief</button><button type="button" data-s="1">2 What it needs</button><button type="button" data-s="2">3 Account</button><button type="button" data-s="3">4 Family</button><button type="button" data-s="4">5 Markets</button><button type="button" data-s="5">6 Review</button><button type="button" class="mp-pp" id="mp-pp" aria-pressed="false">Pause</button></div>
           </figcaption>
         </figure>
-      </div>
-
-      <div>
-        <h4 class="kicker" style="margin-bottom:14px">How the partner was chosen</h4>
-        <div class="flow" role="list">
-          <div class="node" role="listitem"><b>The brief</b><span>An all-digital mobile network, with no call centre</span></div>
-          <div class="arrow" aria-hidden="true">→</div>
-          <div class="node" role="listitem"><b>Request for proposals</b><span>11 vendors invited</span></div>
-          <div class="arrow" aria-hidden="true">→</div>
-          <div class="node" role="listitem"><b>Scored shortlist</b><span>7 vendors, technical and commercial</span></div>
-          <div class="arrow" aria-hidden="true">→</div>
-          <div class="node" role="listitem"><b>Prototypes</b><span>The experience made visible, market by market</span></div>
-          <div class="arrow" aria-hidden="true">→</div>
-          <div class="node live" role="listitem"><b>Contract review</b><span>12 blockers flagged before signing</span></div>
-        </div>
-      </div>
-
-      <div>
-        <h4 class="kicker" style="margin-bottom:14px">One promise, checked</h4>
-        <div class="ba">
-          <div class="ba-before"><h4>What was demonstrated</h4><p>In the sales process, vendors showed AI assistants that could act for customers.</p></div>
-          <div class="ba-after"><h4>What the draft contract said</h4><p>At launch, basic chatbots only, with “no decision autonomy”. My review comment: “This materially downgrades what was demonstrated.”</p></div>
-        </div>
-      </div>
-
-      <div>
-        <h4 class="kicker" style="margin-bottom:14px">The result</h4>
-        <div class="results">
-          <div class="stat"><b>11</b><span>vendors through the process</span></div>
-          <div class="stat"><b>404</b><span>requirements, each one traceable</span></div>
-          <div class="stat"><b>12</b><span>blockers caught before signing</span></div>
-        </div>
-      </div>
+      </details>
 
     </div>
   </article>
 
   <article class="cs" id="football-club" data-tab="Football club">
     <div class="cs-top">
-      <p class="eyebrow">Case study · Premier League football club</p>
+      <p class="eyebrow">Premier League football club · Head of Customer Service · 2017–20</p>
       <h3>Fewer queries, calmer fans, no extra seasonal staff</h3>
-      <p>Merging three siloed teams into one let the club handle its busiest moments without extra staff, and answer anxious fans first.</p>
-      <p class="cs-decision"><b>The decision.</b> Merge three teams into one, so one team’s peak is covered by another’s quiet month, and put the next match first.</p>
-      <p class="cs-note">My role: consultant, then interim Head of Customer Service, ahead of a new stadium opening.</p>
+      <p>Three siloed teams became one, so the club could handle its busiest moments without temporary staff and answer anxious fans first.</p>
     </div>
     <div class="cs-body">
 
-      <div class="cs-facts">
-        <div><h4>The challenge</h4><p>Retail, ticketing and supporter services each ran as a separate team, each with its own peaks: membership renewals, kit launches, Christmas. So each brought in temporary staff. Fans sent the same question several times and were bounced between teams. A worried email about this weekend’s match waited in the same queue as one about a game weeks away.</p></div>
-        <div><h4>What I did</h4><p><span class="tag">E</span>Audited every point where fans and local residents contact the club, across systems, processes and people.<br><span class="tag">M</span>Mapped the whole matchday experience, from buying a ticket to the day after, to find where questions start.<br><span class="tag">D</span>Merged the three teams into one, rebuilt the help centre, added automatic replies and advance notices, and put questions about the next match first.</p></div>
-        <div><h4>What made it work</h4><p>One team could absorb every team’s peak, so one season’s rush was covered by staff who were quiet that month. Advance notices and the help centre answered questions before fans needed to ask. And a simple rule put the next match first, because that’s when fans get anxious.</p></div>
+      <div class="sl-grid">
+        <div class="sl-text">
+          <h4>The situation</h4>
+          <p>Retail, ticketing and supporter services each ran as a separate team, each with its own peak: kit launches, membership renewals, Christmas. Each hired temporary staff for its rush. Fans sent the same question several times and were bounced between teams, and a worried email about this weekend’s match waited behind one about a game weeks away.</p>
+          <h4>The decision</h4>
+          <p class="sl-decision">Merge three teams into one, so one team’s peak is covered by another’s quiet month, and put the next match first, because that’s when fans get anxious.</p>
+          <h4>What stayed with people</h4>
+          <p>A person still answers the anxious fan; the rule just makes sure they’re first. Advance notices and the help centre took the questions that didn’t need a person.</p>
+          <h4>My role</h4>
+          <p>Consultant on customer experience ahead of the new stadium opening, including a spell as interim Head of Customer Service. I audited every contact point, mapped the matchday journey and led the restructure.</p>
+        </div>
+        <div class="sl-nums" aria-label="Results">
+          <div><b>3 → 1</b><span>teams: retail, ticketing and supporter services, silos removed</span></div>
+          <div><b>7 days</b><span>a week of service cover, including during games</span></div>
+          <div><b>Far fewer</b><span>repeat contacts: fans got an answer the first time</span></div>
+          <div><b>Almost none</b><span>complaints to senior management about slow replies</span></div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="kicker" style="margin-bottom:14px">Three teams, three peaks, into one</h4>
+        <div class="merge" role="list">
+          <div class="merge-from">
+            <div class="mnode" role="listitem"><b>Retail</b><span>Peak: kit launches, Christmas</span></div>
+            <div class="mnode" role="listitem"><b>Ticketing</b><span>Peak: membership renewals, big fixtures</span></div>
+            <div class="mnode" role="listitem"><b>Supporter services</b><span>Peak: every matchday</span></div>
+          </div>
+          <div class="merge-arrow" aria-hidden="true">→</div>
+          <div class="mnode mnode-to" role="listitem"><b>One team</b><span>One season’s rush covered by the staff who are quiet that month. Next match first. Seven days a week.</span></div>
+        </div>
       </div>
 
       <div>
         <h4 class="kicker" style="margin-bottom:14px">The fan journey we mapped</h4>
         <figure class="cs-figure">
           <a href="/assets/case-studies/fan-journey.png" target="_blank" rel="noopener"><img src="/assets/case-studies/fan-journey.png" alt="A classic fan journey in eight stages: pre purchase, purchase, pre event, getting there, arrival, in-game, getting home and post match. It runs from considering going, through buying a ticket, travelling, security and finding a seat, to half time, travelling home and the next day." width="774" height="432" loading="lazy"></a>
-          <figcaption>Every step, from thinking about going to the day after. Each one is a point where a fan might need help.</figcaption>
+          <figcaption>Every step, from thinking about going to the day after. Each one is a point where a fan might need help, and where a notice sent in advance saves a question later.</figcaption>
         </figure>
       </div>
 
       <div>
-        <h4 class="kicker" style="margin-bottom:14px">How a question flows now</h4>
+        <h4 class="kicker" style="margin-bottom:14px">One fan, before and after</h4>
+        <div class="ba">
+          <div class="ba-before"><h4>Before</h4><p>A fan emails on Thursday about a refund for Saturday’s match. It sits behind hundreds of emails about other things. With no reply, they email twice more, then phone.</p></div>
+          <div class="ba-after"><h4>After</h4><p>An automatic reply confirms the email has arrived and links to the refund page. It’s tagged as next-match and answered the same day. The fan gets in touch once.</p></div>
+        </div>
+      </div>
+
+      <details class="sl-more">
+        <summary>See how a question flows now</summary>
         <div class="flow flow-6" role="list">
           <div class="node" role="listitem"><b>Tell fans first</b><span>Advance notices, like when tickets go on sale</span></div>
           <div class="arrow" aria-hidden="true">→</div>
@@ -405,48 +475,53 @@
           <div class="arrow" aria-hidden="true">→</div>
           <div class="node live" role="listitem"><b>Calmer fans</b><span>Fewer queries, fewer repeat contacts</span></div>
         </div>
-      </div>
-
-      <div>
-        <h4 class="kicker" style="margin-bottom:14px">One fan, before and after</h4>
-        <div class="ba">
-          <div class="ba-before"><h4>Before</h4><p>A fan emails on Thursday about a refund for Saturday’s match. It sits behind hundreds of emails about other things. With no reply, they email twice more, then phone.</p></div>
-          <div class="ba-after"><h4>After</h4><p>An automatic reply confirms the email has arrived and links to the refund page. It’s tagged as next-match and answered the same day. The fan gets in touch once.</p></div>
-        </div>
-      </div>
-
-      <div>
-        <h4 class="kicker" style="margin-bottom:14px">The result</h4>
-        <div class="results">
-          <div class="stat"><b>One team</b><span>retail, ticketing and supporter services, silos removed</span></div>
-          <div class="stat"><b>7 days a week</b><span>service cover, including during games</span></div>
-          <div class="stat"><b>Peaks absorbed</b><span>less need for temporary staff at renewals, kit launches and Christmas</span></div>
-          <div class="stat"><b>Far fewer</b><span>repeat contacts: fans got an answer the first time</span></div>
-          <div class="stat"><b>Almost none</b><span>complaints to senior management about slow replies</span></div>
-        </div>
-      </div>
+      </details>
 
     </div>
   </article>
 
   <article class="cs" id="travel-esim" data-tab="Travel eSIM">
     <div class="cs-top">
-      <p class="eyebrow">Case study · Travel eSIM business</p>
+      <p class="eyebrow">Travel eSIM business · Requirements, journey design and automation</p>
       <h3>A travel eSIM service, mapped and working in six weeks</h3>
-      <p>Using AI to capture the requirements, design the whole customer journey and find where self-service and automation could help every team.</p>
-      <p class="cs-decision"><b>The decision.</b> Capture every requirement traceably from day one, so the business could change development partner without starting again.</p>
-      <p class="cs-note">My role: requirements, journey design and the automation plan. Not all of the self-service was built by the original development partner. The business later moved to a new partner, with the requirements and designs ready to hand over.</p>
+      <p>Around 400 requirements captured from meeting recordings, a six-flow customer journey, and a working service, ready to hand to a new development partner intact.</p>
     </div>
     <div class="cs-body">
 
-      <div class="cs-facts">
-        <div><h4>The challenge</h4><p>A new travel eSIM business wanted a service that ran on self-service, from a traveller’s first visit to after their trip. It needed the requirements agreed and a working service quickly, ahead of a wider public launch.</p></div>
-        <div><h4>What I did</h4><p><span class="tag">E</span>Captured around 400 requirements from meeting recordings in six weeks, each traceable to where it was agreed.<br><span class="tag">M</span>Designed the whole customer journey as six connected flows, from welcome to feedback.<br><span class="tag">D</span>Read the platform’s technical documentation to find what customers could do for themselves, and mapped where automation could help six teams.</p></div>
-        <div><h4>What AI made possible</h4><p>Meeting recordings became requirements tables, each line traceable to where it was agreed, and the platform’s technical documentation was read for what customers could do themselves. Six weeks, with no business analyst team. The team checked and agreed every requirement.</p></div>
+      <div class="sl-grid">
+        <div class="sl-text">
+          <h4>The situation</h4>
+          <p>A new travel eSIM business wanted a service that ran on self-service, from a traveller’s first visit to after their trip. It needed the requirements agreed and a working service quickly, ahead of a wider public launch.</p>
+          <h4>The decision</h4>
+          <p class="sl-decision">Capture every requirement traceably from day one, so the business could change development partner without starting again. It did, and the requirements and designs went with it.</p>
+          <h4>What AI made possible</h4>
+          <p>Meeting recordings became requirements tables, each line traceable to where it was agreed. The platform’s technical documentation was read for what customers could do for themselves. Six weeks, with no business analyst team.</p>
+          <h4>What stayed with people</h4>
+          <p>The team checked and agreed every requirement. Which of the 18 automation opportunities to build, and in what order, was a business decision, not a technical one.</p>
+          <h4>My role</h4>
+          <p>Requirements, journey design and the automation plan, working alongside the development partner. Not all of the self-service was built by the original partner; the business later moved to a new one.</p>
+        </div>
+        <div class="sl-nums" aria-label="Results">
+          <div><b>6 weeks</b><span>to captured requirements and a working service</span></div>
+          <div><b>~400</b><span>requirements, each one traceable</span></div>
+          <div><b>6 flows</b><span>one connected customer journey</span></div>
+          <div><b>18</b><span>automation opportunities across six teams</span></div>
+        </div>
       </div>
 
       <div>
-        <h4 class="kicker" style="margin-bottom:14px">One journey, six flows</h4>
+        <h4 class="kicker" style="margin-bottom:14px">Six weeks, start to handover</h4>
+        <ol class="tl" role="list">
+          <li role="listitem"><b>Recordings</b><span>Every working session recorded and transcribed</span></li>
+          <li role="listitem"><b>~400 requirements</b><span>Each one traceable to where it was agreed</span></li>
+          <li role="listitem"><b>Six flows</b><span>Welcome to feedback, one connected journey</span></li>
+          <li role="listitem"><b>Working service</b><span>Self-service live for the first travellers</span></li>
+          <li class="tl-live" role="listitem"><b>Handover</b><span>New partner picks up the same requirements and designs</span></li>
+        </ol>
+      </div>
+
+      <details class="sl-more">
+        <summary>See the six flows</summary>
         <figure class="mpdemo">
           <div class="fl-view" id="fl-view" role="img" aria-label="Diagram: the customer journey as six connected flows. Every customer starts at one entry point, which checks whether they already have a plan. With no plan, first-time eSIM users get a phone check and experienced travellers are asked where they are going and how much data they need. Both go to purchase, then setup. With a plan, customers who haven’t installed it get setup help, and those who have get help with usage and network problems through support. Every journey ends with feedback.">
             <div class="fl" id="fl" aria-hidden="true">
@@ -476,10 +551,10 @@
             <div class="mp-steps" id="fl-steps"><button type="button" data-s="0">1 Start</button><button type="button" data-s="1">2 New to eSIM</button><button type="button" data-s="2">3 Experienced</button><button type="button" data-s="3">4 Buy</button><button type="button" data-s="4">5 Set up</button><button type="button" data-s="5">6 Has a plan</button><button type="button" data-s="6">7 Support and feedback</button><button type="button" class="mp-pp" id="fl-pp" aria-pressed="false">Pause</button></div>
           </figcaption>
         </figure>
-      </div>
+      </details>
 
-      <div>
-        <h4 class="kicker" style="margin-bottom:14px">Where automation could help each team</h4>
+      <details class="sl-more">
+        <summary>Where automation could help each team</summary>
         <div class="tm">
           <div class="tm-c"><h5>Operations and tech</h5><ul><li>Automatic checks after every change, so the service stays stable</li><li>Spotting gaps or errors in data from suppliers</li><li>Alerts for network outages and fraud</li></ul></div>
           <div class="tm-c"><h5>Marketing</h5><ul><li>Tracking competitors’ prices</li><li>Moving budget to the campaigns that work</li><li>Content in several languages, written to be found in search</li></ul></div>
@@ -489,39 +564,58 @@
           <div class="tm-c"><h5>Across teams</h5><ul><li>Automatic translation</li><li>Analysis that joins up every team’s data</li><li>Connected systems, with alerts in the team chat</li></ul></div>
         </div>
         <p class="tk-ill">Opportunities identified during the project. Not all of them were built.</p>
-      </div>
-
-      <div>
-        <h4 class="kicker" style="margin-bottom:14px">The result</h4>
-        <div class="results">
-          <div class="stat"><b>6 weeks</b><span>to captured requirements and a working service</span></div>
-          <div class="stat"><b>~400</b><span>requirements, each one traceable</span></div>
-          <div class="stat"><b>6 flows</b><span>one connected customer journey</span></div>
-          <div class="stat"><b>18</b><span>automation opportunities across six teams</span></div>
-        </div>
-      </div>
+      </details>
 
     </div>
   </article>
 
   <article class="cs" id="merch-orders" data-tab="Merchandise">
     <div class="cs-top">
-      <p class="eyebrow">Case study · Global sports and entertainment merchandise company</p>
+      <p class="eyebrow">Global sports and entertainment merchandise company · Brief, design and delivery · 2022–23</p>
       <h3>50+ online stores, one view of every order</h3>
-      <p>Support agents went from hunting through dozens of shops to seeing a customer’s latest order the moment they open the ticket.</p>
-      <p class="cs-decision"><b>The decision.</b> One connector, hosted in the client’s own environment, instead of 208 store-by-store rules nobody could maintain.</p>
-      <p class="cs-note">My role: wrote the brief, designed the panel, and managed the developer through build and launch.</p>
+      <p>Support agents went from hunting through dozens of shops to seeing a customer’s latest order the moment they open the ticket. Still running three years on.</p>
     </div>
     <div class="cs-body">
 
-      <div class="cs-facts">
-        <div><h4>The challenge</h4><p>The company runs online shops for sports teams and entertainment brands, with more than 50 stores worldwide. A single brand could have 7, split by country and currency. The help desk’s standard connection only linked to one store. So before agents could answer “where is my order?” (the most common question), they had to work out which shop the customer had bought from.</p></div>
-        <div><h4>What I did</h4><p><span class="tag">E</span>Confirmed the standard set-up couldn’t cover multiple stores. Patching it store by store would have meant hundreds of separate rules to maintain.<br><span class="tag">M</span>Mapped how a ticket finds the right order: search that brand’s stores by the customer’s email address and return the most recent order.<br><span class="tag">D</span>Wrote the brief, designed the order panel and managed the developer through build and launch, testing it with the agents who’d use it every day.</p></div>
-        <div><h4>How AI would help today</h4><p>This project was done without AI: the brief, the designs and the build were done the long way. Today, AI could turn the agents’ requests into a first brief, build a clickable prototype the same day, and check the finished build against the brief. People would still decide what agents see first, and who is allowed to cancel or refund.</p></div>
+      <div class="sl-grid">
+        <div class="sl-text">
+          <h4>The situation</h4>
+          <p>Online shops for sports teams and entertainment brands: more than 50 stores worldwide, and a single brand could have 7, split by country and currency. The help desk’s standard connection linked to one store. Before agents could answer “where is my order?”, the most common question, they had to work out which shop the customer had bought from.</p>
+          <h4>The decision</h4>
+          <p class="sl-decision">One connector, hosted in the client’s own environment, instead of 208 store-by-store rules nobody could maintain. It finds the latest order from the customer’s email address, across every store for that brand.</p>
+          <h4>What stayed with people</h4>
+          <p>What agents see first, and who is allowed to cancel or refund, were decisions for the client’s team. Admins can switch those actions on or off.</p>
+          <h4>My role</h4>
+          <p>Wrote the brief, designed the order panel and managed the developer through build and launch, testing it with the agents who’d use it every day. Done without AI; today the brief, the prototype and the checking of the build against the brief would take days, not weeks.</p>
+        </div>
+        <div class="sl-nums" aria-label="Results">
+          <div><b>50+</b><span>stores, viewed from one panel beside the ticket</span></div>
+          <div><b>208 → 1</b><span>store-by-store rules avoided, one connector instead</span></div>
+          <div><b>One screen</b><span>cancel, refund and past orders without leaving the help desk</span></div>
+          <div><b>3+ years</b><span>still in use, through a move to a new order system</span></div>
+        </div>
       </div>
 
       <div>
-        <h4 class="kicker" style="margin-bottom:14px">The order panel, in action</h4>
+        <h4 class="kicker" style="margin-bottom:14px">52 stores, before and after</h4>
+        <div class="stores" role="list">
+          <div class="st st-before" role="listitem">
+            <h4>Before</h4>
+            <p>The standard set-up linked the help desk to one store. Covering the rest meant four rules per store: 208 rules to keep right.</p>
+            <div class="st-grid" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <span class="st-cap">1 store connected · 51 searched by hand</span>
+          </div>
+          <div class="st st-after" role="listitem">
+            <h4>After</h4>
+            <p>One connector in the client’s own environment. A ticket arrives with an email address; the connector checks every store for that brand and returns the latest order.</p>
+            <div class="st-grid" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+            <span class="st-cap">52 stores · 1 connector · latest order in the ticket</span>
+          </div>
+        </div>
+      </div>
+
+      <details class="sl-more">
+        <summary>See what agents saw</summary>
         <figure class="opdemo">
           <div class="op-view" id="op-view" role="img" aria-label="Illustration: an agent opens a “Where is my order?” ticket. A panel beside it has already searched all of the brand’s stores and shows the latest order’s payment, fulfilment and shipping status, dates and tracking link. The agent checks past orders, sees buttons to contact the courier, cancel or refund, and sends a saved reply with the order details filled in.">
             <div class="op" id="op" aria-hidden="true">
@@ -572,42 +666,7 @@
             <div class="op-steps"><button type="button" data-s="0">1 Ticket</button><button type="button" data-s="1">2 Latest order</button><button type="button" data-s="2">3 Past orders</button><button type="button" data-s="3">4 Actions</button><button type="button" data-s="4">5 Reply</button><button type="button" class="op-pp" id="op-pp" aria-pressed="false">Pause</button></div>
           </figcaption>
         </figure>
-      </div>
-
-      <div>
-        <h4 class="kicker" style="margin-bottom:14px">How an order is found</h4>
-        <div class="flow flow-6" role="list">
-          <div class="node" role="listitem"><b>Customer gets in touch</b><span>Usually just an email address, no order number</span></div>
-          <div class="arrow" aria-hidden="true">→</div>
-          <div class="node" role="listitem"><b>Brand identified</b><span>The ticket says which brand they bought from</span></div>
-          <div class="arrow" aria-hidden="true">→</div>
-          <div class="node" role="listitem"><b>Stores searched</b><span>Every store for that brand, at once</span></div>
-          <div class="arrow" aria-hidden="true">→</div>
-          <div class="node" role="listitem"><b>Latest order found</b><span>Status, dates and tracking pulled through</span></div>
-          <div class="arrow" aria-hidden="true">→</div>
-          <div class="node" role="listitem"><b>At a glance</b><span>Beside the ticket, already open</span></div>
-          <div class="arrow" aria-hidden="true">→</div>
-          <div class="node live" role="listitem"><b>Faster replies</b><span>Order details drop into saved replies and rules</span></div>
-        </div>
-      </div>
-
-      <div>
-        <h4 class="kicker" style="margin-bottom:14px">One question, before and after</h4>
-        <div class="ba">
-          <div class="ba-before"><h4>Before</h4><p>A customer emails “where’s my order?” The agent checks the UK shop, then the EU shop, then the US shop, and copies the tracking link across by hand.</p></div>
-          <div class="ba-after"><h4>After</h4><p>The agent opens the ticket. The panel already shows the order, its shipping status and the tracking link. They reply in one go.</p></div>
-        </div>
-      </div>
-
-      <div>
-        <h4 class="kicker" style="margin-bottom:14px">The result</h4>
-        <div class="results">
-          <div class="stat"><b>50+ stores</b><span>viewed from one panel, beside the ticket</span></div>
-          <div class="stat"><b>No store-hopping</b><span>the latest order is found from the customer’s email address</span></div>
-          <div class="stat"><b>One screen</b><span>cancel, refund and past orders without leaving the help desk</span></div>
-          <div class="stat"><b>3+ years</b><span>still in use, and it survived a move to a new order system</span></div>
-        </div>
-      </div>
+      </details>
 
     </div>
   </article>
@@ -729,6 +788,7 @@
   var h=location.hash.slice(1);
   go(has(h)?h:arts[0].id,false);
   window.addEventListener('hashchange',function(){var h=location.hash.slice(1);if(has(h))go(h,true)});
+  document.addEventListener('toggle',function(){window.dispatchEvent(new Event('resize'))},true); // an opened details block re-sizes its animation
 })();
 </script>
 </main>
