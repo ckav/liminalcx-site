@@ -198,6 +198,8 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 
 ## Known issues
 
-- None at the moment.
+- Time, scope, resource section (Home and About): the line under the kicker ("Fix the time first...") is placeholder copy for Claire to confirm. The diagram's small labels are hard to read on phones; a taller phone version with bigger text was offered.
+- Orbit case studies (travel eSIM, MVNO): drafts in AutomationFramework/website_management/case_studies/orbit_mobile/, waiting on Claire's answers (was there a six-week launch; are the bio's "$100m contract" and "showing vendors... was possible" claims accurate; can the MVNO countries be named; any post-go-live results). Then add to About with case-study navigation.
+- Bio on Home and About still says "$100m contract": no evidence for it was found in the Orbit files. Claire to confirm or reword.
 - Home "Start where you are": the section title and product names are still to be settled with Claire, and the page names (AI Audit, Team workshop) don't match the card names yet.
 - "The approach" is on both Services and the home page. Claire to decide what replaces it on Services.
