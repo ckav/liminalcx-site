@@ -5,7 +5,7 @@ Claire Kavanagh's consulting site for AI workshops, CX and teams. This is a plai
 ## How changes go live
 
 - **Work on `preview`, not `main`.** GitHub `ckav/liminalcx-site` is linked to the Netlify site "liminalcx" (team ckav), which publishes this folder as it is (`publish = "."`).
-  - **Sandbox:** a push to the `preview` branch updates **https://preview--liminalcx.netlify.app** within a minute or so. This is free: preview builds don't use Netlify credits, and Netlify hides previews from search engines.
+  - **Sandbox:** a push to the `preview` branch updates **https://preview--liminalcx.netlify.app** within a minute or so. This is free: preview builds don't use Netlify credits. Nothing links to the preview address, but it isn't hidden from search engines.
   - **Live:** a push to `main` updates liminalcx.com. **Each live publish costs 15 Netlify credits.** Only merge `preview` into `main` when Claire says "make it live", and batch the changes into one merge. Nothing is urgent, because the site has no traffic yet.
   - **Don't use `netlify deploy --prod`.** GitHub already publishes `main`, so a CLI deploy as well charges twice. (On 19 Nov 2026 this happened by mistake, and the credits also ran out once.)
   - **Making it live:** `git checkout main && git pull && git merge --ff-only preview && git push`, then `git checkout preview`. If the fast-forward fails, `main` has changes that `preview` doesn't: merge `main` into `preview` first.
