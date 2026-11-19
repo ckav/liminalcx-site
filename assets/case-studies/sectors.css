@@ -12,7 +12,7 @@
 
 .sc-track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 14px;scrollbar-width:thin;overscroll-behavior-x:contain}
 .sc{flex:0 0 min(620px,88%);scroll-snap-align:start;border:1px solid var(--line);border-radius:20px;background:#fff;padding:24px 26px;display:flex;flex-direction:column;gap:12px;position:relative}
-.sc-eyebrow{margin:0;font-family:"DM Mono","Courier New",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);padding-right:120px}
+.sc-eyebrow{margin:0;font-family:"DM Mono","Courier New",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--olive)}
 .sc-badge{position:absolute;top:20px;right:20px;font-size:11px;font-weight:600;border-radius:999px;padding:3px 10px;background:#000;color:var(--lime)}
 .sc-badge.dd{background:var(--lime-tint);color:var(--olive);border:1px solid var(--lime)}
 .sc h3{margin:0;color:#000;font-size:23px;line-height:1.2}
