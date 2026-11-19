@@ -60,7 +60,7 @@ Short free courses for PAs and admins. Each course is a set of instructions that
   1. Copy the `free/google-bookings-stripe/` folder and give it a new short name.
   2. Rewrite `guide.md`, then the page text, following "The course page shape" below (title, meta tags, hero question, the three cards, the course explanation and the download filename).
   3. Add a card to `free/index.html` and a line to `sitemap.xml`.
-- **The course page shape** (set on the Calendly course, 19 Nov 2026; use it for new courses and bring older ones in line when they're next touched). The aim is that a visitor knows within seconds whether the course is for them.
+- **The course page shape** (set on the Calendly course, 19 Nov 2026, and applied to every course the same day; use it for new courses). The aim is that a visitor knows within seconds whether the course is for them.
   1. **Hero:** eyebrow (Free mini courses · platform · time to set up), tags (platform, with "(paid plan likely)" where it applies, and "Any AI chat"), the title, then a **question lede in bold** that names the reader's situation and the benefit, for example *"On Calendly's free plan, but need more than one type of booking, or want people to pay when they book?"* followed by a plain answer. A second lede says what they'll do and that their AI coaches them.
   2. **Three cards in one `.grid`, in this order:**
      - **Who it's for:** a one-line description of who it suits (their current tool or plan), then a `ticks` list of what they want to do. If some readers are in a different position (for example already on a paid plan), add a `<p class="small">` note with a bold lead-in, telling them what to check first and that the course goes through it.
@@ -193,6 +193,7 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 - **19 Nov 2026:** Home: removed the duplicate "Stop learning. Start coaching." section (it stays on Services, where it started); EMBED now opens the page. About: on arrival the page no longer writes `#giffgaff` into the address, so the About link always lands at the top; a link to a specific study (e.g. `/about/#merch-orders`) scrolls to that study.
 
 - **19 Nov 2026:** Calendly course (`free/google-bookings-stripe/`) reworked from Claire's notes: bold question lede for Calendly free-plan users, new "Who it's for" card with a note for paid Standard users, rewritten "You'll end up with" and "You'll need", course explanation and ".md" note above the copy box. Animation now six steps (email verification, a second reminder, payment left unticked) and the client's booking form shows every field set up earlier. This is now the standard course page shape, written up under "Free mini courses".
+- **19 Nov 2026:** The other five courses (booking-payments, daily-sweep, organise-a-folder, project-folders, explainers) brought into the standard course page shape: bold question lede, "Who it's for" card with a small note pointing the wrong reader elsewhere, "You'll need" items with bold lead-ins, and the course explanation and ".md" note above the copy box. Explainers gained the three cards above the word list. Guides unchanged: they already ask about the reader's tool and plan.
 
 ## Known issues
 
