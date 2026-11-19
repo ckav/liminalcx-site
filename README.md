@@ -167,6 +167,8 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 
 - **19 Nov 2026:** About bio stats put back to the home page set (Claire didn't like the title boxes), with "people mentored" on both pages. giffgaff case study rebuilt in the slide format (styles `.sl-*` in the About page): situation, decision, what stayed with people and my role on the left, four big numbers on the right, then the 11-flow diagram with three cards tying flows to outcomes, and the two text messages folded into a "See the two messages" details block.
 
+- **19 Nov 2026:** About bio: added that Claire studied information systems (database and web design) alongside marketing in the late 1990s, as the foundation for the technical side of her work and for AI.
+
 ## Known issues
 
 - None at the moment.
