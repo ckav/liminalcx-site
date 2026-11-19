@@ -1,0 +1,13 @@
+/* About page: mobile role list and the three illustrative animations (iframes from /assets/case-studies/mobile/). */
+.roles{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-direction:column;gap:14px;max-width:820px}
+.roles li{border-left:3px solid var(--lime);padding:2px 0 2px 16px;display:flex;flex-direction:column;gap:4px}
+.roles b{color:#000;font-size:18px}
+.roles span{font-size:16px;color:var(--ink)}
+.roles .role-quote{font-size:15px;color:var(--muted)}
+.anims{margin-top:40px;display:flex;flex-direction:column;gap:40px}
+.anims-lede{margin:0;font-size:20px;font-weight:500;color:#000;max-width:760px}
+.anim{margin:0;display:flex;flex-direction:column;gap:12px}
+.anim h3{margin:0;font-size:20px;color:#000;display:flex;align-items:center;gap:12px}
+.anim h3 span{flex:none;width:30px;height:30px;border-radius:50%;background:#000;color:var(--lime);font-size:14px;display:flex;align-items:center;justify-content:center}
+.anim iframe{display:block;width:100%;max-width:1000px;height:640px;border:0;background:#fff}
+.anim figcaption{font-size:14px;color:var(--muted);max-width:760px}

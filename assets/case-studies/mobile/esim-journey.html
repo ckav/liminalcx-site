@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Liminal CX · mobile animation: example 2, the eSIM journey (draft 1, illustrative)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --lime: #CAD400; --ink: #000; --paper: #F3F3F0; --grey: #555; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); font-family: Rubik, Arial, sans-serif; color: var(--ink); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 24px 20px; }
+  .meta { font-family: 'DM Mono', Consolas, monospace; font-size: 13px; color: var(--grey); margin: 0 0 14px; }
+
+  /* Stage: a fixed 1000 x 440 frame, scaled to fit the page */
+  .box { position: relative; width: 1000px; height: 440px; }
+  .frame { position: absolute; left: 0; top: 0; width: 1000px; height: 440px; transform-origin: 0 0;
+           background: #fff; border: 2px solid #000; border-radius: 12px; overflow: hidden; }
+
+  .scene { position: absolute; inset: 0; opacity: 0; transition: opacity 0.5s ease; }
+  .scene.on { opacity: 1; }
+  .scene.title { background: #000; }
+
+  /* Reveal items: fade and rise in, each after its own delay (--d) */
+  .r, .row { opacity: 0; transform: translateY(8px);
+             transition: opacity 0.4s ease var(--d, 0s), transform 0.4s ease var(--d, 0s); }
+  .scene.on .r, .scene.on .row { opacity: 1; transform: none; }
+
+  .tagline { position: absolute; right: 14px; top: 10px; font-family: 'DM Mono', Consolas, monospace;
+             font-size: 11px; color: var(--grey); }
+  .title .tagline { color: #aaa; }
+  .divider { position: absolute; left: 470px; top: 0; bottom: 0; border-left: 1px dashed #000; }
+
+  /* Title and end cards */
+  .title h1 { position: absolute; left: 60px; margin: 0; font-weight: 700; font-size: 34px; line-height: 1.25; color: var(--lime); }
+  .title p { position: absolute; left: 60px; margin: 0; color: #fff; }
+
+  /* Left: phone */
+  .phone { position: absolute; left: 120px; top: 24px; width: 220px; height: 392px; border: 4px solid #000;
+           border-radius: 30px; background: #fff; }
+  .screen { position: absolute; inset: 12px; background: var(--paper); border-radius: 18px; padding: 14px; overflow: hidden; }
+  .screen h5 { font-size: 14px; margin: 0 0 12px; }
+  .field { border: 1px solid #000; border-radius: 6px; background: #fff; height: 34px; padding: 8px;
+           font-family: 'DM Mono', Consolas, monospace; font-size: 12px; margin-bottom: 10px; }
+  .btn { border: 1px solid #000; border-radius: 6px; height: 36px; display: flex; align-items: center;
+         justify-content: center; font-weight: 700; font-size: 13px; margin-bottom: 10px; }
+  .btn.lime { background: var(--lime); }
+  .btn.dark { background: #000; color: var(--lime); }
+  .btn.grey { background: #ccc; color: #555; border-color: #ccc; }
+  .card { background: #fff; border: 1px solid #000; border-radius: 8px; padding: 10px; margin-bottom: 10px; font-size: 12px; }
+
+  /* Switch, balance bar and network list */
+  .toggle { position: relative; width: 44px; height: 24px; border: 1px solid #000; border-radius: 20px; background: #fff; float: right; }
+  .toggle::after { content: ''; position: absolute; left: 3px; top: 3px; width: 16px; height: 16px; border-radius: 50%;
+                   background: #000; transition: left 0.4s ease var(--t, 0s); }
+  .scene.on .toggle { background: var(--lime); transition: background 0.3s ease var(--t, 0s); }
+  .scene.on .toggle::after { left: 23px; }
+  .bal { height: 12px; border: 1px solid #000; border-radius: 6px; background: #fff; margin: 6px 0 10px; overflow: hidden; }
+  .fill { height: 100%; width: 0; background: var(--lime); }
+  .scene.on .fill { width: 70%; transition: width 1s ease 0.4s; }
+  .pick { display: block; border: 0; padding: 0; background: none; border-radius: 0; font-size: 12px; }
+  .scene.on .tagwrap .pick.run { opacity: 1; }
+
+  /* Change-network dropdown: expands to radio buttons; the tap cues are illustrative */
+  .dd-head { position: relative; font-size: 11px; font-weight: 700; height: 22px; line-height: 22px; }
+  .dd-list { overflow: hidden; max-height: 0; transition: max-height 0.5s ease var(--d, 0s); }
+  .scene.on .dd-list { max-height: 90px; }
+  .radio { display: flex; align-items: center; gap: 8px; height: 24px; font-size: 11px; }
+  .dot { position: relative; width: 12px; height: 12px; border: 1px solid #000; border-radius: 50%; background: #fff; flex: none; }
+  .dot::after { content: ''; position: absolute; left: 2px; top: 2px; width: 6px; height: 6px; border-radius: 50%;
+                background: #000; transition: opacity 0.3s ease; }
+  .dot.a::after { opacity: 1; }
+  .dot.b::after { opacity: 0; }
+  .scene.on .dot.a::after { opacity: 0; transition: opacity 0.3s ease 3.6s; }
+  .scene.on .dot.b::after { opacity: 1; transition: opacity 0.3s ease 3.6s; }
+  /* Standing options along the bottom of the screen: always there, so the customer can act first */
+  .navbar { position: absolute; left: 0; right: 0; bottom: 0; height: 34px; border-top: 1px solid #000; background: #fff;
+            display: flex; }
+  .navbar span { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+  .navbar span + span { border-left: 1px solid #000; }
+  .btnwrap { position: relative; }
+  .tap { position: absolute; width: 22px; height: 22px; border-radius: 50%; background: rgba(0, 0, 0, 0.3);
+         opacity: 0; pointer-events: none; }
+  .t1 { left: 90%; top: 50%; }
+  .t2 { left: 50%; top: 50%; }
+  .scene.on .t1 { animation: tap 0.6s ease 1.6s both; }
+  .scene.on .t2 { animation: tap 0.6s ease 5.2s both; }
+  @keyframes tap {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
+    15% { opacity: 1; transform: translate(-50%, -50%) scale(0.7); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(1.6); }
+  }
+
+  /* QR code, drawn once by script (illustrative pattern) */
+  #qr { width: 120px; height: 120px; display: block; margin: 6px auto; }
+
+  /* Typing: not used in this example, kept for the shared styles */
+  .typed { display: inline-block; overflow: hidden; white-space: nowrap; width: 0; vertical-align: bottom; }
+
+  /* Right: background panel */
+  .bg { position: absolute; left: 500px; top: 24px; width: 460px; }
+  .bg .lab { font-family: 'DM Mono', Consolas, monospace; font-size: 11px; color: var(--grey); margin: 0 0 10px; }
+  .row { display: flex; align-items: center; justify-content: space-between; height: 44px; padding: 0 14px;
+         border: 1px solid #000; border-radius: 8px; background: #fff; margin-bottom: 10px; font-size: 15px; }
+  .row.grey { border-color: #ccc; color: #888; }
+  .row.flag { background: #000; color: #fff; }
+  .row.risk { background: var(--lime); font-weight: 700; font-size: 17px; }
+  .tag { font-family: 'DM Mono', Consolas, monospace; font-size: 12px; border: 1px solid #000; border-radius: 999px;
+         padding: 3px 10px; background: #fff; color: #000; }
+  .row.flag .tag { background: var(--lime); border-color: var(--lime); }
+  .tag.dark { background: #000; color: #fff; }
+
+  /* A check that shows "running", then its result */
+  .tagwrap { position: relative; min-width: 110px; height: 24px; }
+  .tagwrap .tag { position: absolute; right: 0; top: 0; white-space: nowrap; }
+  .tagwrap .tag.run { opacity: 1; }
+  .tagwrap .tag.res { opacity: 0; }
+  .scene.on .tagwrap .tag.run { opacity: 0; transition: opacity 0.3s ease var(--r, 0s); }
+  .scene.on .tagwrap .tag.res { opacity: 1; transition: opacity 0.3s ease var(--r, 0s); }
+
+  /* Controls and captions below the frame */
+  .narr { font-size: 20px; margin: 18px 0 6px; min-height: 60px; }
+  .onscreen { font-family: 'DM Mono', Consolas, monospace; font-size: 12px; color: var(--grey); margin: 0; min-height: 18px; }
+  .bar { height: 6px; background: #ddd; border-radius: 3px; margin-top: 14px; overflow: hidden; }
+  #prog { height: 6px; background: #000; width: 0; }
+  .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 12px; }
+  button { font: inherit; font-size: 13px; padding: 6px 12px; border: 1px solid #000; background: #fff; border-radius: 6px; cursor: pointer; }
+  button:hover { background: var(--lime); }
+  .dots button { width: 36px; padding: 6px 0; }
+  .dots button.cur { background: var(--lime); }
+
+  /* Reduced motion: no movement, the network scene held as a still */
+  .reduced .scene, .reduced .r, .reduced .row, .reduced .tagwrap .tag, .reduced .toggle::after, .reduced .fill, .reduced .toggle { transition: none !important; }
+  .reduced .scene.on .r, .reduced .scene.on .row { opacity: 1; transform: none; }
+  .reduced .scene.on .tagwrap .tag.run { opacity: 0; }
+  .reduced .scene.on .tagwrap .tag.res { opacity: 1; }
+  .reduced .scene.on .toggle::after { left: 23px; }
+  .reduced .scene.on .toggle { background: var(--lime); }
+  .reduced .scene.on .fill { width: 70%; }
+  .reduced .tap { display: none; }
+
+  /* liminalcx.com embed: storyboard header and production notes hidden, white page, full width */
+  body { background: #fff; }
+  .wrap { padding: 0; max-width: none; }
+  .wrap > p.meta:first-child, .onscreen { display: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="meta">MOBILE TAB ANIMATION · EXAMPLE 2 · THE ESIM JOURNEY · DRAFT 1 · ILLUSTRATIVE · NOTHING SHOWN IS BUILT</p>
+
+  <div class="box" id="box">
+    <div class="frame" id="frame">
+
+      <!-- Scene 1: chapter card (0:00–0:04) -->
+      <section class="scene title on" data-i="0">
+        <span class="tagline">ILLUSTRATIVE</span>
+        <h1 style="top: 110px"><span class="r" style="--d: 0.2s; display: block">The eSIM journey</span></h1>
+        <p class="r" style="top: 190px; --d: 0.8s; width: 760px; font-size: 17px; line-height: 1.5">From plan confirmed to the first connection, with the customer doing only what they need to do.</p>
+      </section>
+
+      <!-- Scene 2: plan confirmed, QR code, download (0:04–0:12) -->
+      <section class="scene" data-i="1">
+        <span class="tagline">ILLUSTRATIVE</span>
+        <div class="phone"><div class="screen">
+          <h5 class="r" style="--d: 0.2s">Plan confirmed</h5>
+          <div class="card r" style="--d: 0.4s; text-align: center">
+            <svg id="qr" viewBox="0 0 126 126"></svg>
+            <span style="font-size: 11px; color: #555">Scan to install, or it downloads automatically.</span>
+          </div>
+          <div class="btn lime r" style="--d: 1.6s">Continue</div>
+        </div></div>
+        <div class="divider"></div>
+        <div class="bg">
+          <p class="lab">BEHIND THE SCREEN</p>
+          <div class="row" style="--d: 0.8s"><span>New or existing customer</span><span class="tag">existing</span></div>
+          <div class="row" style="--d: 1.4s"><span>Check eSIM status</span><span class="tag">not downloaded</span></div>
+          <div class="row" style="--d: 3.2s"><span>Check eSIM status</span><span class="tag">downloaded</span></div>
+          <div class="row" style="--d: 4.6s"><span>Check eSIM status</span><span class="tag">switched off</span></div>
+        </div>
+      </section>
+
+      <!-- Scene 3: switch on, country not in plan (0:12–0:20) -->
+      <section class="scene" data-i="2">
+        <span class="tagline">ILLUSTRATIVE</span>
+        <div class="phone"><div class="screen">
+          <h5 class="r" style="--d: 0.2s">Your eSIM</h5>
+          <div class="card r" style="--d: 0.4s">Your eSIM is switched off. Switch it on to connect.</div>
+          <div class="r" style="--d: 0.8s; height: 30px; margin-bottom: 12px"><span style="font-size: 13px; font-weight: 700">eSIM on</span><span class="toggle" style="--t: 2.0s"></span></div>
+          <div class="card r" style="--d: 3.6s">Your plan will start automatically when you arrive in <b>Spain</b>.</div>
+        </div></div>
+        <div class="divider"></div>
+        <div class="bg">
+          <p class="lab">BEHIND THE SCREEN</p>
+          <div class="row" style="--d: 1.0s"><span>Check eSIM status</span><span class="tag">off</span></div>
+          <div class="row" style="--d: 2.6s"><span>Check country</span><span class="tag">not in plan</span></div>
+          <div class="row" style="--d: 3.4s"><span>Plan start</span><span class="tag dark">on arrival</span></div>
+        </div>
+      </section>
+
+      <!-- Scene 4: welcome, plan starts (0:20–0:26) -->
+      <section class="scene" data-i="3">
+        <span class="tagline">ILLUSTRATIVE</span>
+        <div class="phone"><div class="screen">
+          <h5 class="r" style="--d: 0.2s">Welcome to Spain</h5>
+          <div class="card r" style="--d: 0.4s">You’re now using your plan. We’ll let you know if you’re running low.</div>
+        </div></div>
+        <div class="divider"></div>
+        <div class="bg">
+          <p class="lab">BEHIND THE SCREEN</p>
+          <div class="row" style="--d: 0.8s"><span>Check country</span><span class="tag">Spain · in plan</span></div>
+          <div class="row" style="--d: 1.6s"><span>Plan start</span><span class="tag dark">started</span></div>
+          <div class="row" style="--d: 2.4s"><span>Low-balance watch</span><span class="tag">on</span></div>
+        </div>
+      </section>
+
+      <!-- Scene 5: reopen the app, balance and network checks (0:26–0:36) -->
+      <section class="scene" data-i="4">
+        <span class="tagline">ILLUSTRATIVE</span>
+        <div class="phone"><div class="screen">
+          <h5 class="r" style="--d: 0.2s">Your plan</h5>
+          <div class="card r" style="--d: 0.4s"><b>[Plan name]</b>
+            <div class="bal"><div class="fill"></div></div>
+            <span style="color: #555">[data] remaining</span><br>
+            <span style="color: #555">Days left in plan: <b id="days">30</b></span></div>
+          <div class="card r" style="--d: 2.4s; font-size: 11px; color: #555">Checking your plan and connection…</div>
+        </div></div>
+        <div class="divider"></div>
+        <div class="bg">
+          <p class="lab">BEHIND THE SCREEN</p>
+          <div class="row" style="--d: 0.8s"><span>Check plan balance</span><span class="tag">fine</span></div>
+          <div class="row" style="--d: 1.4s"><span>Network pull request</span>
+            <span class="tagwrap"><span class="tag run">running</span><span class="tag res" style="--r: 3.0s">returned</span></span></div>
+          <div class="row" style="--d: 1.8s"><span>Check CDR status</span>
+            <span class="tagwrap"><span class="tag run">running</span><span class="tag res" style="--r: 4.0s">2 failures</span></span></div>
+          <div class="row" style="--d: 2.2s"><span>Check network</span>
+            <span class="tagwrap"><span class="tag run">running</span><span class="tag res" style="--r: 5.0s">failure</span></span></div>
+          <div class="row risk" style="--d: 6.0s"><span>Most relevant message: coverage</span></div>
+        </div>
+      </section>
+
+      <!-- Scene 6: friendly message, change network, confirm (0:36–0:46) -->
+      <section class="scene" data-i="5">
+        <span class="tagline">ILLUSTRATIVE</span>
+        <div class="phone"><div class="screen">
+          <h5 class="r" style="--d: 0.2s">Your connection</h5>
+          <div class="card r" style="--d: 0.4s; font-size: 10px; line-height: 1.35">Coverage can vary across Spain per network. If you’re travelling, you may wish to change your default network provider.</div>
+          <div class="card r" style="--d: 1.2s; padding: 8px 10px">
+            <div class="dd-head">Change default network ▾<span class="tap t1"></span></div>
+            <div class="dd-list" style="--d: 2.2s">
+              <div class="radio"><span class="dot a"></span>[Network A] · current</div>
+              <div class="radio"><span class="dot b"></span>[Network B]</div>
+              <div class="radio"><span class="dot c"></span>[Network C]</div>
+            </div>
+          </div>
+          <div class="btnwrap r" style="--d: 4.4s">
+            <div class="btn lime">Confirm</div>
+            <span class="tap t2"></span>
+          </div>
+          <div class="navbar r" style="--d: 3.0s"><span>Support</span><span>Plans</span></div>
+        </div></div>
+        <div class="divider"></div>
+        <div class="bg">
+          <p class="lab">BEHIND THE SCREEN</p>
+          <div class="row" style="--d: 0.8s"><span>Most relevant message</span><span class="tag">coverage</span></div>
+          <div class="row" style="--d: 1.6s"><span>Options shown</span><span class="tag">3</span></div>
+          <div class="row" style="--d: 2.4s"><span>Network preference</span>
+            <span class="tagwrap"><span class="tag run">waiting</span><span class="tag res" style="--r: 5.8s">set</span></span></div>
+          <div class="row risk" style="--d: 6.6s"><span>Connected, no call needed</span></div>
+        </div>
+      </section>
+
+      <!-- Scene 7: end card, bridge (0:45–0:51) -->
+      <section class="scene title end" data-i="6">
+        <span class="tagline">ILLUSTRATIVE</span>
+        <h1 style="top: 110px"><span class="r" style="--d: 0.2s; display: block">Connected, without a call.</span></h1>
+        <div class="r" style="position: absolute; left: 60px; right: 60px; top: 220px; height: 2px; background: var(--lime); --d: 0.8s; transform-origin: left"></div>
+        <p class="r" style="top: 244px; --d: 1.2s; font-size: 16px; color: var(--lime); font-weight: 700">Next: MVNO operations →</p>
+      </section>
+
+    </div>
+  </div>
+
+  <p class="narr" id="narr"></p>
+  <p class="onscreen" id="onscreen"></p>
+
+  <div class="bar"><div id="prog"></div></div>
+  <div class="controls">
+    <button id="play">Pause</button>
+    <button id="restart">Restart</button>
+    <span class="meta" id="time" style="margin: 0 8px"></span>
+    <span class="dots" id="dots"></span>
+  </div>
+</div>
+
+<script>
+  // Timeline: each scene's length in seconds (about 51 seconds in total).
+  const SCENES = [
+    { name: 'Chapter', dur: 4, narr: '“This is the eSIM journey. From plan confirmed to the first connection.”',
+      on: 'Chapter card, black. Title in lime, one supporting line in white.' },
+    { name: 'Confirmed', dur: 8, narr: '“The plan is confirmed. The eSIM arrives with a QR code, or downloads automatically.”',
+      on: 'QR code on the phone. Right: the eSIM moves from not downloaded to downloaded, then switched off.' },
+    { name: 'Switch on', dur: 8, narr: '“The eSIM is off. Switch it on now, and the plan starts when the customer arrives.”',
+      on: 'Customer switches the eSIM on. Right: country check, not in plan. Plan start set to on arrival.' },
+    { name: 'Welcome', dur: 6, narr: '“Welcome to Spain. The plan starts, with no extra steps.”',
+      on: '“Welcome to Spain.” Right: country in plan, plan started, low-balance watch on.' },
+    { name: 'App', dur: 10, narr: '“They reopen the app. The days left count down, the balance is fine, and the network check runs straight away.”',
+      on: 'App opens: days left counts down quickly. Right: balance fine, network pull request returns failures.' },
+    { name: 'Message', dur: 10, narr: '“The app shows the most relevant message. The customer changes the default network, and confirms.”',
+      on: 'Friendly coverage message. Customer opens “Change default network”, the list expands, they pick a network and tap Confirm. Support and Plans stay along the bottom.' },
+    { name: 'End', dur: 6, narr: '“Connected, without a call. Next, MVNO operations.”',
+      on: 'End card: the outcome, and the bridge to the next example.' }
+  ];
+
+  const scenesEl = [...document.querySelectorAll('.scene')];
+  const frame = document.getElementById('frame');
+  const box = document.getElementById('box');
+  const narr = document.getElementById('narr');
+  const onscreen = document.getElementById('onscreen');
+  const prog = document.getElementById('prog');
+  const timeEl = document.getElementById('time');
+  const playBtn = document.getElementById('play');
+  const dotsEl = document.getElementById('dots');
+
+  const starts = [];
+  let total = 0;
+  SCENES.forEach(s => { starts.push(total); total += s.dur; });
+
+  let elapsed = 0, playing = true, last = performance.now(), cur = -1, countdown = null;
+
+  const fmt = t => `0:${String(Math.floor(t)).padStart(2, '0')}`;
+  const indexAt = t => { let i = 0; starts.forEach((s, k) => { if (t >= s) i = k; }); return i; };
+
+  // Days left counts down quickly when the app reopens (illustrative)
+  function startCountdown() {
+    const el = document.getElementById('days');
+    let n = 30;
+    el.textContent = n;
+    countdown = setInterval(() => {
+      n--;
+      el.textContent = n;
+      if (n <= 27) { clearInterval(countdown); countdown = null; }
+    }, 300);
+  }
+
+  SCENES.forEach((s, k) => {
+    const b = document.createElement('button');
+    b.textContent = k + 1;
+    b.title = s.name;
+    b.addEventListener('click', () => seek(k));
+    dotsEl.appendChild(b);
+  });
+
+  // Illustrative QR pattern: three finder squares and a seeded pseudo-random grid
+  function buildQR(svg) {
+    const n = 21, cell = 6;
+    let seed = 7;
+    const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+    const finder = (x, y) =>
+      `<rect x="${x * cell}" y="${y * cell}" width="${7 * cell}" height="${7 * cell}" fill="#000"/>` +
+      `<rect x="${(x + 1) * cell}" y="${(y + 1) * cell}" width="${5 * cell}" height="${5 * cell}" fill="#fff"/>` +
+      `<rect x="${(x + 2) * cell}" y="${(y + 2) * cell}" width="${3 * cell}" height="${3 * cell}" fill="#000"/>`;
+    let out = `<rect x="0" y="0" width="${n * cell}" height="${n * cell}" fill="#fff"/>`;
+    for (let i = 0; i < n; i++) {
+      for (let j = 0; j < n; j++) {
+        const inFinder = (i < 8 && j < 8) || (i >= n - 8 && j < 8) || (i < 8 && j >= n - 8);
+        if (!inFinder && rnd() > 0.5) out += `<rect x="${i * cell}" y="${j * cell}" width="${cell}" height="${cell}" fill="#000"/>`;
+      }
+    }
+    out += finder(0, 0) + finder(n - 7, 0) + finder(0, n - 7);
+    svg.innerHTML = out;
+  }
+  buildQR(document.getElementById('qr'));
+
+  function render() {
+    const i = indexAt(elapsed);
+    if (i !== cur) {
+      cur = i;
+      if (countdown) { clearInterval(countdown); countdown = null; }
+      if (SCENES[i].name === 'App') startCountdown();
+      scenesEl.forEach((el, k) => el.classList.toggle('on', k === i));
+      narr.textContent = SCENES[i].narr;
+      onscreen.textContent = 'On screen: ' + SCENES[i].on;
+      [...dotsEl.children].forEach((b, k) => b.classList.toggle('cur', k === i));
+    }
+    prog.style.width = (elapsed / total * 100) + '%';
+    timeEl.textContent = `${fmt(elapsed)} / ${fmt(total)}`;
+  }
+
+  function tick(now) {
+    if (playing) {
+      elapsed += (now - last) / 1000;
+      if (elapsed >= total) { elapsed = total; playing = false; playBtn.textContent = 'Play'; }
+    }
+    last = now;
+    render();
+    requestAnimationFrame(tick);
+  }
+
+  function seek(k) { elapsed = starts[k]; render(); }
+
+  playBtn.addEventListener('click', () => {
+    if (elapsed >= total) elapsed = 0;
+    playing = !playing;
+    playBtn.textContent = playing ? 'Pause' : 'Play';
+  });
+  document.getElementById('restart').addEventListener('click', () => {
+    elapsed = 0; playing = true; playBtn.textContent = 'Pause';
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.code === 'Space') { e.preventDefault(); playBtn.click(); }
+    if (e.code === 'ArrowRight') seek(Math.min(cur + 1, SCENES.length - 1));
+    if (e.code === 'ArrowLeft') seek(Math.max(cur - 1, 0));
+  });
+
+  // Scale the 1000px frame to the page width
+  function fit() {
+    const wrap = document.querySelector('.wrap');
+    const s = Math.min(1, wrap.clientWidth / 1000);
+    frame.style.transform = `scale(${s})`;
+    box.style.width = (1000 * s) + 'px';
+    box.style.height = (440 * s) + 'px';
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  // Reduced motion: hold the network scene (scene 6) as a still frame
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.body.classList.add('reduced');
+    playing = false;
+    elapsed = starts[5];
+    playBtn.textContent = 'Play';
+  }
+
+  // liminalcx.com embed: wait until the animation is on screen, then play from the start
+  if (!document.body.classList.contains('reduced') && 'IntersectionObserver' in window) {
+    playing = false; playBtn.textContent = 'Play';
+    const io = new IntersectionObserver(es => { if (es[0].isIntersecting) { io.disconnect(); elapsed = 0; playing = true; playBtn.textContent = 'Pause'; } }, { threshold: 0.4 });
+    io.observe(box);
+  }
+
+  render();
+  requestAnimationFrame(tick);
+</script>
+</body>
+</html>

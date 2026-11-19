@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Liminal CX · mobile animation: draft 2 (illustrative)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --lime: #CAD400; --ink: #000; --paper: #F3F3F0; --grey: #555; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); font-family: Rubik, Arial, sans-serif; color: var(--ink); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 24px 20px; }
+  .meta { font-family: 'DM Mono', Consolas, monospace; font-size: 13px; color: var(--grey); margin: 0 0 14px; }
+
+  /* Stage: a fixed 1000 x 440 frame, scaled to fit the page */
+  .box { position: relative; width: 1000px; height: 440px; }
+  .frame { position: absolute; left: 0; top: 0; width: 1000px; height: 440px; transform-origin: 0 0;
+           background: #fff; border: 2px solid #000; border-radius: 12px; overflow: hidden; }
+
+  .scene { position: absolute; inset: 0; opacity: 0; transition: opacity 0.5s ease; }
+  .scene.on { opacity: 1; }
+  .scene.title { background: #000; }
+
+  /* Reveal items: fade and rise in, each after its own delay (--d) */
+  .r, .row { opacity: 0; transform: translateY(8px);
+             transition: opacity 0.4s ease var(--d, 0s), transform 0.4s ease var(--d, 0s); }
+  .scene.on .r, .scene.on .row { opacity: 1; transform: none; }
+
+  .tagline { position: absolute; right: 14px; top: 10px; font-family: 'DM Mono', Consolas, monospace;
+             font-size: 11px; color: var(--grey); }
+  .title .tagline { color: #aaa; }
+  .divider { position: absolute; left: 470px; top: 0; bottom: 0; border-left: 1px dashed #000; }
+
+  /* Title and end cards */
+  .title h1 { position: absolute; left: 60px; top: 120px; margin: 0; font-weight: 700; font-size: 38px;
+              line-height: 1.25; color: var(--lime); }
+  .title h1 span { display: block; }
+  .title p { position: absolute; left: 60px; margin: 0; color: #fff; font-size: 16px; }
+  .end h1 { top: 96px; font-size: 36px; }
+
+  /* Left: phone */
+  .phone { position: absolute; left: 120px; top: 24px; width: 220px; height: 392px; border: 4px solid #000;
+           border-radius: 30px; background: #fff; }
+  .screen { position: absolute; inset: 12px; background: var(--paper); border-radius: 18px; padding: 14px; overflow: hidden; }
+  .screen h5 { font-size: 14px; margin: 0 0 12px; }
+  .field { border: 1px solid #000; border-radius: 6px; background: #fff; height: 34px; padding: 8px;
+           font-family: 'DM Mono', Consolas, monospace; font-size: 12px; margin-bottom: 10px; }
+  .btn { border: 1px solid #000; border-radius: 6px; height: 36px; display: flex; align-items: center;
+         justify-content: center; font-weight: 700; font-size: 13px; margin-bottom: 10px; }
+  .btn.lime { background: var(--lime); }
+  .btn.dark { background: #000; color: var(--lime); }
+  .btn.grey { background: #ccc; color: #555; border-color: #ccc; }
+  .card { background: #fff; border: 1px solid #000; border-radius: 8px; padding: 10px; margin-bottom: 10px; font-size: 12px; }
+
+  /* Typing effect for the email */
+  .typed { display: inline-block; overflow: hidden; white-space: nowrap; width: 0; vertical-align: bottom; }
+  .scene.on .typed { animation: type 1s steps(15, end) 0.4s forwards; }
+  @keyframes type { to { width: 15ch; } }
+
+  /* Processing spinner: the customer's normal approval wait */
+  .spin { width: 40px; height: 40px; margin: 10px auto 12px; display: block; }
+  .scene.on .spin { animation: spin 1.2s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Right: background panel */
+  .bg { position: absolute; left: 500px; top: 24px; width: 460px; }
+  .bg .lab { font-family: 'DM Mono', Consolas, monospace; font-size: 11px; color: var(--grey); margin: 0 0 10px; }
+  .row { display: flex; align-items: center; justify-content: space-between; height: 44px; padding: 0 14px;
+         border: 1px solid #000; border-radius: 8px; background: #fff; margin-bottom: 10px; font-size: 15px; }
+  .row.grey { border-color: #ccc; color: #888; }
+  .row.flag { background: #000; color: #fff; }
+  .row.risk { background: var(--lime); font-weight: 700; font-size: 17px; }
+  .tag { font-family: 'DM Mono', Consolas, monospace; font-size: 12px; border: 1px solid #000; border-radius: 999px;
+         padding: 3px 10px; background: #fff; color: #000; }
+  .row.flag .tag { background: var(--lime); border-color: var(--lime); }
+  .tag.dark { background: #000; color: #fff; }
+
+  /* A check that shows "running", then its result */
+  .tagwrap { position: relative; min-width: 110px; height: 24px; }
+  .tagwrap .tag { position: absolute; right: 0; top: 0; white-space: nowrap; }
+  .tagwrap .tag.run { opacity: 1; }
+  .tagwrap .tag.res { opacity: 0; }
+  .scene.on .tagwrap .tag.run { opacity: 0; transition: opacity 0.3s ease var(--r, 0s); }
+  .scene.on .tagwrap .tag.res { opacity: 1; transition: opacity 0.3s ease var(--r, 0s); }
+
+  /* Controls and captions below the frame */
+  .narr { font-size: 20px; margin: 18px 0 6px; min-height: 60px; }
+  .onscreen { font-family: 'DM Mono', Consolas, monospace; font-size: 12px; color: var(--grey); margin: 0; min-height: 18px; }
+  .bar { height: 6px; background: #ddd; border-radius: 3px; margin-top: 14px; overflow: hidden; }
+  #prog { height: 6px; background: #000; width: 0; }
+  .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 12px; }
+  button { font: inherit; font-size: 13px; padding: 6px 12px; border: 1px solid #000; background: #fff; border-radius: 6px; cursor: pointer; }
+  button:hover { background: var(--lime); }
+  .dots button { width: 36px; padding: 6px 0; }
+  .dots button.cur { background: var(--lime); }
+
+  /* Reduced motion: no movement, scene 4 held as a still */
+  .reduced .scene, .reduced .r, .reduced .row, .reduced .typed, .reduced .tagwrap .tag { transition: none !important; animation: none !important; }
+  .reduced .scene.on .r, .reduced .scene.on .row { opacity: 1; transform: none; }
+  .reduced .scene.on .typed { width: 15ch; }
+  .reduced .scene.on .tagwrap .tag.run { opacity: 0; }
+  .reduced .scene.on .tagwrap .tag.res { opacity: 1; }
+
+  /* liminalcx.com embed: storyboard header and production notes hidden, white page, full width */
+  body { background: #fff; }
+  .wrap { padding: 0; max-width: none; }
+  .wrap > p.meta:first-child, .onscreen { display: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="meta">MOBILE TAB ANIMATION · DRAFT 2 · ILLUSTRATIVE · NOTHING SHOWN IS BUILT</p>
+
+  <div class="box" id="box">
+    <div class="frame" id="frame">
+
+      <!-- Scene 1: title (0:00–0:04) -->
+      <section class="scene title on" data-i="0">
+        <span class="tagline">ILLUSTRATIVE</span>
+        <h1>
+          <span class="r" style="--d: 0.2s">Optimising revenue protection,</span>
+          <span class="r" style="--d: 0.6s">24/7</span>
+        </h1>
+        <p class="r" style="top: 236px; --d: 1.2s; width: 760px; font-size: 17px; line-height: 1.5">eSIM businesses run on thin margins, so fraud comes straight off the bottom line. We use the systems you already have, and keep improving the risk rules.</p>
+        <p class="r" style="top: 380px; --d: 2.0s; font-size: 12px; color: #aaa">Designed for a global eSIM business.</p>
+      </section>
+
+      <!-- Scene 2: email check (0:04–0:10) -->
+      <section class="scene" data-i="1">
+        <span class="tagline">ILLUSTRATIVE</span>
+        <div class="phone"><div class="screen">
+          <h5 class="r" style="--d: 0.2s">Sign in or register</h5>
+          <div class="r" style="--d: 0.3s; font-size: 11px; color: #555; margin-bottom: 4px">Email</div>
+          <div class="field r" style="--d: 0.3s"><span class="typed">you@example.com</span></div>
+          <div class="btn lime r" style="--d: 1.5s">Continue</div>
+          <div class="card r" style="--d: 2.0s"><b>Create your account</b><br><span style="color: #555">Name, password, then register</span></div>
+        </div></div>
+        <div class="divider"></div>
+        <div class="bg">
+          <p class="lab">BEHIND THE SCREEN</p>
+          <div class="row" style="--d: 2.2s"><span>New or existing customer</span><span class="tag">new</span></div>
+          <div class="row" style="--d: 2.7s"><span>Account lookup by email</span><span class="tag">not found</span></div>
+          <div class="row grey" style="--d: 3.2s"><span>Next: create account</span></div>
+        </div>
+      </section>
+
+      <!-- Scene 3: buy, checks, risk high (0:10–0:19) -->
+      <section class="scene" data-i="2">
+        <span class="tagline">ILLUSTRATIVE</span>
+        <div class="phone"><div class="screen">
+          <h5 class="r" style="--d: 0.2s">Your plan</h5>
+          <div class="card r" style="--d: 0.3s"><b>[Plan name]</b><br><span style="color: #555">[data] · [days]</span></div>
+          <div class="field r" style="--d: 0.4s">Card ••••</div>
+          <div class="btn dark r" style="--d: 0.6s">Pay now</div>
+        </div></div>
+        <div class="divider"></div>
+        <div class="bg">
+          <p class="lab">BEHIND THE SCREEN</p>
+          <div class="row" style="--d: 1.2s"><span>New or existing customer</span><span class="tag">pass</span></div>
+          <div class="row" style="--d: 1.7s"><span>Check email</span><span class="tag">pass</span></div>
+          <div class="row" style="--d: 2.2s"><span>Check country</span><span class="tag">pass</span></div>
+          <div class="row flag" style="--d: 3.2s"><span>Check IP</span><span class="tag">flagged</span></div>
+          <div class="row risk" style="--d: 4.3s"><span>Risk: high</span></div>
+        </div>
+      </section>
+
+      <!-- Scene 4: normal-looking wait, extra checks behind it (0:19–0:28) -->
+      <section class="scene" data-i="3">
+        <span class="tagline">ILLUSTRATIVE</span>
+        <div class="phone"><div class="screen">
+          <h5 class="r" style="--d: 0.2s">Your purchase</h5>
+          <svg class="spin r" style="--d: 0.3s" viewBox="0 0 40 40">
+            <circle cx="20" cy="20" r="16" fill="none" stroke="#000" stroke-width="3" stroke-dasharray="70 40"/>
+          </svg>
+          <div class="r" style="--d: 0.5s; text-align: center; font-weight: 700; font-size: 13px">We’re processing your purchase.</div>
+          <div class="btn grey r" style="--d: 0.8s; margin-top: 16px">Please wait</div>
+        </div></div>
+        <div class="divider"></div>
+        <div class="bg">
+          <p class="lab">BEHIND THE SCREEN</p>
+          <div class="row" style="--d: 0.6s"><span>Payment approval</span>
+            <span class="tagwrap"><span class="tag run">running</span><span class="tag res" style="--r: 3.0s">on hold</span></span></div>
+          <div class="row" style="--d: 1.0s"><span>Additional checks</span>
+            <span class="tagwrap"><span class="tag run">running</span><span class="tag res" style="--r: 4.2s">complete</span></span></div>
+          <div class="row risk" style="--d: 4.6s"><span>Risk: high</span></div>
+          <div class="row" style="--d: 5.4s"><span>eSIM issued earlier</span><span class="tag">paused</span></div>
+          <div class="row grey" style="--d: 6.2s"><span>Nothing charged</span></div>
+        </div>
+      </section>
+
+      <!-- Scene 5: stopped (0:28–0:34) -->
+      <section class="scene" data-i="4">
+        <span class="tagline">ILLUSTRATIVE</span>
+        <div class="phone"><div class="screen">
+          <h5 class="r" style="--d: 0.2s">Your purchase</h5>
+          <div class="card r" style="--d: 0.3s; min-height: 150px">
+            <b>Sorry, there was an issue.</b><br><br>
+            <span style="font-family: 'DM Mono', Consolas, monospace; font-size: 11px">Please check with your bank in the first instance, then try again.</span>
+          </div>
+          <div class="btn grey r" style="--d: 0.9s">Back</div>
+        </div></div>
+        <div class="divider"></div>
+        <div class="bg">
+          <p class="lab">BEHIND THE SCREEN</p>
+          <div class="row flag" style="--d: 0.8s"><span>Logged for fraud team</span><span class="tag">case</span></div>
+          <div class="row" style="--d: 1.6s"><span>Reason withheld</span><span class="tag">none</span></div>
+          <div class="row" style="--d: 2.4s"><span>Nothing charged</span></div>
+          <div class="row grey" style="--d: 3.2s"><span>Same message, every high-risk case</span></div>
+        </div>
+      </section>
+
+      <!-- Scene 6: end card (0:34–0:40) -->
+      <section class="scene title end" data-i="5">
+        <span class="tagline">ILLUSTRATIVE</span>
+        <h1 style="top: 60px; font-size: 30px">
+          <span class="r" style="--d: 0.2s">Cost of doing nothing</span>
+        </h1>
+        <p class="r" style="top: 128px; --d: 0.7s; font-size: 18px; color: #fff">Payment provider fees for every disputed charge</p>
+        <p class="r" style="top: 166px; --d: 1.2s; font-size: 18px; color: #fff">Plus higher transaction fees</p>
+        <div class="r" style="position: absolute; left: 60px; right: 60px; top: 230px; height: 2px; background: var(--lime); --d: 1.7s; transform-origin: left"></div>
+        <p class="r" style="top: 250px; --d: 2.0s; font-size: 15px; color: #fff">Same approach, next example.</p>
+        <p class="r" style="top: 300px; --d: 2.4s; font-size: 12px; color: #aaa">Optimising revenue protection, 24/7</p>
+        <p class="r" style="top: 350px; --d: 2.8s; font-size: 16px; color: var(--lime); font-weight: 700">Next: the eSIM journey →</p>
+      </section>
+
+    </div>
+  </div>
+
+  <p class="narr" id="narr"></p>
+  <p class="onscreen" id="onscreen"></p>
+
+  <div class="bar"><div id="prog"></div></div>
+  <div class="controls">
+    <button id="play">Pause</button>
+    <button id="restart">Restart</button>
+    <span class="meta" id="time" style="margin: 0 8px"></span>
+    <span class="dots" id="dots"></span>
+  </div>
+</div>
+
+<script>
+  // Timeline: each scene's length in seconds. Draft 2 is about 40 seconds (draft 1 was 60).
+  const SCENES = [
+    { name: 'Title',   dur: 4,  narr: '“Here’s what a customer sees, and what runs behind it.”',
+      on: 'Black title card: positioning line in lime, then the supporting line in white.' },
+    { name: 'Email',   dur: 6,  narr: '“Registering checks first whether the email already exists.”',
+      on: 'Email typed. Lookup runs on the right. “Create your account” appears.' },
+    { name: 'Buy',     dur: 9,  narr: '“Before payment, the checks run in the background.”',
+      on: 'Checks pass one at a time. “Check IP” is flagged. “Risk: high” appears.' },
+    { name: 'Held',    dur: 9,  narr: '“The wait looks like any normal approval. Behind it, more checks are running.”',
+      on: 'Customer sees a normal processing wait. Right: extra checks run, then the payment is on hold.' },
+    { name: 'Stopped', dur: 6,  narr: '“They’re told to check with their bank. They’re never told why.”',
+      on: 'The bank message. Right: logged for the fraud team, nothing charged.' },
+    { name: 'End',     dur: 8,  narr: '“Doing nothing has a cost, and it adds up. The same approach, on the next example.”',
+      on: 'End card: the cost of doing nothing, the bridge to the next example, and the positioning line. No call to action.' }
+  ];
+
+  const scenesEl = [...document.querySelectorAll('.scene')];
+  const frame = document.getElementById('frame');
+  const box = document.getElementById('box');
+  const narr = document.getElementById('narr');
+  const onscreen = document.getElementById('onscreen');
+  const prog = document.getElementById('prog');
+  const timeEl = document.getElementById('time');
+  const playBtn = document.getElementById('play');
+  const dotsEl = document.getElementById('dots');
+
+  const starts = [];
+  let total = 0;
+  SCENES.forEach(s => { starts.push(total); total += s.dur; });
+
+  let elapsed = 0, playing = true, last = performance.now(), cur = -1;
+
+  const fmt = t => `0:${String(Math.floor(t)).padStart(2, '0')}`;
+  const indexAt = t => { let i = 0; starts.forEach((s, k) => { if (t >= s) i = k; }); return i; };
+
+  SCENES.forEach((s, k) => {
+    const b = document.createElement('button');
+    b.textContent = k + 1;
+    b.title = s.name;
+    b.addEventListener('click', () => seek(k));
+    dotsEl.appendChild(b);
+  });
+
+  function render() {
+    const i = indexAt(elapsed);
+    if (i !== cur) {
+      cur = i;
+      scenesEl.forEach((el, k) => el.classList.toggle('on', k === i));
+      narr.textContent = SCENES[i].narr;
+      onscreen.textContent = 'On screen: ' + SCENES[i].on;
+      [...dotsEl.children].forEach((b, k) => b.classList.toggle('cur', k === i));
+    }
+    prog.style.width = (elapsed / total * 100) + '%';
+    timeEl.textContent = `${fmt(elapsed)} / ${fmt(total)}`;
+  }
+
+  function tick(now) {
+    if (playing) {
+      elapsed += (now - last) / 1000;
+      if (elapsed >= total) { elapsed = total; playing = false; playBtn.textContent = 'Play'; }
+    }
+    last = now;
+    render();
+    requestAnimationFrame(tick);
+  }
+
+  function seek(k) { elapsed = starts[k]; render(); }
+
+  playBtn.addEventListener('click', () => {
+    if (elapsed >= total) elapsed = 0;
+    playing = !playing;
+    playBtn.textContent = playing ? 'Pause' : 'Play';
+  });
+  document.getElementById('restart').addEventListener('click', () => {
+    elapsed = 0; playing = true; playBtn.textContent = 'Pause';
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.code === 'Space') { e.preventDefault(); playBtn.click(); }
+    if (e.code === 'ArrowRight') seek(Math.min(cur + 1, SCENES.length - 1));
+    if (e.code === 'ArrowLeft') seek(Math.max(cur - 1, 0));
+  });
+
+  // Scale the 1000px frame to the page width
+  function fit() {
+    const wrap = document.querySelector('.wrap');
+    const s = Math.min(1, wrap.clientWidth / 1000);
+    frame.style.transform = `scale(${s})`;
+    box.style.width = (1000 * s) + 'px';
+    box.style.height = (440 * s) + 'px';
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  // Reduced motion: hold scene 4 (held) as a still frame
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.body.classList.add('reduced');
+    playing = false;
+    elapsed = starts[3];
+    playBtn.textContent = 'Play';
+  }
+
+  // liminalcx.com embed: wait until the animation is on screen, then play from the start
+  if (!document.body.classList.contains('reduced') && 'IntersectionObserver' in window) {
+    playing = false; playBtn.textContent = 'Play';
+    const io = new IntersectionObserver(es => { if (es[0].isIntersecting) { io.disconnect(); elapsed = 0; playing = true; playBtn.textContent = 'Pause'; } }, { threshold: 0.4 });
+    io.observe(box);
+  }
+
+  render();
+  requestAnimationFrame(tick);
+</script>
+</body>
+</html>
