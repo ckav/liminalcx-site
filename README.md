@@ -175,6 +175,8 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 
 - **19 Nov 2026:** Travel eSIM six-flow diagram re-laid out so no lines cross: "Compare and buy" sits centred under the two pre-purchase boxes, "Step-by-step setup" is centred above "Reviews and referrals", and "Fix connection problems" moved right to make room.
 
+- **19 Nov 2026:** Removed the lime top border from the team cards (`.tm-c`) in the travel eSIM study; they now have the same thin border all round.
+
 ## Known issues
 
 - None at the moment.

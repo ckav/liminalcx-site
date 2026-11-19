@@ -92,7 +92,7 @@
 .fl-n.on{border-color:var(--lime);background:var(--lime);color:#000;box-shadow:0 0 0 5px var(--lime-tint)}
 .fl-n.on small{color:#000} .fl-n.on span{color:#000}
 .tm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.tm-c{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:#fff;border-top:4px solid var(--lime)}
+.tm-c{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:#fff}
 .tm-c h5{margin:0 0 10px;color:#000;font-size:16px}
 .tm-c ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
 .tm-c li{font-size:14px;line-height:1.35;padding-left:14px;position:relative}
