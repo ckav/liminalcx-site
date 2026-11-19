@@ -779,15 +779,16 @@
     a.appendChild(nav);
   });
   function has(id){return arts.some(function(a){return a.id===id})}
-  function go(id,scroll){
+  function go(id,scroll,quiet){
     if(!has(id))id=arts[0].id;
     arts.forEach(function(a,i){var on=a.id===id;a.hidden=!on;btns[i].setAttribute('aria-selected',String(on))});
-    if(history.replaceState)history.replaceState(null,'','#'+id);
+    if(!quiet&&history.replaceState)history.replaceState(null,'','#'+id);
     window.dispatchEvent(new Event('resize')); // the animations size themselves to their box, which was 0 while hidden
     if(scroll){var an=document.getElementById('cs-anchor');window.scrollTo({top:an.getBoundingClientRect().top+window.scrollY-8})} // the bar is sticky, so scroll to the spot it sits in, not the bar itself
   }
+  // On load: show the study named in the address (scrolling to it), otherwise the first one, without touching the address or the scroll position
   var h=location.hash.slice(1);
-  go(has(h)?h:arts[0].id,false);
+  if(has(h))go(h,true);else go(arts[0].id,false,true);
   window.addEventListener('hashchange',function(){var h=location.hash.slice(1);if(has(h))go(h,true)});
   document.addEventListener('toggle',function(){window.dispatchEvent(new Event('resize'))},true); // an opened details block re-sizes its animation
 })();

@@ -179,6 +179,8 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 
 - **19 Nov 2026:** Case study pills (and prev/next) now jump to the top of the chosen study. They used to scroll to the sticky pill bar, which was already on screen, so nothing moved; they now scroll to `#cs-anchor`, the spot the bar sits in. New site-wide "Top" button (`assets/top.js`, `.to-top` in site.css), loaded on every page; it appears after a screen and a half of scrolling.
 
+- **19 Nov 2026:** Home: removed the duplicate "Stop learning. Start coaching." section (it stays on Services, where it started); EMBED now opens the page. About: on arrival the page no longer writes `#giffgaff` into the address, so the About link always lands at the top; a link to a specific study (e.g. `/about/#merch-orders`) scrolls to that study.
+
 ## Known issues
 
 - None at the moment.
