@@ -129,6 +129,12 @@ This direction was agreed with Claire on 17 Nov 2026 and built as a hidden draft
 
 **Plan for the other industries:** `AutomationFramework/website_management/about-industries-plan.md`.
 
+**Background for Sports and eCommerce (not on the site yet):** `claude/cx-examples-for-about-page.md` in Claire's project files (not in this repo) holds 15 CX examples to draw on when these industries come back. Each has the problem, what Claire did and the outcome; outcomes marked [TBC] still need figures or Claire's confirmation. Clients are named generically. It sits alongside `ai-case-studies.md`, which is left as it is because it's built around the contact-based automation case studies.
+- **Sport (1–8):** shirt printing; the pre-match email; the service restructure and Zendesk rollout; the rugby brands; query triage; the stadium app (possibly a separate piece); the paper-to-digital incident form; fraudulent ticket reporting.
+- **eCommerce (9–15):** in-housing customer service; resolution time and the API dashboard; instant answers; delivery tracking; order-flow mapping; the service and marketing disconnect; coffee subscriptions with Klaviyo.
+- **Before using it:** the doc ends with five open questions for Claire, including the FIFA/FA wording and the Christmas volumes. Don't use any [TBC] figure on the site until Claire confirms it.
+- **Fraudulent ticket reporting (example 8):** data-protection note. Describe it at a high level only.
+
 ## Checking a change before pushing
 
 Push to `preview` and check https://preview--liminalcx.netlify.app (free). To check before pushing, serve the folder with `python -m http.server 8765`, then open http://localhost:8765/services/. For a screenshot, use headless Edge:
@@ -230,9 +236,11 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 - **19 Nov 2026:** About: Delivered and Illustrative pills removed from the eSIM cards.
 - **19 Nov 2026:** About: "What I bring" (four number cards) removed; the career and certificate lines now sit under the bio.
 - **19 Nov 2026:** About: eSIM and mobile case studies only for now (handover: `AutomationFramework/website_management/about-page-mobile-only-handover.md`). Sports and eCommerce tabs, their studies and the tab bar removed; the "This website" story removed. Other industries come back one at a time: add the `#cs-tabs` bar back when there are two sectors. `sectors.js` sends old links (#sports, #ecommerce, #football-club, #merch-orders, #this-website) to the eSIM cards. Cards 3 and 4 relabelled "Illustrative". Bio now leads with mobile (20+ years in mobile, 15 in start-ups) and names other industries in one line. Source files for the removed studies are kept in AutomationFramework.
+- **20 Nov 2026:** README: background note on the 15 Sports and eCommerce CX examples (`claude/cx-examples-for-about-page.md` in Claire's project files) added under "About page", with a Known issues line for the open questions. About page itself unchanged.
 
 ## Known issues
 
+- Sports and eCommerce examples (`claude/cx-examples-for-about-page.md`): five open questions for Claire (including the FIFA/FA wording and the Christmas volumes) and [TBC] outcomes to confirm before any of it goes on About.
 - Time, scope, resource section (Home and About): the line under the kicker ("Fix the time first...") is placeholder copy for Claire to confirm. The diagram's small labels are hard to read on phones; a taller phone version with bigger text was offered.
 - Orbit case studies (travel eSIM, MVNO): drafts in AutomationFramework/website_management/case_studies/orbit_mobile/, waiting on Claire's answers (was there a six-week launch; are the bio's "$100m contract" and "showing vendors... was possible" claims accurate; can the MVNO countries be named; any post-go-live results). Then add to About with case-study navigation.
 - Bio on Home still says "$100m contract" (About no longer does): no evidence for it was found in the Orbit files. Claire to confirm or reword.
