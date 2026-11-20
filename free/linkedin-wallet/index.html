@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Put your LinkedIn QR code in your wallet | Free mini course | Liminal CX</title>
+<meta name="description" content="A free five-minute course: save your LinkedIn business card and QR code to your phone wallet, so new contacts can scan it in seconds.">
+<link rel="canonical" href="https://liminalcx.com/free/linkedin-wallet/">
+<meta property="og:title" content="Put your LinkedIn QR code in your wallet | Liminal CX">
+<meta property="og:description" content="Free mini course: double-click the side button, show your code, and they're on your LinkedIn profile.">
+<meta property="og:url" content="https://liminalcx.com/free/linkedin-wallet/">
+<meta property="og:type" content="article">
+<link rel="icon" href="/assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&amp;family=Rubik:wght@300;400;500;600;700&amp;display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+/* LinkedIn wallet demo: drawn phone screens, one shown at a time (.lw-*) */
+.lw-demo{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:32px;align-items:center;margin-top:28px}
+@media (max-width:760px){.lw-demo{grid-template-columns:1fr;justify-items:center}}
+.lw-phone{width:100%;max-width:300px;aspect-ratio:9/18;background:#111;border-radius:42px;padding:11px;box-shadow:0 10px 30px rgba(0,0,0,.18);position:relative}
+.lw-side{position:absolute;right:-4px;top:26%;width:4px;height:58px;background:#333;border-radius:0 3px 3px 0;transition:background .2s}
+.lw-side.press{background:var(--lime)}
+.lw-screen{position:relative;height:100%;border-radius:32px;overflow:hidden;background:#fff;font-family:Rubik,Arial,sans-serif;color:#1d1d1d}
+.lw-s{position:absolute;inset:0;padding:30px 14px 14px;display:flex;flex-direction:column;gap:10px;opacity:0;transition:opacity .35s}
+.lw-s.on{opacity:1}
+.lw-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:13px;font-weight:600;min-height:26px}
+.lw-ava{width:28px;height:28px;border-radius:50%;background:#ccc center 20%/cover;flex:none}
+.lw-ava.lg{width:58px;height:58px}
+.lw-search{flex:1;height:26px;border-radius:6px;background:#eef0f3}
+.lw-post{border-radius:10px;background:#f3f3f1;height:84px}
+.lw-post.sm{height:56px}
+.lw-name{font-size:17px;font-weight:600;line-height:1.15;color:#000}
+.lw-head{font-size:11.5px;line-height:1.3;color:#333}
+.lw-loc{font-size:11px;color:#555}
+.lw-hr{border-top:1px solid #e5e5e5}
+.lw-menuitem{font-size:12px;color:#555}
+.lw-ico{width:28px;height:28px;border-radius:8px;background:#eee;display:flex;align-items:center;justify-content:center}
+.lw-ico svg{width:16px;height:16px}
+.lw-card{border-radius:14px;background:#f7f7f5;padding:14px;display:flex;flex-direction:column;gap:6px}
+.lw-card.dark{background:#111;color:#fff;flex-direction:row;align-items:stretch;padding:0;overflow:hidden;min-height:118px}
+.lw-card.dark .lw-ct{padding:14px 10px 12px 14px;display:flex;flex-direction:column;justify-content:center;gap:5px;flex:1;min-width:0}
+.lw-card.dark .lw-name{color:#fff;font-size:15px}
+.lw-card.dark .lw-head,.lw-card.dark .lw-loc{color:#ddd;font-size:10px}
+.lw-card.dark .lw-ph{width:38%;background:#555 center 20%/cover;flex:none}
+.lw-qr{width:118px;height:118px;align-self:center;border:1px solid #e5e5e5;border-radius:10px;padding:7px;background:#fff}
+.lw-qr svg{width:100%;height:100%;display:block}
+.lw-btn{align-self:center;background:#000;color:#fff;border-radius:8px;font-size:11px;padding:7px 12px;display:flex;align-items:center;gap:7px}
+.lw-btn i{width:20px;height:14px;border-radius:3px;background:linear-gradient(#f5b400 0 33%,#e94235 0 66%,#34a853 0)}
+.lw-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.lw-tiles span{height:38px;border-radius:7px;background:#f1f0ec;border:2px solid transparent}
+.lw-tiles span.pick{border-color:#000;background:#fff}
+.lw-save{background:#0a66c2;color:#fff;border-radius:999px;font-size:11px;padding:4px 12px}
+.lw-sheet{position:absolute;inset:0;background:#f2f2f7;padding:30px 12px 14px;display:flex;flex-direction:column;gap:14px}
+.lw-sheet .lw-bar a{color:#0a7aff;font-weight:500;text-decoration:none}
+.lw-pass{background:#d4d4d4;border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:10px}
+.lw-pass b{font-size:15px;color:#000}
+.lw-pass .lw-card{background:#fafaf8;padding:10px}
+.lw-pass .lw-qr{width:96px;height:96px;border:0}
+.lw-wallet{background:#000;color:#fff}
+.lw-wallet .lw-pass{margin-top:auto;margin-bottom:auto}
+.lw-hint{text-align:center;font-size:11px;color:#bbb}
+.lw-tap{position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:rgba(202,212,0,.55);border:2px solid var(--olive);pointer-events:none;opacity:0;transition:left .5s,top .5s,opacity .25s;z-index:5}
+.lw-tap.on{opacity:1;animation:lwpulse 1s ease-out infinite}
+@keyframes lwpulse{0%{box-shadow:0 0 0 0 rgba(202,212,0,.6)}100%{box-shadow:0 0 0 14px rgba(202,212,0,0)}}
+.lw-steps{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px;counter-reset:s}
+.lw-steps button{all:unset;box-sizing:border-box;display:block;width:100%;cursor:pointer;position:relative;padding:8px 10px 8px 46px;border-radius:12px;color:var(--muted);transition:color .3s,background .3s}
+.lw-steps button:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.lw-steps button::before{counter-increment:s;content:counter(s);position:absolute;left:8px;top:8px;width:26px;height:26px;border-radius:50%;background:var(--line);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.lw-steps button[aria-current="step"]{color:#000;background:var(--soft)}
+.lw-steps button[aria-current="step"]::before{background:#000;color:var(--lime)}
+.lw-steps b{color:inherit}
+.lw-ctrl{margin-top:12px}
+@media (prefers-reduced-motion:reduce){.lw-s,.lw-tap{transition:none}.lw-tap.on{animation:none}}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="/"><img src="/assets/logo.png" alt="" width="31" height="40">Liminal CX</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/services/">Services</a>
+        <a href="/ai-audit/">AI Audit</a>
+        <a href="/free/" aria-current="page">Free courses</a>
+        <a href="/about/">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+    <div class="hero">
+      <p class="eyebrow"><a href="/free/" style="color:inherit">Free mini courses</a> · LinkedIn · Phone wallet · Time to set up: 5 minutes</p>
+      <div class="course-tags course-tags-lg" aria-label="What you need"><span>LinkedIn app</span><span>iPhone (Apple Wallet)</span><span>Any AI chat (optional)</span></div>
+      <h1>Put your LinkedIn QR code in your wallet</h1>
+      <p class="lede"><b>Someone says "let's connect", and you're opening LinkedIn, searching for yourself and spelling out your name?</b> Keep your code in your phone's wallet instead.</p>
+      <p class="lede">Double-click the side button, show your code, and they're on your profile in seconds. It takes five minutes to set up, and your AI can walk you through it and tidy up your headline while you're there.</p>
+      <div class="btns"><a class="btn btn-lime" href="#demo">See how</a><a class="btn btn-line" href="#course">Get the instructions</a></div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="wrap">
+  <div class="grid">
+    <div class="card">
+      <p class="kicker">Who it's for</p>
+      <p>You meet people at events, meetings or over coffee, and want to:</p>
+      <ul class="ticks">
+        <li>Share your profile in seconds, without searching or spelling your name</li>
+        <li>Make sure people find the right you, not someone with the same name</li>
+        <li>Follow up with people who've already connected</li>
+      </ul>
+      <p class="small"><b>On Android?</b> Your business card and QR code are in the same place in the app. Whether you can save it to a wallet depends on your phone, so the course checks, and has a fallback if not.</p>
+    </div>
+    <div class="card">
+      <p class="kicker">You'll end up with</p>
+      <ul class="ticks">
+        <li>Your LinkedIn business card, with your photo, headline and QR code</li>
+        <li>The card saved in your wallet, ready from the lock screen</li>
+        <li>A layout you've chosen, that reads well on a phone</li>
+        <li>Optional: a sharper headline, so new contacts know what you do</li>
+      </ul>
+    </div>
+    <div class="card">
+      <p class="kicker">You'll need</p>
+      <ul class="ticks">
+        <li><b>The LinkedIn app,</b> up to date. The free account is fine.</li>
+        <li><b>An iPhone</b> with Apple Wallet, which comes built in. Android: see the note in "Who it's for".</li>
+        <li><b>Any AI chat (optional):</b> to walk you through it and suggest a shorter headline. The steps on this page work without it.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="demo">
+  <div class="intro">
+    <p class="kicker">See it first</p>
+    <h2>A few taps, once. Then a double-click every time.</h2>
+    <p>A drawing of the LinkedIn and Apple Wallet screens at the time of writing (November 2026). If yours look a little different, the course helps you find the right button.</p>
+  </div>
+  <div class="lw-demo">
+    <div class="lw-phone" aria-hidden="true">
+      <div class="lw-side" id="lw-side"></div>
+      <div class="lw-screen" id="lw-screen">
+        <div class="lw-tap" id="lw-tap"></div>
+
+        <div class="lw-s" data-k="0">
+          <div class="lw-bar"><span class="lw-ava ph" data-tap></span><span class="lw-search"></span><span class="lw-ico"><svg viewBox="0 0 16 16" fill="none" stroke="#666" stroke-width="1.6"><rect x="1.5" y="1.5" width="5" height="5"/><rect x="9.5" y="1.5" width="5" height="5"/><rect x="1.5" y="9.5" width="5" height="5"/><path d="M10 10h1.5v1.5M13 13h1.5M10 14h1.5"/></svg></span></div>
+          <div class="lw-post"></div><div class="lw-post sm"></div><div class="lw-post"></div><div class="lw-post sm"></div>
+        </div>
+
+        <div class="lw-s" data-k="1">
+          <div class="lw-bar"><span class="lw-ava lg ph"></span><span class="lw-ico" data-tap><svg viewBox="0 0 16 16" fill="none" stroke="#000" stroke-width="1.6"><rect x="1.5" y="1.5" width="5" height="5"/><rect x="9.5" y="1.5" width="5" height="5"/><rect x="1.5" y="9.5" width="5" height="5"/><path d="M10 10h1.5v1.5M13 13h1.5M10 14h1.5"/></svg></span></div>
+          <div class="lw-name">Claire Kavanagh</div><div class="lw-head">Business Mentor &amp; Customer Experience Consultant</div><div class="lw-loc">CKCX Consulting · London</div>
+          <div class="lw-hr"></div>
+          <div class="lw-menuitem">55 profile viewers</div>
+          <div class="lw-menuitem">175 post impressions</div>
+          <div class="lw-hr"></div>
+          <div class="lw-menuitem">Settings &amp; Privacy</div>
+        </div>
+
+        <div class="lw-s" data-k="2">
+          <div class="lw-bar"><span>←</span><span>Business card</span><span data-tap><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="#000" stroke-width="1.5"><path d="M3 13l1-3 7-7 2 2-7 7z"/></svg></span></div>
+          <div class="lw-card" data-card><span class="lw-ava lg ph"></span><div class="lw-name">Claire Kavanagh</div><div class="lw-head">Business Mentor &amp; Customer Experience Consultant</div><div class="lw-loc">CKCX Consulting · London</div></div>
+          <div class="lw-qr qr"></div>
+          <div class="lw-btn"><i></i>Add to Apple Wallet</div>
+        </div>
+
+        <div class="lw-s" data-k="3">
+          <div class="lw-bar"><span>✕</span><span>Edit card</span><span class="lw-save" data-tap>Save</span></div>
+          <div class="lw-card dark"><div class="lw-ct"><div class="lw-name">Claire Kavanagh</div><div class="lw-head">Business Mentor &amp; Customer Experience Consultant</div><div class="lw-loc">CKCX Consulting · London</div></div><div class="lw-ph ph"></div></div>
+          <div style="font-size:13px;font-weight:600;margin-top:4px">Layout</div>
+          <div class="lw-tiles"><span></span><span class="pick"></span><span></span><span></span><span></span><span></span></div>
+        </div>
+
+        <div class="lw-s" data-k="4">
+          <div class="lw-bar"><span>←</span><span>Business card</span><span><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="#000" stroke-width="1.5"><path d="M3 13l1-3 7-7 2 2-7 7z"/></svg></span></div>
+          <div class="lw-card dark"><div class="lw-ct"><div class="lw-name">Claire Kavanagh</div><div class="lw-head">Business Mentor &amp; Customer Experience Consultant</div><div class="lw-loc">CKCX Consulting · London</div></div><div class="lw-ph ph"></div></div>
+          <div class="lw-qr qr"></div>
+          <div class="lw-btn" data-tap><i></i>Add to Apple Wallet</div>
+        </div>
+
+        <div class="lw-s lw-sheet" data-k="5">
+          <div class="lw-bar"><a>Cancel</a><span style="font-size:12px">LinkedIn Business Card</span><a data-tap>Add</a></div>
+          <div class="lw-pass"><b>LinkedIn</b><div class="lw-card"><span class="lw-ava ph"></span><div class="lw-name">Claire Kavanagh</div><div class="lw-head">Business Mentor &amp; Customer Experience Consultant</div><div class="lw-loc">CKCX Consulting · London</div></div><div class="lw-qr qr"></div></div>
+        </div>
+
+        <div class="lw-s lw-wallet" data-k="6">
+          <div class="lw-hint">Double-click the side button</div>
+          <div class="lw-pass"><b>LinkedIn</b><div class="lw-card"><span class="lw-ava ph"></span><div class="lw-name">Claire Kavanagh</div><div class="lw-head">Business Mentor &amp; Customer Experience Consultant</div><div class="lw-loc">CKCX Consulting · London</div></div><div class="lw-qr qr"></div></div>
+          <div class="lw-hint">They scan it with their camera. Your profile opens.</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <ol class="lw-steps" id="lw-steps">
+        <li><button type="button" data-k="0"><b>Open the menu.</b> In the LinkedIn app, tap your photo, top left.</button></li>
+        <li><button type="button" data-k="1"><b>Open your code.</b> Tap the QR code icon at the top of the menu.</button></li>
+        <li><button type="button" data-k="2"><b>Your business card.</b> Tap the pencil to choose how it looks (optional).</button></li>
+        <li><button type="button" data-k="3"><b>Pick a layout.</b> A dark card with your photo on the right stands out. Tap Save.</button></li>
+        <li><button type="button" data-k="4"><b>Add it.</b> Tap Add to Apple Wallet.</button></li>
+        <li><button type="button" data-k="5"><b>Confirm.</b> Check the preview, then tap Add.</button></li>
+        <li><button type="button" data-k="6"><b>Show it.</b> From now on: double-click the side button, and show your code.</button></li>
+      </ol>
+      <div class="btns lw-ctrl"><button class="btn btn-ghost" type="button" id="lw-play">Pause</button></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="intro">
+    <p class="kicker">How it works</p>
+    <h2>Three steps</h2>
+  </div>
+  <div class="howto">
+    <div class="card"><div class="card-head"><span class="num" style="background:var(--lime)">1</span><h3>Copy</h3></div><p>Copy the instructions below, or download them as a file.</p></div>
+    <div class="card"><div class="card-head"><span class="num" style="background:var(--lime)">2</span><h3>Paste</h3></div><p>Paste them into a new chat in your AI tool, on your phone or laptop.</p></div>
+    <div class="card"><div class="card-head"><span class="num" style="background:var(--lime)">3</span><h3>Follow along</h3></div><p>It asks two or three questions, then tells you what to tap, one step at a time.</p></div>
+  </div>
+</section>
+
+<section id="course" class="wrap">
+  <div class="intro">
+    <p class="kicker">The course</p>
+    <h2>Copy this into your AI chat</h2>
+    <p>Copy and paste the text below into any AI tool, such as ChatGPT, Claude, Copilot or Gemini, and it guides you step by step. It also checks your headline reads well on the card, and offers a shorter version if it doesn't.</p>
+    <p>Stuck? Ask it for help. A screenshot, or a description of what's on your screen, helps it guide you. The instructions include links to the official help pages, so if the app has changed, your AI can keep up.</p>
+    <p style="font-size:15px"><b>What's a .md file?</b> It's like a Notepad (.txt) file: plain text with no extra formatting, which makes it easy for AI tools to read.</p>
+  </div>
+  <div class="prompt-box">
+    <div class="prompt-bar">
+      <span class="meta">guide.md</span>
+      <div class="btns" style="align-items:center">
+        <span class="copied" id="copied" role="status" aria-live="polite"></span>
+        <button class="btn btn-lime" id="copy" type="button">Copy instructions</button>
+        <a class="btn btn-line" href="guide.md" download="linkedin-wallet.md">Download .md</a>
+      </div>
+    </div>
+    <pre class="prompt-text" id="prompt" tabindex="0">Loading… If nothing appears, use Download .md above.</pre>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="intro">
+    <p class="kicker">Official help</p>
+    <h2>Straight from LinkedIn, Apple and Google</h2>
+    <p>Apps change often. These help centres are always the latest version, and the course tells your AI to check them as it goes.</p>
+  </div>
+  <div class="grid">
+    <div class="card"><h3>LinkedIn</h3><ul class="ticks"><li><a href="https://www.linkedin.com/help/linkedin" rel="noopener">LinkedIn Help</a> (search "QR code")</li></ul></div>
+    <div class="card"><h3>Apple Wallet</h3><ul class="ticks"><li><a href="https://support.apple.com/en-gb/wallet" rel="noopener">Apple Wallet support</a></li></ul></div>
+    <div class="card"><h3>Google Wallet</h3><ul class="ticks"><li><a href="https://support.google.com/wallet" rel="noopener">Google Wallet Help</a></li></ul></div>
+  </div>
+</section>
+
+<section id="contact" class="wrap contact">
+  <div class="contact-box">
+    <h2>Met someone worth following up?</h2>
+    <p>The card gets you connected. In a Power Hour we set up the follow-up too: notes, reminders and a first message that sounds like you. Or book a free 15-minute call to talk it through.</p>
+    <a class="email" href="mailto:info@liminalcx.com?subject=LinkedIn%20wallet%20course">info@liminalcx.com</a>
+    <div class="btns" style="justify-content:center">
+      <a class="btn btn-lime" href="/book-power-hour">Book a Power Hour</a>
+      <a class="btn btn-line" href="/book">Book a 15-minute call</a>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var pre=document.getElementById('prompt'),btn=document.getElementById('copy'),msg=document.getElementById('copied'),text='';
+  fetch('guide.md').then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){text=t;pre.textContent=t}).catch(function(){});
+  btn.addEventListener('click',function(){
+    if(!text)return;
+    function done(){msg.textContent='Copied';setTimeout(function(){msg.textContent=''},2500)}
+    if(navigator.clipboard){navigator.clipboard.writeText(text).then(done,fallback)}else{fallback()}
+    function fallback(){var r=document.createRange();r.selectNodeContents(pre);var s=getSelection();s.removeAllRanges();s.addRange(r);try{document.execCommand('copy');done()}catch(e){msg.textContent='Select the text and copy'}}
+  });
+
+  // Photo on every drawn avatar
+  [].forEach.call(document.querySelectorAll('.lw-screen .ph'),function(e){e.style.backgroundImage='url(/assets/claire.jpg)'});
+
+  // A drawn QR code (decoration only: it doesn't scan)
+  var n=25,seed=7,cells='';
+  function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647}
+  function finder(x,y){return '<path d="M'+x+' '+y+'h7v7h-7z M'+(x+1)+' '+(y+1)+'v5h5v-5z" fill-rule="evenodd"/><rect x="'+(x+2)+'" y="'+(y+2)+'" width="3" height="3"/>'}
+  function inFinder(x,y){return (x<8&&y<8)||(x>n-9&&y<8)||(x<8&&y>n-9)}
+  for(var y=0;y<n;y++)for(var x=0;x<n;x++){if(!inFinder(x,y)&&rnd()<.48)cells+='<rect x="'+x+'" y="'+y+'" width="1" height="1"/>'}
+  var qr='<svg viewBox="0 0 '+n+' '+n+'" fill="#000" shape-rendering="crispEdges">'+finder(0,0)+finder(n-7,0)+finder(0,n-7)+cells+'</svg>';
+  [].forEach.call(document.querySelectorAll('.lw-screen .qr'),function(e){e.innerHTML=qr});
+
+  // Each scene marks what gets tapped with data-tap; the marker moves onto it
+  var screens=[].slice.call(document.querySelectorAll('.lw-s')),steps=[].slice.call(document.querySelectorAll('#lw-steps button'));
+  var tap=document.getElementById('lw-tap'),side=document.getElementById('lw-side'),screen=document.getElementById('lw-screen');
+  var playBtn=document.getElementById('lw-play'),cur=0,timer=null,playing=true;
+  var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function place(k){
+    var t=screens[k].querySelector('[data-tap]');
+    if(!t){tap.classList.remove('on');return}
+    var r=t.getBoundingClientRect(),sc=screen.getBoundingClientRect();
+    tap.style.left=((r.left+r.width/2-sc.left)/sc.width*100)+'%';
+    tap.style.top=((r.top+r.height/2-sc.top)/sc.height*100)+'%';
+    tap.classList.add('on');
+  }
+  function show(k){
+    cur=k;
+    screens.forEach(function(s){s.classList.toggle('on',+s.dataset.k===k)});
+    steps.forEach(function(b){if(+b.dataset.k===k)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current')});
+    tap.classList.remove('on');
+    setTimeout(function(){place(k)},still?0:450);
+    side.classList.remove('press');
+    if(k===6&&!still){setTimeout(function(){side.classList.add('press')},200);setTimeout(function(){side.classList.remove('press')},700)}
+  }
+  function next(){show((cur+1)%screens.length);timer=setTimeout(next,cur===6?4200:2800)}
+  function play(){if(still||timer)return;timer=setTimeout(next,2800)}
+  function stop(){clearTimeout(timer);timer=null}
+  function setPlaying(p){playing=p;playBtn.textContent=p?'Pause':'Play';if(p)play();else stop()}
+  steps.forEach(function(b){b.addEventListener('click',function(){setPlaying(false);show(+b.dataset.k)})});
+  playBtn.addEventListener('click',function(){setPlaying(!playing)});
+  if(still){playing=false;playBtn.hidden=true}
+  show(0);
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(playing)play()}else stop()})},{threshold:.3}).observe(screen)}else{play()}
+})();
+</script>
+</main>
+<footer class="site-foot">
+  <div class="wrap row">
+    <span>© 2026 Liminal CX · Claire Kavanagh</span>
+    <span><a href="/book">Book a 15-minute call</a> · <a href="mailto:info@liminalcx.com">Email</a> · <a href="https://www.linkedin.com/in/clairekav" rel="noopener">LinkedIn</a></span>
+  </div>
+</footer>
+<script src="/assets/top.js" defer></script>
+</body>
+</html>
