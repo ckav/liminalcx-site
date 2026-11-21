@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 1: Build your business dashboard | Liminal CX</title>
+<meta name="description" content="One page that shows the numbers you check every week, updated for you.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&amp;family=Rubik:wght@300;400;500;600;700&amp;display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+.lessons{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:14px}
+.lessons a{display:flex;gap:18px;align-items:center;border:1px solid var(--line);border-radius:18px;padding:18px 22px;color:#000;text-decoration:none;background:#fff}
+.lessons a:hover{border-color:#000}
+.lessons .num{flex:none}
+.lessons b{display:block;font-size:19px}
+.lessons span.small{display:block}
+.draft-note{background:var(--lime);border-radius:14px;padding:12px 18px;margin:18px 0 28px;max-width:780px;font-size:15px}
+.code-form{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;max-width:560px}
+.code-form input[type=text]{flex:1 1 240px;font:inherit;font-size:20px;padding:12px 16px;border:2px solid #000;border-radius:999px;letter-spacing:.08em;text-transform:uppercase}
+.code-wrong{color:#b3261e;font-weight:500}
+.lesson-nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:28px}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="/"><img src="/assets/logo.png" alt="" width="31" height="40">Liminal CX</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/services/">Services</a>
+        <a href="/ai-audit/">AI Audit</a>
+        <a href="/free/">Free courses</a>
+        <a href="/about/">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+    <div class="hero">
+      <p class="eyebrow"><a href="../" style="color:inherit">Put AI to work in your business</a> · Lesson 1 of 3</p>
+      <h1>Build your business dashboard</h1>
+      <p class="lede">One page that shows the numbers you check every week, updated for you.</p>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="wrap">
+  <p class="draft-note"><b>Draft:</b> placeholder outline for Claire to write. A video, screenshots or a walk-through can go here too.</p>
+  <div class="grid">
+    <div class="card">
+      <p class="kicker">In this lesson</p>
+      <ul class="ticks">
+        <li>Pick the five numbers that tell you how the business is doing</li>
+        <li>Connect where they live (spreadsheet, Stripe, bookings, email list)</li>
+        <li>Have your AI build the dashboard and refresh it on a schedule</li>
+      </ul>
+    </div>
+    <div class="card">
+      <p class="kicker">You'll end up with</p>
+      <p>[What's working by the end of this lesson]</p>
+    </div>
+    <div class="card">
+      <p class="kicker">You'll need</p>
+      <p>[Tools and plans needed]</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="intro">
+    <p class="kicker">Do it with your AI</p>
+    <h2>Copy this into your AI chat</h2>
+    <p>Paste it into the AI tool you use for work, and it coaches you through each step. Stuck? Ask it, and a screenshot of your screen helps.</p>
+  </div>
+  <div class="prompt-box">
+    <div class="prompt-bar">
+      <span class="meta">guide.md</span>
+      <div class="btns" style="align-items:center">
+        <span class="copied" id="copied" role="status" aria-live="polite"></span>
+        <button class="btn btn-lime" id="copy" type="button">Copy instructions</button>
+        <a class="btn btn-line" href="guide.md" download="ai-business-lesson-1.md">Download .md</a>
+      </div>
+    </div>
+    <pre class="prompt-text" id="prompt" tabindex="0">Loading… If nothing appears, use Download .md above.</pre>
+  </div>
+  <div class="lesson-nav"><a class="btn btn-line" href="../">← All lessons</a><a class="btn btn-lime" href="../2-research-agents/">Lesson 2 →</a></div>
+</section>
+
+<section id="contact" class="wrap contact">
+  <div class="contact-box">
+    <h2>Stuck, or want a hand?</h2>
+    <p>Email me, or book a Power Hour and we'll do the next step together.</p>
+    <a class="email" href="mailto:info@liminalcx.com?subject=Course%20question">info@liminalcx.com</a>
+    <div class="btns" style="justify-content:center">
+      <a class="btn btn-lime" href="/book-power-hour">Book a Power Hour</a>
+      <a class="btn btn-line" href="/book">Book a 15-minute call</a>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var pre=document.getElementById('prompt'),btn=document.getElementById('copy'),msg=document.getElementById('copied'),text='';
+  fetch('guide.md').then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){text=t;pre.textContent=t}).catch(function(){});
+  btn.addEventListener('click',function(){
+    if(!text)return;
+    function done(){msg.textContent='Copied';setTimeout(function(){msg.textContent=''},2500)}
+    if(navigator.clipboard){navigator.clipboard.writeText(text).then(done,fallback)}else{fallback()}
+    function fallback(){var r=document.createRange();r.selectNodeContents(pre);var s=getSelection();s.removeAllRanges();s.addRange(r);try{document.execCommand('copy');done()}catch(e){msg.textContent='Select the text and copy'}}
+  });
+})();
+</script>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap row">
+    <span>© 2026 Liminal CX · Claire Kavanagh</span>
+    <span><a href="/book">Book a 15-minute call</a> · <a href="mailto:info@liminalcx.com">Email</a> · <a href="https://www.linkedin.com/in/clairekav" rel="noopener">LinkedIn</a></span>
+  </div>
+</footer>
+<script src="/assets/top.js" defer></script>
+<script src="/assets/analytics.js" defer></script>
+</body>
+</html>

@@ -102,6 +102,18 @@ Short free courses for people who want to advance their skills and free up their
 - `netlify.toml` serves `/free/*.md` as UTF-8 markdown, so curly quotes and other special characters display properly.
 - **Styles:** the "Free mini courses" rules at the end of `assets/site.css`.
 
+## Paid courses (self-paced, unlocked with a code)
+
+The simple version: people pay with a Stripe Payment Link, the page after payment shows an access code, and they type it in once to open the course. No accounts and no monthly platform fee.
+- **Pages:** `/<course>/` is the sales page (hidden: noindex, not in the nav or sitemap). `/learn/<course>/` is the course, one folder per lesson, each with `index.html` and a `guide.md` copy box like the free courses. `/learn/unlock/` is the public "Enter your access code" page.
+- **The lock:** `netlify/edge-functions/course-gate.js` runs on Netlify before any `/learn/` page is served. Without the right code it sends people to `/learn/unlock/`. Once the code is right, a cookie keeps that browser in for a year. View source can't get round it, because the pages aren't sent at all.
+- **The code** is a Netlify environment variable, never in this repo: course folder `ai-business` → variable `CODE_AI_BUSINESS` (Netlify → Project configuration → Environment variables). Capitals and spaces don't matter when people type it. Changing it locks everyone out until they enter the new one. If the variable isn't set, the course stays locked for everyone.
+- **Selling:** in Stripe, make a Payment Link for the course. Under "After payment", choose to show a confirmation page with a custom message giving the code and the link https://liminalcx.com/learn/unlock/?course=ai-business. Put the same in the receipt. Then set the `to` of `/buy-ai-business` in `netlify.toml` to the Payment Link.
+- **Course 1 (draft):** "Put AI to work in your business" (`ai-business`, working title): 1 dashboard, 2 research agents, 3 Claude Code. All wording is placeholder, `[£PRICE]` on the sales page.
+- **Before real lessons go in, make the GitHub repo private.** It's public, so anything committed is readable on GitHub whatever the lock does. Netlify keeps working with a private repo.
+- **To add a course:** copy `learn/ai-business/` and `ai-business/` to a new short name, add the variable `CODE_<NEW_NAME>` in Netlify, a `/buy-<name>` redirect and a `/<name>/*` noindex header in `netlify.toml`, and point the unlock link's `?course=` at it.
+- **Credits:** the lock is a Netlify edge function, which runs on the free plan. Its use is tiny at course volumes, but it does count towards Netlify usage.
+
 ## Home page
 
 This direction was agreed with Claire on 17 Nov 2026 and built as a hidden draft at /draft-home/. It replaced the old home page on 18 Nov 2026, and /draft-home/ now redirects to /. The old home page ("Raising the bar for customer experience", EMBED cards, People / Process / Platform) is in git history.
@@ -252,7 +264,11 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 
 - **21 Nov 2026:** Added Google Analytics (GA4) with a consent banner: `assets/analytics.js` on every page, `.cookie-*` styles. It's switched off until the Measurement ID is filled in, and only runs on liminalcx.com.
 
+- **21 Nov 2026:** Paid self-paced courses: code gate on `/learn/*` (Netlify edge function, code in the `CODE_<COURSE>` variable), "Enter your access code" page, draft course "Put AI to work in your business" (three placeholder lessons with copy boxes), hidden sales page /ai-business/ with a placeholder Buy link. /learn/ is noindex and disallowed in robots.txt. See "Paid courses".
+
 ## Known issues
+
+- Paid course: the GitHub repo is public, so make it private before real lessons are committed. `CODE_AI_BUSINESS` isn't set in Netlify yet (the course stays locked until it is), and the Stripe Payment Link and price are still to do.
 
 - LinkedIn wallet course: the official help links are the help centre home pages (LinkedIn Help, Apple Wallet support, Google Wallet Help), because specific pages couldn't be checked when it was built. Swap in the exact LinkedIn "QR code / business card" page when found. Claire to confirm step 2 (QR code icon in the menu opens the Business card screen directly) and whether Android offers a Google Wallet option.
 
