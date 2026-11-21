@@ -55,6 +55,15 @@ This is the section headed **"Stop learning. Start coaching."** The idea is that
 - **Styles** are the `.loop*` rules in `assets/site.css`.
 - **History.** The first version (replaced on 17 Nov 2026) had a New starter / AI switch with two written lists. Claire dropped it because it took too much room and didn't add much, and she wanted the section to be useful straight away, with real prompts.
 
+## Google Analytics and the cookie banner
+
+- **One file does it all:** `assets/analytics.js`, loaded at the foot of every page (not the animation embeds in `assets/case-studies/mobile/`). Styles are the `.cookie-*` rules at the end of `site.css`.
+- **Switched off until `GA_ID` is set** at the top of that file. It's the Measurement ID from Google Analytics (Admin → Data streams → the liminalcx.com stream), and starts with "G-". The account belongs to Claire's liminalcx.com Google Workspace login.
+- **Consent first (UK cookie rules):** a black banner asks "Can I use Google Analytics cookies…?" with Accept / No thanks. Google's script only loads after Accept. No thanks removes any `_ga` cookies. The choice is remembered in the visitor's browser, and "Cookie settings" (added to the footer by the script) reopens the banner.
+- **Live site only:** it does nothing on the preview address or locally, so test visits don't count. That means it can only be checked on liminalcx.com.
+- **New pages:** add `<script src="/assets/analytics.js" defer></script>` before `</body>`.
+- **Still to do:** a short privacy page that says what Analytics collects, linked from the banner.
+
 ## Free mini courses (/free/)
 
 Short free courses for people who want to advance their skills and free up their time (not "for PAs and admins"). Each course is a set of instructions that people paste into ChatGPT, Claude, Copilot or Gemini. The AI then coaches them through the job one step at a time.
@@ -240,6 +249,8 @@ Add `--virtual-time-budget=14000` to capture the loop after it has cycled a few 
 - **20 Nov 2026:** README: background note on the 15 Sports and eCommerce CX examples (`claude/cx-examples-for-about-page.md` in Claire's project files) added under "About page", with a Known issues line for the open questions. About page itself unchanged.
 
 - **20 Nov 2026:** Added free course 6, Put your LinkedIn QR code in your wallet (/free/linkedin-wallet/), with an animated drawn-phone walk-through from Claire's screenshots, a card on /free/ (second, so it shows on the home page strip) and a sitemap entry.
+
+- **21 Nov 2026:** Added Google Analytics (GA4) with a consent banner: `assets/analytics.js` on every page, `.cookie-*` styles. It's switched off until the Measurement ID is filled in, and only runs on liminalcx.com.
 
 ## Known issues
 
